@@ -1,0 +1,66 @@
+# depslib dependency file v1.0
+1599309661 source:e:\student\3630102_80201\derkachenko\project1\main.cpp
+	<tchar.h>
+	<windows.h>
+	<stdio.h>
+
+1603984974 source:d:\desktop\derkachenko\project1\main.c
+	<tchar.h>
+	<windows.h>
+	<stdio.h>
+	"TModel.h"
+	"TView.h"
+	"processing.h"
+	"changingSize.h"
+	"scrolling.h"
+	"menu.h"
+
+1600521237 source:e:\student\3630102_80201\derkachenko\project1\main.c
+	<tchar.h>
+	<windows.h>
+	<stdio.h>
+
+1603985030 d:\desktop\derkachenko\project1\tmodel.h
+
+1602932837 d:\desktop\derkachenko\project1\tview.h
+	<Windows.h>
+
+1603984859 d:\desktop\derkachenko\project1\processing.h
+	"TModel.h"
+	"TView.h"
+
+1603990622 source:d:\desktop\derkachenko\project1\processing.c
+	<stdlib.h>
+	<windows.h>
+	"TModel.h"
+	"TView.h"
+
+1603985018 source:d:\desktop\derkachenko\project1\tmodel.c
+	<stdlib.h>
+	<stdio.h>
+	"TModel.h"
+
+1603980308 source:d:\desktop\derkachenko\project1\tview.c
+	"TView.h"
+
+1603987170 source:d:\desktop\derkachenko\project1\changingsize.c
+	"TModel.h"
+	"TView.h"
+
+1602932909 d:\desktop\derkachenko\project1\changingsize.h
+	"TModel.h"
+	"TView.h"
+
+1603990205 source:d:\desktop\derkachenko\project1\scrolling.c
+	"TModel.h"
+	"TView.h"
+
+1602934968 d:\desktop\derkachenko\project1\scrolling.h
+	"TModel.h"
+	"TView.h"
+
+1603979270 source:d:\desktop\derkachenko\project1\resources.rc
+	"menu.h"
+
+1603978570 d:\desktop\derkachenko\project1\menu.h
+
