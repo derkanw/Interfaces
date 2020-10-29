@@ -12,7 +12,8 @@ void VertScroll(TView* view, WPARAM wParam)
             vertScrollInc = -view->sizeVertScroll;
         break;
     case SB_LINEDOWN:
-        vertScrollInc = view->sizeVertScroll;
+        if (view->vertScrollPos != view->lastVertPos)
+            vertScrollInc = view->sizeVertScroll;
         break;
     case SB_PAGEUP:
         vertScrollInc = min(-1, -view->countLines);
@@ -28,49 +29,48 @@ void VertScroll(TView* view, WPARAM wParam)
         break;
     }
 
-    vertScrollInc = max(-view->vertScrollPos, min(vertScrollInc, view->lastVertPos - view->vertScrollPos));
-
     if (vertScrollInc != 0)
-        {
-            //view->vertScrollPos = max(0, min(view->vertScrollPos, view->lastVertPos));
-            view->vertScrollPos += vertScrollInc;
-
-            ScrollWindow(view->hwnd, 0, -view->heightChar * vertScrollInc, NULL, NULL);
-            SetScrollPos(view->hwnd, SB_VERT, view->vertScrollPos, TRUE);
-            //InvalidateRect(view->hwnd, NULL, TRUE);
-            UpdateWindow(view->hwnd);
-        }
+    {
+        view->vertScrollPos += vertScrollInc;
+        ScrollWindow(view->hwnd, 0, -view->heightChar * vertScrollInc, NULL, NULL);
+        SetScrollPos(view->hwnd, SB_VERT, view->vertScrollPos, TRUE);
+        UpdateWindow(view->hwnd);
+    }
 }
 
 void HorzScroll(TView* view, WPARAM wParam)
 {
+    int horzScrollInc = 0;
+
     switch (LOWORD(wParam))
     {
     case SB_LINEUP:
         if (view->horzScrollPos != 0)
-            view->horzScrollPos -= view->sizeHorzScroll;
+            horzScrollInc = -view->sizeHorzScroll;
         break;
     case SB_LINEDOWN:
-        view->horzScrollPos += view->sizeHorzScroll;
+        if (view->horzScrollPos != view->lastHorzPos)
+            horzScrollInc = view->sizeHorzScroll;
         break;
     case SB_PAGEUP:
-        view->horzScrollPos -= view->countChars;
+        horzScrollInc = -view->countChars;
         break;
     case SB_PAGEDOWN:
-        view->horzScrollPos += view->countChars;
+        horzScrollInc = view->countChars;
         break;
     case SB_THUMBTRACK:
-        view->horzScrollPos += HIWORD(wParam) - view->horzScrollPos;
+        horzScrollInc = HIWORD(wParam) - view->horzScrollPos;
         break;
     default:
+        horzScrollInc = 0;
         break;
     }
-    view->horzScrollPos = max(0, min(view->horzScrollPos, view->lastHorzPos));
 
-    if (view->horzScrollPos != GetScrollPos(view->hwnd, SB_HORZ))
+    if (horzScrollInc != 0)
     {
+        view->horzScrollPos += horzScrollInc;
+        ScrollWindow(view->hwnd, -view->widthChar * horzScrollInc, 0, NULL, NULL);
         SetScrollPos(view->hwnd, SB_HORZ, view->horzScrollPos, TRUE);
-        InvalidateRect(view->hwnd, NULL, TRUE);
         UpdateWindow(view->hwnd);
     }
 }

@@ -26,7 +26,7 @@ void PrintText(TModel* model, TView* view)
     if (view->vertScrollPos != 0)
     {
         beginPaint = max(0, view->vertScrollPos + ps.rcPaint.top / view->heightChar - 1);
-        endPaint = min(model->sizeOffset - 1, view->vertScrollPos + ps.rcPaint.bottom / view->heightChar);
+        endPaint = min(model->sizeOffset - 1, view->vertScrollPos + ps.rcPaint.bottom / view->heightChar + 1);
     }
 
     unsigned int newX = 0, newY = 0;

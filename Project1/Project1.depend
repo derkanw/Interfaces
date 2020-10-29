@@ -29,7 +29,7 @@
 	"TModel.h"
 	"TView.h"
 
-1603990622 source:d:\desktop\derkachenko\project1\processing.c
+1603993661 source:d:\desktop\derkachenko\project1\processing.c
 	<stdlib.h>
 	<windows.h>
 	"TModel.h"
@@ -51,7 +51,7 @@
 	"TModel.h"
 	"TView.h"
 
-1603990205 source:d:\desktop\derkachenko\project1\scrolling.c
+1603994007 source:d:\desktop\derkachenko\project1\scrolling.c
 	"TModel.h"
 	"TView.h"
 
