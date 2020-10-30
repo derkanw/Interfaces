@@ -2,38 +2,43 @@
 #include <stdio.h>
 #include "TModel.h"
 
-TModel* InitModel(char* filename) //метод,инициализирующий поля данной структуры и считывание текста из файла
+TModel* InitModel(void)
 {
-    FILE* f = fopen(filename, "rb");
-    if (!f)
-        return NULL;
-
     TModel* model = (TModel*)malloc(sizeof(TModel));
     if (!model)
         return NULL;
+
+    model->str = NULL;
+    model->offset = (unsigned int*)malloc(sizeof(unsigned int));
+    if (!model->offset)
+        return NULL;
+    model->offset[0] = 0;
+    model->sizeOffset = 2;
+    model->maxLine = 0;
+
+    return model;
+}
+
+void FillModel(TModel* model, char* filename) //метод,инициализирующий поля данной структуры и считывание текста из файла
+{
+    FILE* f = fopen(filename, "rb");
+    if (!f)
+        return;
 
     fseek(f, 0, SEEK_END);
     model->length = ftell(f);
 
     model->str = (char*)malloc(sizeof(char) * model->length);
     if (!model->str)
-        return NULL;
+        return ;
 
     fseek(f, 0, SEEK_SET);
     if (model->length != fread(model->str, sizeof(char), model->length, f))
-        return NULL;
+        return;
 
     fclose(f);
 
-    model->offset = (unsigned int*)malloc(sizeof(unsigned int));
-    if (!model->offset)
-        return NULL;
-
     model->str[model->length] = '\0';
-    model->offset[0] = 0;
-    model->sizeOffset = 2;
-
-    return model;
 }
 
 void FillOffset(TModel* model) //заполнение матрицы смещений, используется для построчного вывода на экран

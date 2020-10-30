@@ -1,5 +1,3 @@
-#include <stdlib.h>
-#include <windows.h>
 #include "TModel.h"
 #include "TView.h"
 
@@ -18,8 +16,40 @@ char* SelectLine(char* str, unsigned int from, unsigned int to)
     return temp;
 }
 
+void MaxLineLength(TModel* model, TView* view)
+{
+    HDC hdc = GetDC(view->hwnd);
+    SIZE sz;
+    model->maxLine = 0;
+
+    for (unsigned int i = 1; i < model->sizeOffset; i++)
+    {
+        unsigned int sizeLine = model->offset[i] - model->offset[i - 1];
+
+        GetTextExtentPoint32A(hdc, SelectLine(model->str, model->offset[i - 1], model->offset[i]), sizeLine, &sz);
+        if (model->maxLine < sz.cx)
+            model->maxLine = sz.cx;
+    }
+
+    ReleaseDC(view->hwnd, hdc);
+}
+
+void OpenNewFile(TModel* model, TView* view)
+{
+
+    if (GetOpenFileNameA(&view->ofn))
+    {
+        FillModel(model, view->ofn.lpstrFile);
+        FillOffset(model);
+        MaxLineLength(model, view);
+    }
+}
+
 void PrintText(TModel* model, TView* view)
 {
+    if (!model->str)
+        return;
+
     PAINTSTRUCT ps;
     HDC hdc = BeginPaint(view->hwnd, &ps);
     int beginPaint = 0, endPaint = model->sizeOffset - 1;
@@ -40,22 +70,4 @@ void PrintText(TModel* model, TView* view)
         free(temp);
     }
     EndPaint(view->hwnd, &ps);
-}
-
-void MaxLineLength(TModel* model, TView* view)
-{
-    HDC hdc = GetDC(view->hwnd);
-    SIZE sz;
-    model->maxLine = 0;
-
-    for (unsigned int i = 1; i < model->sizeOffset; i++)
-    {
-        unsigned int sizeLine = model->offset[i] - model->offset[i - 1];
-
-        GetTextExtentPoint32A(hdc, SelectLine(model->str, model->offset[i - 1], model->offset[i]), sizeLine, &sz);
-        if (model->maxLine < sz.cx)
-            model->maxLine = sz.cx;
-    }
-
-    ReleaseDC(view->hwnd, hdc);
 }

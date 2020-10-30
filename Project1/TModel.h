@@ -10,6 +10,7 @@ typedef struct
     unsigned int sizeOffset; //начальный размер массива смещений
 } TModel;
 
-TModel* InitModel(char* filename); //метод,инициализирующий поля данной структуры и считывание текста из файла
+TModel* InitModel(void); //метод,инициализирующий поля данной структуры и считывание текста из файла
+void FillModel(TModel* model, char* filename);
 void FillOffset(TModel* model); //заполнение матрицы смещений, используется для построчного вывода на экран
 void DeleteModel(TModel* model); //освобождение используемой струтуры

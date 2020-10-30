@@ -64,7 +64,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
            HWND_DESKTOP,        /* The window is a child-window to desktop */
            NULL,                /* No menu */
            hThisInstance,       /* Program Instance handler */
-           lpszArgument         /* No Window Creation data */
+           NULL         /* No Window Creation data */
            );
 
     /* Make the window visible on the screen */
@@ -87,7 +87,6 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
 /*  This function is called by the Windows function DispatchMessage()  */
 LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    CREATESTRUCT* cs;
     static TModel* model;
     static TView* view;
     HMENU hMenu;
@@ -96,20 +95,15 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
     {
         case WM_CREATE:
 
-            cs = (CREATESTRUCT*)lParam;
-
-            model = InitModel((char*)cs->lpCreateParams);
+            model = InitModel();
             view = InitView(hwnd);
-
-            FillOffset(model);
             FillMetrics(view);
-            MaxLineLength(model, view);
+            InitDialog(view);
 
             break;
 
         case WM_PAINT:
 
-            if (model && view)
                 PrintText(model, view);
 
             break;
@@ -153,15 +147,17 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
             switch(LOWORD(wParam))
             {
             case IDM_OPEN:
+                OpenNewFile(model, view);
                 EnableMenuItem(hMenu, IDM_CLOSE, MF_ENABLED);
                 EnableMenuItem(hMenu, IDM_VIEW, MF_ENABLED | MF_BYPOSITION);
+                SendMessage(view->hwnd, WM_SIZE, 0, view->widthWnd);
                 break;
             case IDM_CLOSE:
                 EnableMenuItem(hMenu, IDM_CLOSE, MF_GRAYED);
                 EnableMenuItem(hMenu, IDM_VIEW, MF_GRAYED | MF_BYPOSITION);
                 break;
             case IDM_EXIT:
-                SendMessage(view->hwnd, WM_CLOSE, 0, 0L);
+                SendMessage(view->hwnd, WM_DESTROY, 0, 0L);
                 break;
 
             case IDM_SIMPLE:

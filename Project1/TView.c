@@ -10,11 +10,27 @@ TView* InitView(HWND classHwnd) //инициализация структуры
     view->sizeHorzScroll = 1;
     view->vertScrollPos = 0;
     view->horzScrollPos = 0;
+    view->lastVertPos = 0;
+    view->lastHorzPos = 0;
     view->layout = FALSE;
 
     view->hwnd = classHwnd;
 
     return view;
+}
+
+void InitDialog(TView* view)
+{
+    ZeroMemory(&view->ofn, sizeof(OPENFILENAME));
+
+    view->ofn.lStructSize = sizeof(OPENFILENAME);
+    view->ofn.hwndOwner = view->hwnd;
+    view->ofn.lpstrFile = view->filename;
+    view->ofn.lpstrFile[0] = '\0';
+    view->ofn.nMaxFile = sizeof(view->filename);
+    view->ofn.lpstrFilter = "Text Files(*.txt)\0*.txt\0";
+    view->ofn.nFilterIndex = 1;
+    view->ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
 }
 
 void FillMetrics(TView* view) //заполнение метрик символа, используется для вычисления полей относительной метрики

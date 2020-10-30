@@ -12,8 +12,11 @@ typedef struct
 
     BOOL layout; //флаг верстки
     HWND hwnd; //дескриптор окна
+    OPENFILENAME ofn;
+    char filename[MAX_PATH];
 } TView;
 
 TView* InitView(HWND classHwnd); //инициализация структуры
+void InitDialog(TView* view);
 void FillMetrics(TView* view); //заполнение метрик символа, используется для вычисления полей относительной метрики
 void DeleteView(TView* view); //освобождение структуры
