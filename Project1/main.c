@@ -64,7 +64,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
            HWND_DESKTOP,        /* The window is a child-window to desktop */
            NULL,                /* No menu */
            hThisInstance,       /* Program Instance handler */
-           NULL         /* No Window Creation data */
+           lpszArgument         /* No Window Creation data */
            );
 
     /* Make the window visible on the screen */
@@ -90,6 +90,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
     static TModel* model;
     static TView* view;
     HMENU hMenu;
+    CREATESTRUCT* cs;
 
     switch (message)                  /* handle the messages */
     {
@@ -100,11 +101,21 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
             FillMetrics(view);
             InitDialog(view);
 
+            cs = (CREATESTRUCT*)lParam;
+
+            if (!PreparePrint(model, view, (char*)cs->lpCreateParams))
+            {
+                hMenu = GetMenu(view->hwnd);
+                EnableMenuItem(hMenu, IDM_OPEN, MF_GRAYED);
+                EnableMenuItem(hMenu, IDM_CLOSE, MF_ENABLED);
+                EnableMenuItem(hMenu, IDM_VIEW, MF_ENABLED | MF_BYPOSITION);
+            }
+
             break;
 
         case WM_PAINT:
 
-                PrintText(model, view);
+            PrintText(model, view);
 
             break;
 
@@ -147,14 +158,20 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
             switch(LOWORD(wParam))
             {
             case IDM_OPEN:
-                OpenNewFile(model, view);
-                EnableMenuItem(hMenu, IDM_CLOSE, MF_ENABLED);
-                EnableMenuItem(hMenu, IDM_VIEW, MF_ENABLED | MF_BYPOSITION);
-                SendMessage(view->hwnd, WM_SIZE, 0, view->widthWnd);
+                if (!OpenNewFile(model, view))
+                {
+                    EnableMenuItem(hMenu, IDM_OPEN, MF_GRAYED);
+                    EnableMenuItem(hMenu, IDM_CLOSE, MF_ENABLED);
+                    EnableMenuItem(hMenu, IDM_VIEW, MF_ENABLED | MF_BYPOSITION);
+                    SendMessage(view->hwnd, WM_SIZE, 0, view->widthWnd);
+                }
                 break;
             case IDM_CLOSE:
+                ClearModel(model);
+                EnableMenuItem(hMenu, IDM_OPEN, MF_ENABLED);
                 EnableMenuItem(hMenu, IDM_CLOSE, MF_GRAYED);
                 EnableMenuItem(hMenu, IDM_VIEW, MF_GRAYED | MF_BYPOSITION);
+                SendMessage(view->hwnd, WM_SIZE, 0, view->widthWnd);
                 break;
             case IDM_EXIT:
                 SendMessage(view->hwnd, WM_DESTROY, 0, 0L);

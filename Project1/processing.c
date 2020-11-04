@@ -34,15 +34,21 @@ void MaxLineLength(TModel* model, TView* view)
     ReleaseDC(view->hwnd, hdc);
 }
 
-void OpenNewFile(TModel* model, TView* view)
+int PreparePrint(TModel* model, TView* view, char* filename)
 {
+    if (FillModel(model, filename))
+        return 1;
+    FillOffset(model);
+    MaxLineLength(model, view);
+    view->sizeVertScroll = (model->sizeOffset - 1) / (2 * MAXSHORT) + 1;
+    view->sizeHorzScroll = model->maxLine / (2 * MAXSHORT) + 1;
+    return 0;
+}
 
-    if (GetOpenFileNameA(&view->ofn))
-    {
-        FillModel(model, view->ofn.lpstrFile);
-        FillOffset(model);
-        MaxLineLength(model, view);
-    }
+int OpenNewFile(TModel* model, TView* view)
+{
+    if (GetOpenFileNameA(&view->ofn) && !model->str)
+        return PreparePrint(model, view, view->ofn.lpstrFile);
 }
 
 void PrintText(TModel* model, TView* view)
