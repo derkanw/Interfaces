@@ -7,3 +7,4 @@ void MaxLineLength(TModel* model, TView* view);
 int PreparePrint(TModel* model, TView* view, char* filename);
 int OpenNewFile(TModel* model, TView* view);
 void PrintText(TModel* model, TView* view);
+void LayoutMode(TModel* model, TView* view);

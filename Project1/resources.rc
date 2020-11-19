@@ -10,7 +10,7 @@ menu MENU
     }
     POPUP "&View", GRAYED
     {
-        MENUITEM "&Simple\tAlt+S", IDM_SIMPLE
+        MENUITEM "&Simple\tAlt+S", IDM_SIMPLE, CHECKED, GRAYED
         MENUITEM "&Layout\tAlt+L", IDM_LAYOUT
     }
 }

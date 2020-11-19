@@ -1,5 +1,17 @@
 #include "TView.h"
 
+void ClearView(TView* view)
+{
+    if (view->layoutOffset)
+        free(view->layoutOffset);
+
+    view->layoutOffset = (unsigned int*)malloc(sizeof(unsigned int));
+    if (!view->layoutOffset)
+        return;
+    view->layoutOffset[0] = 0;
+    view->sizeLayoutOffset = 1;
+}
+
 TView* InitView(HWND classHwnd) //инициализация структуры
 {
     TView* view = (TView*)malloc(sizeof(TView));
@@ -12,10 +24,13 @@ TView* InitView(HWND classHwnd) //инициализация структуры
     view->horzScrollPos = 0;
     view->lastVertPos = 0;
     view->lastHorzPos = 0;
+    view->incModeVertPos = 0;
     view->layout = FALSE;
+    view->layoutOffset = NULL;
 
     view->hwnd = classHwnd;
 
+    ClearView(view);
     return view;
 }
 
@@ -47,5 +62,6 @@ void FillMetrics(TView* view) //заполнение метрик символа, используется для вычи
 
 void DeleteView(TView* view) //освобождение структуры
 {
+    ClearView(view);
     free(view);
 }

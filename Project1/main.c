@@ -168,6 +168,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 break;
             case IDM_CLOSE:
                 ClearModel(model);
+                ClearView(view);
                 EnableMenuItem(hMenu, IDM_OPEN, MF_ENABLED);
                 EnableMenuItem(hMenu, IDM_CLOSE, MF_GRAYED);
                 EnableMenuItem(hMenu, IDM_VIEW, MF_GRAYED | MF_BYPOSITION);
@@ -178,12 +179,20 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 break;
 
             case IDM_SIMPLE:
+                view->layout = FALSE;
                 CheckMenuItem(hMenu, IDM_SIMPLE, MF_CHECKED);
                 CheckMenuItem(hMenu, IDM_LAYOUT, MF_UNCHECKED);
+                EnableMenuItem(hMenu, IDM_LAYOUT, MF_ENABLED);
+                EnableMenuItem(hMenu, IDM_SIMPLE, MF_GRAYED);
+                SendMessage(view->hwnd, WM_SIZE, 0, view->widthWnd);
                 break;
             case IDM_LAYOUT:
+                view->layout = TRUE;
                 CheckMenuItem(hMenu, IDM_LAYOUT, MF_CHECKED);
                 CheckMenuItem(hMenu, IDM_SIMPLE, MF_UNCHECKED);
+                EnableMenuItem(hMenu, IDM_SIMPLE, MF_ENABLED);
+                EnableMenuItem(hMenu, IDM_LAYOUT, MF_GRAYED);
+                SendMessage(view->hwnd, WM_SIZE, 0, view->widthWnd);
                 break;
             }
 
