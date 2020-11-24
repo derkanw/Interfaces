@@ -31,29 +31,6 @@ TModel* InitModel(void)
     return model;
 }
 
-int FillModel(TModel* model, char* filename) //метод,инициализирующий поля данной структуры и считывание текста из файла
-{
-    FILE* f = fopen(filename, "rb");
-    if (!f)
-        return 1;
-
-    fseek(f, 0, SEEK_END);
-    model->length = ftell(f);
-
-    model->str = (char*)malloc(sizeof(char) * model->length);
-    if (!model->str)
-        return 1;
-
-    fseek(f, 0, SEEK_SET);
-    if (model->length != fread(model->str, sizeof(char), model->length, f))
-        return 1;
-
-    fclose(f);
-
-    model->str[model->length] = '\0';
-    return 0;
-}
-
 void FillOffset(TModel* model) //заполнение матрицы смещений, используется для построчного вывода на экран
 {
     for (unsigned int i = 0; i < model->length; i++)

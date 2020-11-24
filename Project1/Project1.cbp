@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Project1" />
+		<Option title="TextReader" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -19,6 +19,7 @@
 				<Linker>
 					<Add library="comctl32" />
 					<Add library="comdlg32" />
+					<Add library="bin/Debug/libOpen.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -33,6 +34,7 @@
 					<Add option="-s" />
 					<Add library="comctl32" />
 					<Add library="comdlg32" />
+					<Add library="bin/Debug/libOpen.a" />
 				</Linker>
 			</Target>
 		</Build>
@@ -45,7 +47,7 @@
 			<Add library="kernel32" />
 			<Add library="comctl32" />
 			<Add library="comdlg32" />
-			<Add library="../Open/bin/Debug/libOpen.a" />
+			<Add library="bin/Debug/libOpen.a" />
 		</Linker>
 		<Unit filename="TModel.c">
 			<Option compilerVar="CC" />
@@ -64,7 +66,6 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="main.h" />
 		<Unit filename="menu.h" />
 		<Unit filename="processing.c">
 			<Option compilerVar="CC" />

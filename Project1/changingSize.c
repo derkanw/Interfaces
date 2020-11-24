@@ -3,9 +3,30 @@
 #include "TView.h"
 #include "processing.h"
 
+void ChangeMode(TModel* model, TView* view)
+{
+    if (view->layout)
+    {
+        for(unsigned int i = 0; i < view->sizeLayoutOffset; i++)
+            if (view->layoutOffset[i] == model->offset[view->vertScrollPos])
+            {
+                view->vertScrollPos = i;
+                break;
+            }
+    }
+    else
+    for(unsigned int i = 0; i < model->sizeOffset - 1; i++)
+        if (view->layoutOffset[view->vertScrollPos] >= model->offset[i] &&
+            view->layoutOffset[view->vertScrollPos] < model->offset[i + 1])
+        {
+            view->vertScrollPos = i;
+            break;
+        }
+}
+
 void ChangeVertSize(TView* view, TModel* model, LPARAM lParam)
 {
-    if (HIWORD(lParam) && (view->heightWnd != HIWORD(lParam)))
+    if (HIWORD(lParam))
         view->heightWnd = HIWORD(lParam);
     else
         return;
@@ -15,20 +36,13 @@ void ChangeVertSize(TView* view, TModel* model, LPARAM lParam)
     if (view->layout)
     {
         view->lastVertPos = max(0, (int)view->sizeLayoutOffset - 1 - (int)view->countLines);
-        for(unsigned int i = 0; i < view->sizeLayoutOffset; i++)
-            if (view->layoutOffset[i] == model->offset[view->vertScrollPos])
-            {
-                view->incModeVertPos = i - view->vertScrollPos;
-                break;
-            }
-        view->vertScrollPos = min(view->vertScrollPos + view->incModeVertPos, view->lastVertPos);
+        view->vertScrollPos = min(view->vertScrollPos, view->lastVertPos);
     }
     else
     {
         view->lastVertPos = max(0, (int)model->sizeOffset - 1 - (int)view->countLines);
-        view->vertScrollPos = min(view->vertScrollPos - view->incModeVertPos, view->lastVertPos);
+        view->vertScrollPos = min(view->vertScrollPos, view->lastVertPos);
     }
-
     SetScrollRange(view->hwnd, SB_VERT, 0, view->lastVertPos, FALSE);
     SetScrollPos(view->hwnd, SB_VERT, view->vertScrollPos, TRUE);
 }
@@ -43,7 +57,8 @@ void ChangeHorzSize(TView* view, TModel* model, LPARAM lParam)
     {
         view->lastHorzPos = 0;
         ClearView(view);
-        LayoutMode(model, view);
+        if (model->str)
+            LayoutMode(model, view);
     }
 
     else

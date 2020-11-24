@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1352282920 source:d:\desktop\derkachenko\open\main.c
+	"main.h"
+
+1314894556 d:\desktop\derkachenko\open\main.h
+	<windows.h>
+

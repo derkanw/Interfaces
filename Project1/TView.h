@@ -11,7 +11,6 @@ typedef struct
     int vertScrollPos, horzScrollPos; //текущая позиция бегунка
     unsigned int* layoutOffset; //массив построчных смещений текста
     unsigned int sizeLayoutOffset; //начальный размер массива смещений
-    unsigned int incModeVertPos;
 
     BOOL layout; //флаг верстки
     HWND hwnd; //дескриптор окна

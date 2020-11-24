@@ -11,7 +11,6 @@ typedef struct
 } TModel;
 
 TModel* InitModel(void); //метод,инициализирующий поля данной структуры и считывание текста из файла
-int FillModel(TModel* model, char* filename);
 void FillOffset(TModel* model); //заполнение матрицы смещений, используется для построчного вывода на экран
 void ClearModel(TModel* model);
 void DeleteModel(TModel* model); //освобождение используемой струтуры

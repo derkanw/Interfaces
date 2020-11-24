@@ -32,8 +32,9 @@ void VertScroll(TView* view, WPARAM wParam)
     if (vertScrollInc != 0)
     {
         view->vertScrollPos += vertScrollInc;
-        ScrollWindow(view->hwnd, 0, -view->heightChar * vertScrollInc, NULL, NULL);
+        view->vertScrollPos = max(0, min(view->vertScrollPos, (int)view->lastVertPos));
         SetScrollPos(view->hwnd, SB_VERT, view->vertScrollPos, TRUE);
+        InvalidateRect(view->hwnd, NULL, TRUE);
         UpdateWindow(view->hwnd);
     }
 }
@@ -69,8 +70,9 @@ void HorzScroll(TView* view, WPARAM wParam)
     if (horzScrollInc != 0)
     {
         view->horzScrollPos += horzScrollInc;
-        ScrollWindow(view->hwnd, -view->widthChar * horzScrollInc, 0, NULL, NULL);
+        view->horzScrollPos = max(0, min(view->horzScrollPos, (int)view->lastHorzPos));
         SetScrollPos(view->hwnd, SB_HORZ, view->horzScrollPos, TRUE);
+        InvalidateRect(view->hwnd, NULL, TRUE);
         UpdateWindow(view->hwnd);
     }
 }

@@ -121,8 +121,8 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 
         case WM_SIZE:
 
-            ChangeVertSize(view, model, lParam);
             ChangeHorzSize(view, model, lParam);
+            ChangeVertSize(view, model, lParam);
             InvalidateRect(view->hwnd, NULL, TRUE);
 
             break;
@@ -180,6 +180,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 
             case IDM_SIMPLE:
                 view->layout = FALSE;
+                ChangeMode(model, view);
                 CheckMenuItem(hMenu, IDM_SIMPLE, MF_CHECKED);
                 CheckMenuItem(hMenu, IDM_LAYOUT, MF_UNCHECKED);
                 EnableMenuItem(hMenu, IDM_LAYOUT, MF_ENABLED);
@@ -188,6 +189,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 break;
             case IDM_LAYOUT:
                 view->layout = TRUE;
+                ChangeMode(model, view);
                 CheckMenuItem(hMenu, IDM_LAYOUT, MF_CHECKED);
                 CheckMenuItem(hMenu, IDM_SIMPLE, MF_UNCHECKED);
                 EnableMenuItem(hMenu, IDM_SIMPLE, MF_ENABLED);

@@ -2,10 +2,7 @@
 #define __MAIN_H__
 
 #include <windows.h>
-
-/*  To use this exported function of dll, include this header
- *  in your project.
- */
+#include <stdio.h>
 
 #ifdef BUILD_DLL
     #define DLL_EXPORT __declspec(dllexport)
@@ -19,7 +16,15 @@ extern "C"
 {
 #endif
 
-void DLL_EXPORT SomeFunction(const LPCSTR sometext);
+/**
+* Метод, реализующий загрузку текстового файла по заданному имени и чтение из него
+* Используется при открытии соответсвующего файла из командной строки или в диалоговом окне
+* @Param[IN] char** str - указатель на буффер символов, в который записывается текст файла
+* @Param[IN] unsigned long* length - указатель на число, которое будет содержать длину файла
+* @Param[IN] char* filename - массив символов, содержащий название открываемого файла
+* @Param[OUT] - код завершения работы типа unsigned int (0 - успешно, 1 - ошибка)
+*/
+unsigned int DLL_EXPORT FillModel(char** str, unsigned long* length, char* filename);
 
 #ifdef __cplusplus
 }

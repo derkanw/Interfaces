@@ -1,9 +1,26 @@
 #include "main.h"
 
-// a sample exported function
-void DLL_EXPORT SomeFunction(const LPCSTR sometext)
+unsigned int DLL_EXPORT FillModel(char** str, unsigned long* length, char* filename)
 {
-    MessageBoxA(0, sometext, "DLL Message", MB_OK | MB_ICONINFORMATION);
+    FILE* f = fopen(filename, "rb");
+    if (!f)
+        return 1;
+
+    fseek(f, 0, SEEK_END);
+    (*length) = ftell(f);
+
+    (*str) = (char*)malloc(sizeof(char) * (*length));
+    if (!(*str))
+        return 1;
+
+    fseek(f, 0, SEEK_SET);
+    if ((*length) != fread((*str), sizeof(char), (*length), f))
+        return 1;
+
+    fclose(f);
+
+    (*str)[(*length)] = '\0';
+    return 0;
 }
 
 extern "C" DLL_EXPORT BOOL APIENTRY DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)

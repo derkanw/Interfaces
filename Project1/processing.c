@@ -41,7 +41,7 @@ void LayoutMode(TModel* model, TView* view)
     HDC hdc = GetDC(view->hwnd);
 
     RECT rc;
-    GetWindowRect(view->hwnd, &rc);
+    GetClientRect(view->hwnd, &rc);
     unsigned int widthWnd = rc.right - rc.left;
 
     for (unsigned int i = 0; i < model->sizeOffset - 1; i++)
@@ -89,9 +89,8 @@ void LayoutMode(TModel* model, TView* view)
 
 int PreparePrint(TModel* model, TView* view, char* filename)
 {
-    if (FillModel(model, filename))
+    if (FillModel(&model->str, &model->length, filename))
         return 1;
-    SomeFunction("1");
 
     FillOffset(model);
     MaxLineLength(model, view);
@@ -117,23 +116,15 @@ void PrintText(TModel* model, TView* view)
 
     PAINTSTRUCT ps;
     HDC hdc = BeginPaint(view->hwnd, &ps);
-    int beginPaint = 0, endPaint;
+    unsigned int endPaint;
     if (view->layout)
         endPaint = view->sizeLayoutOffset - 1;
     else
         endPaint = model->sizeOffset - 1;
-    if (view->vertScrollPos != 0)
-    {
-        beginPaint = max(0, view->vertScrollPos + ps.rcPaint.top / view->heightChar - 1);
-        if (view->layout)
-            endPaint = min(view->sizeLayoutOffset - 1, view->vertScrollPos + ps.rcPaint.bottom / view->heightChar + 1);
-        else
-            endPaint = min(model->sizeOffset - 1, view->vertScrollPos + ps.rcPaint.bottom / view->heightChar + 1);
-    }
 
     unsigned int newX = 0, newY = 0;
 
-    for (unsigned int i = beginPaint; i < endPaint; i++)
+    for (unsigned int i = 0; i < endPaint; i++)
     {
         newX = view->widthChar * (1 - view->horzScrollPos);
         newY = view->heightChar * (i - view->vertScrollPos);
