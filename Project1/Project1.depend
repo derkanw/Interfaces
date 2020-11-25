@@ -22,33 +22,33 @@
 
 1605798007 d:\desktop\derkachenko\project1\tmodel.h
 
-1606242762 d:\desktop\derkachenko\project1\tview.h
+1606340804 d:\desktop\derkachenko\project1\tview.h
 	<Windows.h>
 
 1605128846 d:\desktop\derkachenko\project1\processing.h
 	"TModel.h"
 	"TView.h"
 
-1606244540 source:d:\desktop\derkachenko\project1\processing.c
+1606245518 source:d:\desktop\derkachenko\project1\processing.c
 	"TModel.h"
 	"TView.h"
 	"../Open/main.h"
 
-1605798019 source:d:\desktop\derkachenko\project1\tmodel.c
+1606340491 source:d:\desktop\derkachenko\project1\tmodel.c
 	<stdlib.h>
 	<stdio.h>
 	"TModel.h"
 
-1606242748 source:d:\desktop\derkachenko\project1\tview.c
+1606340624 source:d:\desktop\derkachenko\project1\tview.c
 	"TView.h"
 
-1606243664 source:d:\desktop\derkachenko\project1\changingsize.c
+1606341083 source:d:\desktop\derkachenko\project1\changingsize.c
 	<stdio.h>
 	"TModel.h"
 	"TView.h"
 	"processing.h"
 
-1605875368 d:\desktop\derkachenko\project1\changingsize.h
+1606340237 d:\desktop\derkachenko\project1\changingsize.h
 	"TModel.h"
 	"TView.h"
 

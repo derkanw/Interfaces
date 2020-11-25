@@ -3,25 +3,29 @@
 #include "TView.h"
 #include "processing.h"
 
+unsigned int GetSameString(unsigned int index, unsigned int* offset, unsigned int sizeOffset)
+{
+    for(unsigned int i = 0; i < sizeOffset - 1; i++)
+        if (index >= offset[i] && index < offset[i + 1])
+            return i;
+    return 0;
+}
+
 void ChangeMode(TModel* model, TView* view)
 {
+    unsigned int index;
+
     if (view->layout)
     {
-        for(unsigned int i = 0; i < view->sizeLayoutOffset; i++)
-            if (view->layoutOffset[i] == model->offset[view->vertScrollPos])
-            {
-                view->vertScrollPos = i;
-                break;
-            }
+        index = model->offset[view->vertScrollPos];
+        view->vertScrollPos = GetSameString(index, view->layoutOffset, view->sizeLayoutOffset);
+
     }
     else
-    for(unsigned int i = 0; i < model->sizeOffset - 1; i++)
-        if (view->layoutOffset[view->vertScrollPos] >= model->offset[i] &&
-            view->layoutOffset[view->vertScrollPos] < model->offset[i + 1])
-        {
-            view->vertScrollPos = i;
-            break;
-        }
+    {
+        index = view->layoutOffset[view->vertScrollPos];
+        view->vertScrollPos = GetSameString(index, model->offset, model->sizeOffset);
+    }
 }
 
 void ChangeVertSize(TView* view, TModel* model, LPARAM lParam)
@@ -36,6 +40,7 @@ void ChangeVertSize(TView* view, TModel* model, LPARAM lParam)
     if (view->layout)
     {
         view->lastVertPos = max(0, (int)view->sizeLayoutOffset - 1 - (int)view->countLines);
+        view->vertScrollPos = GetSameString(view->currentString, view->layoutOffset, view->sizeLayoutOffset);
         view->vertScrollPos = min(view->vertScrollPos, view->lastVertPos);
     }
     else
@@ -56,6 +61,7 @@ void ChangeHorzSize(TView* view, TModel* model, LPARAM lParam)
     if (view->layout)
     {
         view->lastHorzPos = 0;
+        view->currentString = view->layoutOffset[view->vertScrollPos];
         ClearView(view);
         if (model->str)
             LayoutMode(model, view);

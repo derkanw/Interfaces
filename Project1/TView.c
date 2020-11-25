@@ -24,6 +24,7 @@ TView* InitView(HWND classHwnd) //инициализация структуры
     view->horzScrollPos = 0;
     view->lastVertPos = 0;
     view->lastHorzPos = 0;
+    view->currentString = 0;
     view->layout = FALSE;
     view->layoutOffset = NULL;
 
