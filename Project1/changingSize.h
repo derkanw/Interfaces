@@ -2,7 +2,20 @@
 #include "TModel.h"
 #include "TView.h"
 
-void ChangeVertSize(TView* view, TModel* model, LPARAM lParam);
-void ChangeHorzSize(TView* view, TModel* model, LPARAM lParam);
-void ChangeMode(TModel* model, TView* view);
-unsigned int GetSameString(unsigned int index, unsigned int* offset, unsigned int sizeOffset);
+/**
+* Метод изменения параметров вывода текста при изменении высоты окна (текущей и конечной позиций
+* ползунка, количество строк в окне и его высоту)
+* Используется при обработке WM_SIZE
+* @PARAM[IN] - указатели на структуры модели и вывода в окно для использования соответсвующих полей,
+* значение параметра, содержащего измененные размеры окна
+*/
+void ChangeVertSize(TModel* model, TView* view, LPARAM lParam);
+
+/**
+* Метод изменения параметров вывода текста при изменении ширины окна (текущей и конечной позиций
+* ползунка, количество символов в окне и его ширину)
+* Используется при обработке WM_SIZE
+* @PARAM[IN] - указатели на структуры модели и вывода в окно для использования соответсвующих полей,
+* значение параметра, содержащего измененные размеры окна
+*/
+void ChangeHorzSize(TModel* model, TView* view, LPARAM lParam);

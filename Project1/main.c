@@ -5,8 +5,6 @@
 #endif
 
 #include <tchar.h>
-#include <windows.h>
-#include <stdio.h>
 
 #include "TModel.h"
 #include "TView.h"
@@ -89,7 +87,6 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 {
     static TModel* model;
     static TView* view;
-    HMENU hMenu;
     CREATESTRUCT* cs;
 
     switch (message)                  /* handle the messages */
@@ -98,18 +95,9 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 
             model = InitModel();
             view = InitView(hwnd);
-            FillMetrics(view);
-            InitDialog(view);
-
             cs = (CREATESTRUCT*)lParam;
 
-            if (!PreparePrint(model, view, (char*)cs->lpCreateParams))
-            {
-                hMenu = GetMenu(view->hwnd);
-                EnableMenuItem(hMenu, IDM_OPEN, MF_GRAYED);
-                EnableMenuItem(hMenu, IDM_CLOSE, MF_ENABLED);
-                EnableMenuItem(hMenu, IDM_VIEW, MF_ENABLED | MF_BYPOSITION);
-            }
+            Create(model, view, cs);
 
             break;
 
@@ -121,8 +109,8 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 
         case WM_SIZE:
 
-            ChangeHorzSize(view, model, lParam);
-            ChangeVertSize(view, model, lParam);
+            ChangeHorzSize(model, view, lParam);
+            ChangeVertSize(model, view, lParam);
             InvalidateRect(view->hwnd, NULL, TRUE);
 
             break;
@@ -153,50 +141,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 
         case WM_COMMAND:
 
-            hMenu = GetMenu(view->hwnd);
-
-            switch(LOWORD(wParam))
-            {
-            case IDM_OPEN:
-                if (!OpenNewFile(model, view))
-                {
-                    EnableMenuItem(hMenu, IDM_OPEN, MF_GRAYED);
-                    EnableMenuItem(hMenu, IDM_CLOSE, MF_ENABLED);
-                    EnableMenuItem(hMenu, IDM_VIEW, MF_ENABLED | MF_BYPOSITION);
-                    SendMessage(view->hwnd, WM_SIZE, 0, view->widthWnd);
-                }
-                break;
-            case IDM_CLOSE:
-                ClearModel(model);
-                ClearView(view);
-                EnableMenuItem(hMenu, IDM_OPEN, MF_ENABLED);
-                EnableMenuItem(hMenu, IDM_CLOSE, MF_GRAYED);
-                EnableMenuItem(hMenu, IDM_VIEW, MF_GRAYED | MF_BYPOSITION);
-                SendMessage(view->hwnd, WM_SIZE, 0, view->widthWnd);
-                break;
-            case IDM_EXIT:
-                SendMessage(view->hwnd, WM_DESTROY, 0, 0L);
-                break;
-
-            case IDM_SIMPLE:
-                view->mode = IDM_SIMPLE;
-                ChangeMode(model, view);
-                CheckMenuItem(hMenu, IDM_SIMPLE, MF_CHECKED);
-                CheckMenuItem(hMenu, IDM_LAYOUT, MF_UNCHECKED);
-                EnableMenuItem(hMenu, IDM_LAYOUT, MF_ENABLED);
-                EnableMenuItem(hMenu, IDM_SIMPLE, MF_GRAYED);
-                SendMessage(view->hwnd, WM_SIZE, 0, view->widthWnd);
-                break;
-            case IDM_LAYOUT:
-                view->mode = IDM_LAYOUT;
-                ChangeMode(model, view);
-                CheckMenuItem(hMenu, IDM_LAYOUT, MF_CHECKED);
-                CheckMenuItem(hMenu, IDM_SIMPLE, MF_UNCHECKED);
-                EnableMenuItem(hMenu, IDM_SIMPLE, MF_ENABLED);
-                EnableMenuItem(hMenu, IDM_LAYOUT, MF_GRAYED);
-                SendMessage(view->hwnd, WM_SIZE, 0, view->widthWnd);
-                break;
-            }
+            MenuProcessing(model, view, wParam);
 
             break;
 

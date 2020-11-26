@@ -2,5 +2,17 @@
 #include "TModel.h"
 #include "TView.h"
 
-void PrintText(HDC hdc, TModel* model, TView* view, unsigned int* offset, unsigned int endPaint);
+/**
+* Метод печати текста в окно по заданным параметрам
+* Используется в методе отрисовки текста
+* @PARAM[IN] - дескриптор контекста отображения, указатели на структуры модели и вывода в окно
+* для использования соответсвующих полей, массив смещений печатаемого текста и его размер для печати
+*/
+void PrintText(HDC hdc, TModel* model, TView* view, unsigned int* offset, unsigned int sizeOffset);
+
+/**
+* Метод отрисовки текста, производящий вызов печати текста в окно в зависимости от режима вывода
+* Используется в обработчике WM_PAINT
+* @PARAM[IN] - указатели на структуры модели и вывода в окно для использования соответсвующих полей
+*/
 void Paint(TModel* model, TView* view);

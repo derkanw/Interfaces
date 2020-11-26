@@ -62,7 +62,6 @@
 		</Unit>
 		<Unit filename="changingSize.h" />
 		<Unit filename="file.txt" />
-		<Unit filename="file1.txt" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

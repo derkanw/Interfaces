@@ -1,11 +1,11 @@
 #include "painting.h"
 #include "supporting.h"
 
-void PrintText(HDC hdc, TModel* model, TView* view, unsigned int* offset, unsigned int endPaint)
+void PrintText(HDC hdc, TModel* model, TView* view, unsigned int* offset, unsigned int sizeOffset)
 {
     unsigned int newX = 0, newY = 0;
 
-    for (unsigned int i = 0; i < endPaint; i++)
+    for (unsigned int i = 0; i < sizeOffset; i++)
         {
             newX = view->widthChar * (1 - view->horzScrollPos);
             newY = view->heightChar * (i - view->vertScrollPos);
@@ -26,7 +26,7 @@ void Paint(TModel* model, TView* view)
     if (view->mode == IDM_LAYOUT)
         PrintText(hdc, model, view, view->layoutOffset, view->sizeLayoutOffset - 1);
     else
-    PrintText(hdc, model, view, model->offset, model->sizeOffset - 1);
+        PrintText(hdc, model, view, model->offset, model->sizeOffset - 1);
 
     EndPaint(view->hwnd, &ps);
 }

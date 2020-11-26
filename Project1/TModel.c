@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "TModel.h"
+#include "supporting.h"
 
 void ClearModel(TModel* model)
 {
@@ -34,14 +35,8 @@ void FillOffset(TModel* model)
 {
     for (unsigned int i = 0; i < model->length; i++)
         if (model->str[i] == '\n')
-            {
-                model->sizeOffset++;
-                unsigned int size = sizeof(unsigned int) * model->sizeOffset;
-                model->offset = (unsigned int*)realloc(model->offset, size);
-                if (!model->offset)
-                    return;
-                model->offset[model->sizeOffset - 2] = i;
-            }
+            ResizeOffset(&model->offset, &model->sizeOffset, i);
+
     model->offset[model->sizeOffset - 1] = model->length;
 }
 
