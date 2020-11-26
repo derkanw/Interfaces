@@ -4,7 +4,7 @@
 	<windows.h>
 	<stdio.h>
 
-1606231636 source:d:\desktop\derkachenko\project1\main.c
+1606400694 source:d:\desktop\derkachenko\project1\main.c
 	<tchar.h>
 	<windows.h>
 	<stdio.h>
@@ -13,57 +13,54 @@
 	"processing.h"
 	"changingSize.h"
 	"scrolling.h"
-	"menu.h"
+	"painting.h"
 
 1600521237 source:e:\student\3630102_80201\derkachenko\project1\main.c
 	<tchar.h>
 	<windows.h>
 	<stdio.h>
 
-1605798007 d:\desktop\derkachenko\project1\tmodel.h
+1606398560 d:\desktop\derkachenko\project1\tmodel.h
 
-1606340804 d:\desktop\derkachenko\project1\tview.h
+1606398534 d:\desktop\derkachenko\project1\tview.h
 	<Windows.h>
+	"menu.h"
 
-1605128846 d:\desktop\derkachenko\project1\processing.h
+1606402475 d:\desktop\derkachenko\project1\processing.h
 	"TModel.h"
 	"TView.h"
 
-1606245518 source:d:\desktop\derkachenko\project1\processing.c
-	"TModel.h"
-	"TView.h"
+1606401175 source:d:\desktop\derkachenko\project1\processing.c
+	"processing.h"
+	"supporting.h"
 	"../Open/main.h"
 
-1606340491 source:d:\desktop\derkachenko\project1\tmodel.c
+1606394469 source:d:\desktop\derkachenko\project1\tmodel.c
 	<stdlib.h>
-	<stdio.h>
 	"TModel.h"
 
-1606340624 source:d:\desktop\derkachenko\project1\tview.c
+1606397774 source:d:\desktop\derkachenko\project1\tview.c
 	"TView.h"
 
-1606341083 source:d:\desktop\derkachenko\project1\changingsize.c
-	<stdio.h>
-	"TModel.h"
-	"TView.h"
-	"processing.h"
+1606402475 source:d:\desktop\derkachenko\project1\changingsize.c
+	"changingSize.h"
+	"supporting.h"
 
 1606340237 d:\desktop\derkachenko\project1\changingsize.h
 	"TModel.h"
 	"TView.h"
 
-1606245314 source:d:\desktop\derkachenko\project1\scrolling.c
-	"TModel.h"
-	"TView.h"
+1606397993 source:d:\desktop\derkachenko\project1\scrolling.c
+	"scrolling.h"
 
-1602934968 d:\desktop\derkachenko\project1\scrolling.h
+1606398489 d:\desktop\derkachenko\project1\scrolling.h
 	"TModel.h"
 	"TView.h"
 
 1605350290 source:d:\desktop\derkachenko\project1\resources.rc
 	"menu.h"
 
-1603978570 d:\desktop\derkachenko\project1\menu.h
+1606392134 d:\desktop\derkachenko\project1\menu.h
 
 1604062201 source:d:\github\derkanw\interfaces\project1\changingsize.c
 	"TModel.h"
@@ -145,4 +142,19 @@
 
 1605795084 d:\desktop\derkachenko\fileopen\main.h
 	<windows.h>
+
+1606400759 d:\desktop\derkachenko\project1\painting.h
+	"TModel.h"
+	"TView.h"
+
+1606402475 d:\desktop\derkachenko\project1\supporting.h
+	"TModel.h"
+	"TView.h"
+
+1606401183 source:d:\desktop\derkachenko\project1\painting.c
+	"painting.h"
+	"supporting.h"
+
+1606402475 source:d:\desktop\derkachenko\project1\supporting.c
+	"supporting.h"
 

@@ -1,7 +1,6 @@
-#include <stdio.h>
-#include "TModel.h"
-#include "TView.h"
-#include "processing.h"
+//#include <stdio.h>
+#include "changingSize.h"
+#include "supporting.h"
 
 unsigned int GetSameString(unsigned int index, unsigned int* offset, unsigned int sizeOffset)
 {
@@ -15,7 +14,7 @@ void ChangeMode(TModel* model, TView* view)
 {
     unsigned int index;
 
-    if (view->layout)
+    if (view->mode == IDM_LAYOUT)
     {
         index = model->offset[view->vertScrollPos];
         view->vertScrollPos = GetSameString(index, view->layoutOffset, view->sizeLayoutOffset);
@@ -37,7 +36,7 @@ void ChangeVertSize(TView* view, TModel* model, LPARAM lParam)
 
     view->countLines = view->heightWnd / view->heightChar;
 
-    if (view->layout)
+    if (view->mode == IDM_LAYOUT)
     {
         view->lastVertPos = max(0, (int)view->sizeLayoutOffset - 1 - (int)view->countLines);
         view->vertScrollPos = GetSameString(view->currentString, view->layoutOffset, view->sizeLayoutOffset);
@@ -58,7 +57,7 @@ void ChangeHorzSize(TView* view, TModel* model, LPARAM lParam)
         view->widthWnd = LOWORD(lParam);
 
     view->countChars = view->widthWnd / view->widthChar - 1;
-    if (view->layout)
+    if (view->mode == IDM_LAYOUT)
     {
         view->lastHorzPos = 0;
         view->currentString = view->layoutOffset[view->vertScrollPos];

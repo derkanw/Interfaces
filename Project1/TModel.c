@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include "TModel.h"
 
 void ClearModel(TModel* model)
@@ -31,13 +30,14 @@ TModel* InitModel(void)
     return model;
 }
 
-void FillOffset(TModel* model) //заполнение матрицы смещений, используется для построчного вывода на экран
+void FillOffset(TModel* model)
 {
     for (unsigned int i = 0; i < model->length; i++)
         if (model->str[i] == '\n')
             {
                 model->sizeOffset++;
-                model->offset = (unsigned int*)realloc(model->offset, sizeof(unsigned int) * model->sizeOffset);
+                unsigned int size = sizeof(unsigned int) * model->sizeOffset;
+                model->offset = (unsigned int*)realloc(model->offset, size);
                 if (!model->offset)
                     return;
                 model->offset[model->sizeOffset - 2] = i;
@@ -45,7 +45,7 @@ void FillOffset(TModel* model) //заполнение матрицы смещений, используется для п
     model->offset[model->sizeOffset - 1] = model->length;
 }
 
-void DeleteModel(TModel* model) //освобождение используемой струтуры
+void DeleteModel(TModel* model)
 {
     ClearModel(model);
     free(model);

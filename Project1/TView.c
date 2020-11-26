@@ -12,7 +12,7 @@ void ClearView(TView* view)
     view->sizeLayoutOffset = 1;
 }
 
-TView* InitView(HWND classHwnd) //инициализация структуры
+TView* InitView(HWND classHwnd)
 {
     TView* view = (TView*)malloc(sizeof(TView));
     if (!view)
@@ -25,12 +25,13 @@ TView* InitView(HWND classHwnd) //инициализация структуры
     view->lastVertPos = 0;
     view->lastHorzPos = 0;
     view->currentString = 0;
-    view->layout = FALSE;
-    view->layoutOffset = NULL;
 
+    view->mode = IDM_SIMPLE;
+    view->layoutOffset = NULL;
     view->hwnd = classHwnd;
 
     ClearView(view);
+
     return view;
 }
 
@@ -44,11 +45,10 @@ void InitDialog(TView* view)
     view->ofn.lpstrFile[0] = '\0';
     view->ofn.nMaxFile = sizeof(view->filename);
     view->ofn.lpstrFilter = "Text Files(*.txt)\0*.txt\0";
-    view->ofn.nFilterIndex = 1;
     view->ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
 }
 
-void FillMetrics(TView* view) //заполнение метрик символа, используется для вычисления полей относительной метрики
+void FillMetrics(TView* view)
 {
     TEXTMETRIC tm;
     HDC hdc = GetDC(view->hwnd);
@@ -60,7 +60,7 @@ void FillMetrics(TView* view) //заполнение метрик символа, используется для вычи
     ReleaseDC(view->hwnd, hdc);
 }
 
-void DeleteView(TView* view) //освобождение структуры
+void DeleteView(TView* view)
 {
     ClearView(view);
     free(view);

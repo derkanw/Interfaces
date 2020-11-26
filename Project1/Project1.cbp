@@ -67,6 +67,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="menu.h" />
+		<Unit filename="painting.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="painting.h" />
 		<Unit filename="processing.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -78,6 +82,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="scrolling.h" />
+		<Unit filename="supporting.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="supporting.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

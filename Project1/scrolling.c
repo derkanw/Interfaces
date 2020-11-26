@@ -1,5 +1,4 @@
-#include "TModel.h"
-#include "TView.h"
+#include "scrolling.h"
 
 void VertScroll(TView* view, WPARAM wParam)
 {

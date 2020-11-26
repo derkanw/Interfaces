@@ -13,7 +13,7 @@
 #include "processing.h"
 #include "changingSize.h"
 #include "scrolling.h"
-#include "menu.h"
+#include "painting.h"
 
 /*  Declare Windows procedure  */
 LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
@@ -115,7 +115,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 
         case WM_PAINT:
 
-            PrintText(model, view);
+            Paint(model, view);
 
             break;
 
@@ -179,7 +179,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 break;
 
             case IDM_SIMPLE:
-                view->layout = FALSE;
+                view->mode = IDM_SIMPLE;
                 ChangeMode(model, view);
                 CheckMenuItem(hMenu, IDM_SIMPLE, MF_CHECKED);
                 CheckMenuItem(hMenu, IDM_LAYOUT, MF_UNCHECKED);
@@ -188,7 +188,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 SendMessage(view->hwnd, WM_SIZE, 0, view->widthWnd);
                 break;
             case IDM_LAYOUT:
-                view->layout = TRUE;
+                view->mode = IDM_LAYOUT;
                 ChangeMode(model, view);
                 CheckMenuItem(hMenu, IDM_LAYOUT, MF_CHECKED);
                 CheckMenuItem(hMenu, IDM_SIMPLE, MF_UNCHECKED);
