@@ -19,7 +19,7 @@ unsigned int DLL_EXPORT FillModel(char** str, unsigned long* length, char* filen
 
     fclose(f);
 
-    (*str)[(*length)] = '\0';
+    (*str)[(*length) - 1] = '\0';
     return 0;
 }
 
