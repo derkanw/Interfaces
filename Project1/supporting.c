@@ -1,13 +1,13 @@
 #include "supporting.h"
 
-char* SelectLine(char* str, unsigned int from, unsigned int to)
+char* SelectLine(char* str, unsigned long from, unsigned long to)
 {
-    unsigned sizeLine = to - from + 1;
+    unsigned long sizeLine = to - from + 1;
     char* temp = (char*)malloc(sizeof(char) * sizeLine);
     if (!temp)
         return NULL;
 
-    for (int i = 0; i < sizeLine; i++)
+    for (unsigned long i = 0; i < sizeLine; i++)
         temp[i] = str[i + from];
 
     temp[sizeLine - 1] = '\0';
@@ -23,7 +23,7 @@ void MaxLineLength(TModel* model, TView* view)
 
     for (unsigned int i = 1; i < model->sizeOffset; i++)
     {
-        unsigned int sizeLine = model->offset[i] - model->offset[i - 1];
+        unsigned long sizeLine = model->offset[i] - model->offset[i - 1];
         char* temp = SelectLine(model->str, model->offset[i - 1], model->offset[i]);
 
         GetTextExtentPoint32A(hdc, temp, sizeLine, &sz);
@@ -34,7 +34,7 @@ void MaxLineLength(TModel* model, TView* view)
     ReleaseDC(view->hwnd, hdc);
 }
 
-void ResizeOffset(unsigned int** offset, unsigned int* sizeOffset, unsigned int index)
+void ResizeOffset(unsigned int** offset, unsigned int* sizeOffset, unsigned long index)
 {
     (*sizeOffset)++;
     unsigned int size = sizeof(unsigned int) * (*sizeOffset);
@@ -94,7 +94,7 @@ void LayoutMode(TModel* model, TView* view)
     ReleaseDC(view->hwnd, hdc);
 }
 
-unsigned int GetSameString(unsigned int index, unsigned int* offset, unsigned int sizeOffset)
+unsigned int GetSameString(unsigned long index, unsigned int* offset, unsigned int sizeOffset)
 {
     for(unsigned int i = 0; i < sizeOffset - 1; i++)
         if (index >= offset[i] && index < offset[i + 1])

@@ -4,7 +4,7 @@
 	<windows.h>
 	<stdio.h>
 
-1606412318 source:d:\desktop\derkachenko\project1\main.c
+1607704485 source:d:\desktop\derkachenko\project1\main.c
 	<tchar.h>
 	"TModel.h"
 	"TView.h"
@@ -146,7 +146,7 @@
 	"TModel.h"
 	"TView.h"
 
-1606410177 d:\desktop\derkachenko\project1\supporting.h
+1607705630 d:\desktop\derkachenko\project1\supporting.h
 	"TModel.h"
 	"TView.h"
 
@@ -154,6 +154,6 @@
 	"painting.h"
 	"supporting.h"
 
-1606410091 source:d:\desktop\derkachenko\project1\supporting.c
+1607705626 source:d:\desktop\derkachenko\project1\supporting.c
 	"supporting.h"
 

@@ -8,7 +8,7 @@
 * @PARAM[IN] - исходная строка, начальный и конечный индексы в строке для выделения подстроки
 * @PARAM[OUT] - выделенная подстрока
 */
-char* SelectLine(char* str, unsigned int from, unsigned int to);
+char* SelectLine(char* str, unsigned long from, unsigned long to);
 
 /**
 * Метод определения максимальной длины текстовой строки
@@ -25,7 +25,7 @@ void MaxLineLength(TModel* model, TView* view);
 * @PARAM[IN] - указатель на массив смещений и его размер для последующего присвоения значений, а также
 * некоторое значение для присвоения элементу массива
 */
-void ResizeOffset(unsigned int** offset, unsigned int* sizeOffset, unsigned int index);
+void ResizeOffset(unsigned int** offset, unsigned int* sizeOffset, unsigned long index);
 
 /**
 * Метод определения максимальное количество символов подстроки указанной строки
@@ -53,7 +53,7 @@ void LayoutMode(TModel* model, TView* view);
 * @PARAM[IN] - начальное смещение указанной строки, массив смещений текста и его размер
 * @PARAM[OUT] - номер строки в указанном массиве смещений
 */
-unsigned int GetSameString(unsigned int index, unsigned int* offset, unsigned int sizeOffset);
+unsigned int GetSameString(unsigned long index, unsigned int* offset, unsigned int sizeOffset);
 
 /**
 * Метод обновления позиции ползунка при изменении режима отображения
