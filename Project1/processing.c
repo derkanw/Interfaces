@@ -26,6 +26,10 @@ int OpenNewFile(TModel* model, TView* view)
 
 void Create(TModel* model, TView* view, CREATESTRUCT* cs)
 {
+    HDC hdc = GetDC(view->hwnd);
+    SelectObject(hdc, GetStockObject(SYSTEM_FIXED_FONT));
+    ReleaseDC(view->hwnd, hdc);
+
     FillMetrics(view);
     InitDialog(view);
 

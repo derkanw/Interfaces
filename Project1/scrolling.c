@@ -21,7 +21,7 @@ void VertScroll(TView* view, WPARAM wParam)
         vertScrollInc = max(1, view->countLines);
         break;
     case SB_THUMBTRACK:
-        vertScrollInc = HIWORD(wParam) - view->vertScrollPos;
+        vertScrollInc = (HIWORD(wParam) - view->vertScrollPos) * view->sizeVertScroll;
         break;
     default:
         vertScrollInc = 0;
@@ -59,7 +59,7 @@ void HorzScroll(TView* view, WPARAM wParam)
         horzScrollInc = view->countChars;
         break;
     case SB_THUMBTRACK:
-        horzScrollInc = HIWORD(wParam) - view->horzScrollPos;
+        horzScrollInc = (HIWORD(wParam) - view->horzScrollPos) * view->sizeHorzScroll;
         break;
     default:
         horzScrollInc = 0;

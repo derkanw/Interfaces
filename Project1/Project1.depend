@@ -4,7 +4,7 @@
 	<windows.h>
 	<stdio.h>
 
-1607704485 source:d:\desktop\derkachenko\project1\main.c
+1607707766 source:d:\desktop\derkachenko\project1\main.c
 	<tchar.h>
 	"TModel.h"
 	"TView.h"
@@ -28,7 +28,7 @@
 	"TModel.h"
 	"TView.h"
 
-1606411874 source:d:\desktop\derkachenko\project1\processing.c
+1607707943 source:d:\desktop\derkachenko\project1\processing.c
 	"processing.h"
 	"supporting.h"
 	"../Open/main.h"
@@ -49,7 +49,7 @@
 	"TModel.h"
 	"TView.h"
 
-1606397993 source:d:\desktop\derkachenko\project1\scrolling.c
+1607711472 source:d:\desktop\derkachenko\project1\scrolling.c
 	"scrolling.h"
 
 1606398489 d:\desktop\derkachenko\project1\scrolling.h
@@ -146,7 +146,7 @@
 	"TModel.h"
 	"TView.h"
 
-1607705630 d:\desktop\derkachenko\project1\supporting.h
+1607709342 d:\desktop\derkachenko\project1\supporting.h
 	"TModel.h"
 	"TView.h"
 
@@ -154,6 +154,6 @@
 	"painting.h"
 	"supporting.h"
 
-1607705626 source:d:\desktop\derkachenko\project1\supporting.c
+1607711290 source:d:\desktop\derkachenko\project1\supporting.c
 	"supporting.h"
 

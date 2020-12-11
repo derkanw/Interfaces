@@ -17,21 +17,13 @@ char* SelectLine(char* str, unsigned long from, unsigned long to)
 
 void MaxLineLength(TModel* model, TView* view)
 {
-    SIZE sz;
-    HDC hdc = GetDC(view->hwnd);
     model->maxLine = 0;
-
     for (unsigned int i = 1; i < model->sizeOffset; i++)
     {
         unsigned long sizeLine = model->offset[i] - model->offset[i - 1];
-        char* temp = SelectLine(model->str, model->offset[i - 1], model->offset[i]);
-
-        GetTextExtentPoint32A(hdc, temp, sizeLine, &sz);
-        if (model->maxLine < sz.cx)
-            model->maxLine = sz.cx;
+        if (model->maxLine < sizeLine)
+            model->maxLine = sizeLine;
     }
-
-    ReleaseDC(view->hwnd, hdc);
 }
 
 void ResizeOffset(unsigned int** offset, unsigned int* sizeOffset, unsigned long index)
@@ -44,54 +36,27 @@ void ResizeOffset(unsigned int** offset, unsigned int* sizeOffset, unsigned long
     (*offset)[(*sizeOffset) - 2] = index;
 }
 
-unsigned int MaxLayoutLine(HDC hdc, char* str, unsigned int boarder, unsigned int* beginSubline,
-                           unsigned int* sizeLine)
-{
-    SIZE sz;
-    unsigned int sizeSubline = 0;
-
-    for (unsigned int i = (*beginSubline); i < strlen(str); i++)
-        {
-            char symbol[] = {str[i]};
-            GetTextExtentPoint32A(hdc, symbol, 1, &sz);
-            sizeSubline += sz.cx;
-            if (sizeSubline > boarder)
-            {
-                (*sizeLine) -= sizeSubline;
-                (*beginSubline) = i;
-                return i;
-            }
-        }
-    return 0;
-}
-
 void LayoutMode(TModel* model, TView* view)
 {
-    SIZE sz;
     RECT rc;
-    HDC hdc = GetDC(view->hwnd);
-
     GetClientRect(view->hwnd, &rc);
-    unsigned int widthWnd = rc.right - rc.left, boarder = widthWnd - view->widthChar;
+    unsigned int countChars = (rc.right - rc.left) / view->widthChar - 1;
 
     for (unsigned int i = 0; i < model->sizeOffset - 1; i++)
     {
         ResizeOffset(&view->layoutOffset, &view->sizeLayoutOffset, model->offset[i]);
+        unsigned long sizeLine = model->offset[i + 1] - model->offset[i];
+        unsigned int j = 0;
 
-        char* temp = SelectLine(model->str, model->offset[i], model->offset[i + 1]);
-        GetTextExtentPoint32A(hdc, temp, strlen(temp), &sz);
-
-        unsigned int beginSubline = 0, sizeLine = sz.cx;
-
-        while (sizeLine > widthWnd)
+        while (sizeLine > countChars)
         {
-            unsigned int value = MaxLayoutLine(hdc, temp, boarder, &beginSubline, &sizeLine);
-            ResizeOffset(&view->layoutOffset, &view->sizeLayoutOffset, model->offset[i] + value);
+            j++;
+            unsigned int value = model->offset[i] + j * countChars;
+            ResizeOffset(&view->layoutOffset, &view->sizeLayoutOffset, value);
+            sizeLine -= countChars;
         }
     }
     view->layoutOffset[view->sizeLayoutOffset - 1] = model->offset[model->sizeOffset - 1];
-
-    ReleaseDC(view->hwnd, hdc);
 }
 
 unsigned int GetSameString(unsigned long index, unsigned int* offset, unsigned int sizeOffset)

@@ -32,7 +32,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
     wincl.hInstance = hThisInstance;
     wincl.lpszClassName = szClassName;
     wincl.lpfnWndProc = WindowProcedure;      /* This function is called by windows */
-    wincl.style = CS_DBLCLKS;                 /* Catch double-clicks */
+    wincl.style = CS_DBLCLKS | CS_CLASSDC;                 /* Catch double-clicks */
     wincl.cbSize = sizeof (WNDCLASSEX);
 
     /* Use default icon and mouse-pointer */
