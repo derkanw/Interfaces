@@ -4,7 +4,7 @@
 	<windows.h>
 	<stdio.h>
 
-1607707766 source:d:\desktop\derkachenko\project1\main.c
+1607768822 source:d:\desktop\derkachenko\project1\main.c
 	<tchar.h>
 	"TModel.h"
 	"TView.h"
@@ -28,7 +28,7 @@
 	"TModel.h"
 	"TView.h"
 
-1607723837 source:d:\desktop\derkachenko\project1\processing.c
+1607768830 source:d:\desktop\derkachenko\project1\processing.c
 	"processing.h"
 	"supporting.h"
 	"../Open/main.h"
@@ -38,14 +38,14 @@
 	"TModel.h"
 	"supporting.h"
 
-1607723397 source:d:\desktop\derkachenko\project1\tview.c
+1607767693 source:d:\desktop\derkachenko\project1\tview.c
 	"TView.h"
 
-1606410582 source:d:\desktop\derkachenko\project1\changingsize.c
+1607768731 source:d:\desktop\derkachenko\project1\changingsize.c
 	"changingSize.h"
 	"supporting.h"
 
-1606410400 d:\desktop\derkachenko\project1\changingsize.h
+1607768778 d:\desktop\derkachenko\project1\changingsize.h
 	"TModel.h"
 	"TView.h"
 

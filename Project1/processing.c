@@ -55,7 +55,7 @@ void MenuProcessing(TModel* model, TView* view, WPARAM wParam)
                 EnableMenuItem(hMenu, IDM_OPEN, MF_GRAYED);
                 EnableMenuItem(hMenu, IDM_CLOSE, MF_ENABLED);
                 EnableMenuItem(hMenu, IDM_VIEW, MF_ENABLED | MF_BYPOSITION);
-                SendMessage(view->hwnd, WM_SIZE, 0, view->widthWnd);
+                SendMessage(view->hwnd, WM_SIZE, 0, 0);
             }
 
         break;
@@ -66,7 +66,7 @@ void MenuProcessing(TModel* model, TView* view, WPARAM wParam)
         EnableMenuItem(hMenu, IDM_OPEN, MF_ENABLED);
         EnableMenuItem(hMenu, IDM_CLOSE, MF_GRAYED);
         EnableMenuItem(hMenu, IDM_VIEW, MF_GRAYED | MF_BYPOSITION);
-        SendMessage(view->hwnd, WM_SIZE, 0, view->widthWnd);
+        SendMessage(view->hwnd, WM_SIZE, 0, 0);
 
         break;
     case IDM_EXIT:
@@ -83,7 +83,7 @@ void MenuProcessing(TModel* model, TView* view, WPARAM wParam)
         CheckMenuItem(hMenu, IDM_LAYOUT, MF_UNCHECKED);
         EnableMenuItem(hMenu, IDM_LAYOUT, MF_ENABLED);
         EnableMenuItem(hMenu, IDM_SIMPLE, MF_GRAYED);
-        SendMessage(view->hwnd, WM_SIZE, 0, view->widthWnd);
+        SendMessage(view->hwnd, WM_SIZE, 0, 0);
 
         break;
     case IDM_LAYOUT:
@@ -94,7 +94,7 @@ void MenuProcessing(TModel* model, TView* view, WPARAM wParam)
         CheckMenuItem(hMenu, IDM_SIMPLE, MF_UNCHECKED);
         EnableMenuItem(hMenu, IDM_SIMPLE, MF_ENABLED);
         EnableMenuItem(hMenu, IDM_LAYOUT, MF_GRAYED);
-        SendMessage(view->hwnd, WM_SIZE, 0, view->widthWnd);
+        SendMessage(view->hwnd, WM_SIZE, 0, 0);
 
         break;
     }

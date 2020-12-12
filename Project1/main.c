@@ -109,8 +109,8 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 
         case WM_SIZE:
 
-            ChangeHorzSize(model, view, lParam);
-            ChangeVertSize(model, view, lParam);
+            ChangeHorzSize(model, view);
+            ChangeVertSize(model, view);
             InvalidateRect(view->hwnd, NULL, TRUE);
 
             break;

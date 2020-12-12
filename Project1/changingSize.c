@@ -1,12 +1,11 @@
 #include "changingSize.h"
 #include "supporting.h"
 
-void ChangeVertSize(TModel* model, TView* view, LPARAM lParam)
+void ChangeVertSize(TModel* model, TView* view)
 {
-    if (HIWORD(lParam))
-        view->heightWnd = HIWORD(lParam);
-    else
-        return;
+    RECT rc;
+    GetClientRect(view->hwnd, &rc);
+    view->heightWnd = rc.bottom - rc.top;
 
     view->countLines = view->heightWnd / view->heightChar;
 
@@ -26,10 +25,11 @@ void ChangeVertSize(TModel* model, TView* view, LPARAM lParam)
     SetScrollPos(view->hwnd, SB_VERT, view->vertScrollPos, TRUE);
 }
 
-void ChangeHorzSize(TModel* model, TView* view, LPARAM lParam)
+void ChangeHorzSize(TModel* model, TView* view)
 {
-    if (LOWORD(lParam))
-        view->widthWnd = LOWORD(lParam);
+    RECT rc;
+    GetClientRect(view->hwnd, &rc);
+    view->widthWnd = rc.right - rc.left;
 
     view->countChars = view->widthWnd / view->widthChar - 1;
 
