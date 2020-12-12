@@ -42,7 +42,7 @@ void ChangeHorzSize(TModel* model, TView* view)
                 LayoutMode(model, view);
         }
     else
-        view->lastHorzPos = max(0, (int)(model->maxLine / view->widthChar) - (int)view->countChars + 1);
+        view->lastHorzPos = max(0, (int)model->maxLine - (int)view->countChars - 2);
 
     view->horzScrollPos = min(view->horzScrollPos, view->lastHorzPos);
 
