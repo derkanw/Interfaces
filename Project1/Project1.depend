@@ -20,7 +20,7 @@
 
 1606403655 d:\desktop\derkachenko\project1\tmodel.h
 
-1606398534 d:\desktop\derkachenko\project1\tview.h
+1607724026 d:\desktop\derkachenko\project1\tview.h
 	<Windows.h>
 	"menu.h"
 
@@ -28,7 +28,7 @@
 	"TModel.h"
 	"TView.h"
 
-1607707943 source:d:\desktop\derkachenko\project1\processing.c
+1607723837 source:d:\desktop\derkachenko\project1\processing.c
 	"processing.h"
 	"supporting.h"
 	"../Open/main.h"
@@ -38,7 +38,7 @@
 	"TModel.h"
 	"supporting.h"
 
-1606397774 source:d:\desktop\derkachenko\project1\tview.c
+1607723397 source:d:\desktop\derkachenko\project1\tview.c
 	"TView.h"
 
 1606410582 source:d:\desktop\derkachenko\project1\changingsize.c
@@ -49,10 +49,10 @@
 	"TModel.h"
 	"TView.h"
 
-1607711472 source:d:\desktop\derkachenko\project1\scrolling.c
+1607722805 source:d:\desktop\derkachenko\project1\scrolling.c
 	"scrolling.h"
 
-1606398489 d:\desktop\derkachenko\project1\scrolling.h
+1607721708 d:\desktop\derkachenko\project1\scrolling.h
 	"TModel.h"
 	"TView.h"
 
@@ -142,18 +142,18 @@
 1605795084 d:\desktop\derkachenko\fileopen\main.h
 	<windows.h>
 
-1606408386 d:\desktop\derkachenko\project1\painting.h
+1607715945 d:\desktop\derkachenko\project1\painting.h
 	"TModel.h"
 	"TView.h"
 
-1607709342 d:\desktop\derkachenko\project1\supporting.h
+1607720038 d:\desktop\derkachenko\project1\supporting.h
 	"TModel.h"
 	"TView.h"
 
-1606408384 source:d:\desktop\derkachenko\project1\painting.c
+1607717350 source:d:\desktop\derkachenko\project1\painting.c
 	"painting.h"
 	"supporting.h"
 
-1607711290 source:d:\desktop\derkachenko\project1\supporting.c
+1607720074 source:d:\desktop\derkachenko\project1\supporting.c
 	"supporting.h"
 

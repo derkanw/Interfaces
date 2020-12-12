@@ -3,6 +3,8 @@
 void VertScroll(TView* view, WPARAM wParam)
 {
     int vertScrollInc = 0;
+    SCROLLINFO si;
+    si.fMask = SIF_TRACKPOS;
 
     switch (LOWORD(wParam))
     {
@@ -15,13 +17,14 @@ void VertScroll(TView* view, WPARAM wParam)
             vertScrollInc = view->sizeVertScroll;
         break;
     case SB_PAGEUP:
-        vertScrollInc = min(-1, -view->countLines);
+        vertScrollInc = min(-1, -view->countLines - 1);
         break;
     case SB_PAGEDOWN:
-        vertScrollInc = max(1, view->countLines);
+        vertScrollInc = max(1, view->countLines + 1);
         break;
     case SB_THUMBTRACK:
-        vertScrollInc = (HIWORD(wParam) - view->vertScrollPos) * view->sizeVertScroll;
+        GetScrollInfo(view->hwnd, SB_VERT, &si);
+        vertScrollInc = si.nTrackPos - view->vertScrollPos;
         break;
     default:
         vertScrollInc = 0;
@@ -41,6 +44,8 @@ void VertScroll(TView* view, WPARAM wParam)
 void HorzScroll(TView* view, WPARAM wParam)
 {
     int horzScrollInc = 0;
+    SCROLLINFO si;
+    si.fMask = SIF_TRACKPOS;
 
     switch (LOWORD(wParam))
     {
@@ -53,13 +58,14 @@ void HorzScroll(TView* view, WPARAM wParam)
             horzScrollInc = view->sizeHorzScroll;
         break;
     case SB_PAGEUP:
-        horzScrollInc = -view->countChars;
+        horzScrollInc = min(-1, -view->countLines - 1);
         break;
     case SB_PAGEDOWN:
-        horzScrollInc = view->countChars;
+        horzScrollInc = max(1, view->countLines + 1);
         break;
     case SB_THUMBTRACK:
-        horzScrollInc = (HIWORD(wParam) - view->horzScrollPos) * view->sizeHorzScroll;
+        GetScrollInfo(view->hwnd, SB_HORZ, &si);
+        horzScrollInc = si.nTrackPos - view->horzScrollPos;
         break;
     default:
         horzScrollInc = 0;
