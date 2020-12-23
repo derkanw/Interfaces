@@ -157,3 +157,74 @@
 1607773272 source:d:\desktop\derkachenko\project1\supporting.c
 	"supporting.h"
 
+1607771381 source:c:\myfiles\_github_repositories\anyainterfaces\project1\changingsize.c
+	"changingSize.h"
+	"supporting.h"
+
+1607769060 c:\myfiles\_github_repositories\anyainterfaces\project1\changingsize.h
+	"TModel.h"
+	"TView.h"
+
+1607704204 c:\myfiles\_github_repositories\anyainterfaces\project1\tmodel.h
+
+1607704204 c:\myfiles\_github_repositories\anyainterfaces\project1\tview.h
+	<Windows.h>
+	"menu.h"
+
+1607704204 c:\myfiles\_github_repositories\anyainterfaces\project1\menu.h
+
+1607712268 c:\myfiles\_github_repositories\anyainterfaces\project1\supporting.h
+	"TModel.h"
+	"TView.h"
+
+1607769060 source:c:\myfiles\_github_repositories\anyainterfaces\project1\main.c
+	<tchar.h>
+	"TModel.h"
+	"TView.h"
+	"processing.h"
+	"changingSize.h"
+	"scrolling.h"
+	"painting.h"
+
+1607704204 c:\myfiles\_github_repositories\anyainterfaces\project1\processing.h
+	"TModel.h"
+	"TView.h"
+
+1607704204 c:\myfiles\_github_repositories\anyainterfaces\project1\scrolling.h
+	"TModel.h"
+	"TView.h"
+
+1607765670 c:\myfiles\_github_repositories\anyainterfaces\project1\painting.h
+	"TModel.h"
+	"TView.h"
+
+1607765670 source:c:\myfiles\_github_repositories\anyainterfaces\project1\painting.c
+	"painting.h"
+	"supporting.h"
+
+1608218582 source:c:\myfiles\_github_repositories\anyainterfaces\project1\processing.c
+	"processing.h"
+	"supporting.h"
+	"../Open/main.h"
+
+1607704204 c:\myfiles\_github_repositories\anyainterfaces\open\main.h
+	<windows.h>
+	<stdio.h>
+
+1607704204 source:c:\myfiles\_github_repositories\anyainterfaces\project1\resources.rc
+	"menu.h"
+
+1608217734 source:c:\myfiles\_github_repositories\anyainterfaces\project1\scrolling.c
+	"scrolling.h"
+
+1607772001 source:c:\myfiles\_github_repositories\anyainterfaces\project1\supporting.c
+	"supporting.h"
+
+1607704204 source:c:\myfiles\_github_repositories\anyainterfaces\project1\tmodel.c
+	<stdlib.h>
+	"TModel.h"
+	"supporting.h"
+
+1607766875 source:c:\myfiles\_github_repositories\anyainterfaces\project1\tview.c
+	"TView.h"
+

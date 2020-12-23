@@ -40,6 +40,12 @@
 				</Linker>
 			</Target>
 		</Build>
+		<Compiler>
+			<Add option="-m32" />
+		</Compiler>
+		<Linker>
+			<Add option="-m32" />
+		</Linker>
 		<Unit filename="main.c">
 			<Option compilerVar="CPP" />
 		</Unit>
