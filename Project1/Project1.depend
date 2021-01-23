@@ -61,57 +61,56 @@
 
 1606392134 d:\desktop\derkachenko\project1\menu.h
 
-1604062201 source:d:\github\derkanw\interfaces\project1\changingsize.c
-	"TModel.h"
-	"TView.h"
+1611395370 source:d:\github\derkanw\interfaces\project1\changingsize.c
+	"changingSize.h"
+	"supporting.h"
 
-1604057058 d:\github\derkanw\interfaces\project1\tmodel.h
+1608739512 d:\github\derkanw\interfaces\project1\tmodel.h
 
-1604063046 d:\github\derkanw\interfaces\project1\tview.h
+1608739512 d:\github\derkanw\interfaces\project1\tview.h
 	<Windows.h>
+	"menu.h"
 
-1604062126 source:d:\github\derkanw\interfaces\project1\main.c
+1608739511 source:d:\github\derkanw\interfaces\project1\main.c
 	<tchar.h>
-	<windows.h>
-	<stdio.h>
 	"TModel.h"
 	"TView.h"
 	"processing.h"
 	"changingSize.h"
 	"scrolling.h"
+	"painting.h"
+
+1608739512 d:\github\derkanw\interfaces\project1\processing.h
+	"TModel.h"
+	"TView.h"
+
+1608739511 d:\github\derkanw\interfaces\project1\changingsize.h
+	"TModel.h"
+	"TView.h"
+
+1608739512 d:\github\derkanw\interfaces\project1\scrolling.h
+	"TModel.h"
+	"TView.h"
+
+1608739511 d:\github\derkanw\interfaces\project1\menu.h
+
+1611395384 source:d:\github\derkanw\interfaces\project1\processing.c
+	"processing.h"
+	"supporting.h"
+	"../Open/main.h"
+
+1608739512 source:d:\github\derkanw\interfaces\project1\resources.rc
 	"menu.h"
 
-1604056993 d:\github\derkanw\interfaces\project1\processing.h
-	"TModel.h"
-	"TView.h"
+1608739512 source:d:\github\derkanw\interfaces\project1\scrolling.c
+	"scrolling.h"
 
-1602932909 d:\github\derkanw\interfaces\project1\changingsize.h
-	"TModel.h"
-	"TView.h"
-
-1602934968 d:\github\derkanw\interfaces\project1\scrolling.h
-	"TModel.h"
-	"TView.h"
-
-1603978570 d:\github\derkanw\interfaces\project1\menu.h
-
-1604063099 source:d:\github\derkanw\interfaces\project1\processing.c
-	"TModel.h"
-	"TView.h"
-
-1604000711 source:d:\github\derkanw\interfaces\project1\resources.rc
-	"menu.h"
-
-1603994904 source:d:\github\derkanw\interfaces\project1\scrolling.c
-	"TModel.h"
-	"TView.h"
-
-1604059127 source:d:\github\derkanw\interfaces\project1\tmodel.c
+1608739512 source:d:\github\derkanw\interfaces\project1\tmodel.c
 	<stdlib.h>
-	<stdio.h>
 	"TModel.h"
+	"supporting.h"
 
-1604062884 source:d:\github\derkanw\interfaces\project1\tview.c
+1608739512 source:d:\github\derkanw\interfaces\project1\tview.c
 	"TView.h"
 
 1604006561 d:\github\derkanw\interfaces\project1\dialog.h
@@ -227,4 +226,23 @@
 
 1607766875 source:c:\myfiles\_github_repositories\anyainterfaces\project1\tview.c
 	"TView.h"
+
+1608739512 d:\github\derkanw\interfaces\project1\supporting.h
+	"TModel.h"
+	"TView.h"
+
+1608739512 d:\github\derkanw\interfaces\project1\painting.h
+	"TModel.h"
+	"TView.h"
+
+1608739511 source:d:\github\derkanw\interfaces\project1\painting.c
+	"painting.h"
+	"supporting.h"
+
+1608739511 d:\github\derkanw\interfaces\open\main.h
+	<windows.h>
+	<stdio.h>
+
+1611395384 source:d:\github\derkanw\interfaces\project1\supporting.c
+	"supporting.h"
 

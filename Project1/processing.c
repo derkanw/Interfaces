@@ -90,7 +90,6 @@ void MenuProcessing(TModel* model, TView* view, WPARAM wParam)
     case IDM_LAYOUT:
 
         view->mode = IDM_LAYOUT;
-        ChangeMode(model, view);
         CheckMenuItem(hMenu, IDM_LAYOUT, MF_CHECKED);
         CheckMenuItem(hMenu, IDM_SIMPLE, MF_UNCHECKED);
         EnableMenuItem(hMenu, IDM_SIMPLE, MF_ENABLED);
