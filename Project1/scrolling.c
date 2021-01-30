@@ -98,6 +98,12 @@ void ArrowsDown(TView* view, WPARAM wParam)
     case VK_LEFT:
         SendMessage(view->hwnd, WM_HSCROLL, SB_LINEUP, 0L);
         break;
+    case VK_PRIOR:
+        SendMessage(view->hwnd, WM_VSCROLL, SB_PAGEUP, 0L);
+        break;
+    case VK_NEXT:
+        SendMessage(view->hwnd, WM_VSCROLL, SB_PAGEDOWN, 0L);
+        break;
     }
 }
 
