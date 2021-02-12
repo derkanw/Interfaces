@@ -246,3 +246,74 @@
 1611395384 source:d:\github\derkanw\interfaces\project1\supporting.c
 	"supporting.h"
 
+1613157166 source:d:\desktop\derkachenko\interfaces\project1\changingsize.c
+	"changingSize.h"
+	"supporting.h"
+
+1608739511 d:\desktop\derkachenko\interfaces\project1\changingsize.h
+	"TModel.h"
+	"TView.h"
+
+1608739512 d:\desktop\derkachenko\interfaces\project1\tmodel.h
+
+1608739512 d:\desktop\derkachenko\interfaces\project1\tview.h
+	<Windows.h>
+	"menu.h"
+
+1608739511 d:\desktop\derkachenko\interfaces\project1\menu.h
+
+1613151928 d:\desktop\derkachenko\interfaces\project1\supporting.h
+	"TModel.h"
+	"TView.h"
+
+1608739511 source:d:\desktop\derkachenko\interfaces\project1\main.c
+	<tchar.h>
+	"TModel.h"
+	"TView.h"
+	"processing.h"
+	"changingSize.h"
+	"scrolling.h"
+	"painting.h"
+
+1608739512 d:\desktop\derkachenko\interfaces\project1\processing.h
+	"TModel.h"
+	"TView.h"
+
+1608739512 d:\desktop\derkachenko\interfaces\project1\scrolling.h
+	"TModel.h"
+	"TView.h"
+
+1608739512 d:\desktop\derkachenko\interfaces\project1\painting.h
+	"TModel.h"
+	"TView.h"
+
+1613149867 source:d:\desktop\derkachenko\interfaces\project1\painting.c
+	"painting.h"
+	"supporting.h"
+
+1613148398 source:d:\desktop\derkachenko\interfaces\project1\processing.c
+	"processing.h"
+	"supporting.h"
+	"../Open/main.h"
+
+1608739511 d:\desktop\derkachenko\interfaces\open\main.h
+	<windows.h>
+	<stdio.h>
+
+1608739512 source:d:\desktop\derkachenko\interfaces\project1\resources.rc
+	"menu.h"
+
+1613124394 source:d:\desktop\derkachenko\interfaces\project1\scrolling.c
+	"scrolling.h"
+
+1613157420 source:d:\desktop\derkachenko\interfaces\project1\supporting.c
+	"supporting.h"
+
+1608739512 source:d:\desktop\derkachenko\interfaces\project1\tmodel.c
+	<stdlib.h>
+	"TModel.h"
+	"supporting.h"
+
+1612887695 source:d:\desktop\derkachenko\interfaces\project1\tview.c
+	"TView.h"
+

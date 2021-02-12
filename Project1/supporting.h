@@ -49,3 +49,6 @@ unsigned int GetSameString(unsigned long index, unsigned int* offset, unsigned i
 * @PARAM[IN] - указатели на структуры модели и вывода в окно для использования соответсвующих полей
 */
 void ChangeMode(TModel* model, TView* view);
+
+
+void CorrectPos(TView* view);

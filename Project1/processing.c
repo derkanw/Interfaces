@@ -9,8 +9,6 @@ int PreparePrint(TModel* model, TView* view, char* filename)
 
     FillOffset(model);
     MaxLineLength(model, view);
-    view->sizeVertScroll = (model->sizeOffset - 1) / (2 * MAXSHORT) + 1;
-    view->sizeHorzScroll = model->maxLine / (2 * MAXSHORT) + 1;
 
     SendMessage(view->hwnd, WM_SIZE, 0, 0);
     LayoutMode(model, view);

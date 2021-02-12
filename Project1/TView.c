@@ -63,5 +63,7 @@ void FillMetrics(TView* view)
 void DeleteView(TView* view)
 {
     ClearView(view);
+    if (view->layoutOffset)
+        free(view->layoutOffset);
     free(view);
 }
