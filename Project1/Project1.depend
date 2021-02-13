@@ -61,17 +61,17 @@
 
 1606392134 d:\desktop\derkachenko\project1\menu.h
 
-1611433065 source:d:\github\derkanw\interfaces\project1\changingsize.c
+1613168649 source:d:\github\derkanw\interfaces\project1\changingsize.c
 	"changingSize.h"
 	"supporting.h"
 
-1608739512 d:\github\derkanw\interfaces\project1\tmodel.h
+1613164259 d:\github\derkanw\interfaces\project1\tmodel.h
 
-1608739512 d:\github\derkanw\interfaces\project1\tview.h
+1613167152 d:\github\derkanw\interfaces\project1\tview.h
 	<Windows.h>
 	"menu.h"
 
-1608739511 source:d:\github\derkanw\interfaces\project1\main.c
+1613211571 source:d:\github\derkanw\interfaces\project1\main.c
 	<tchar.h>
 	"TModel.h"
 	"TView.h"
@@ -80,37 +80,37 @@
 	"scrolling.h"
 	"painting.h"
 
-1608739512 d:\github\derkanw\interfaces\project1\processing.h
+1613164260 d:\github\derkanw\interfaces\project1\processing.h
 	"TModel.h"
 	"TView.h"
 
-1608739511 d:\github\derkanw\interfaces\project1\changingsize.h
+1613164260 d:\github\derkanw\interfaces\project1\changingsize.h
 	"TModel.h"
 	"TView.h"
 
-1608739512 d:\github\derkanw\interfaces\project1\scrolling.h
+1613164260 d:\github\derkanw\interfaces\project1\scrolling.h
 	"TModel.h"
 	"TView.h"
 
-1608739511 d:\github\derkanw\interfaces\project1\menu.h
+1613164260 d:\github\derkanw\interfaces\project1\menu.h
 
-1611433064 source:d:\github\derkanw\interfaces\project1\processing.c
+1613211717 source:d:\github\derkanw\interfaces\project1\processing.c
 	"processing.h"
 	"supporting.h"
 	"../Open/main.h"
 
-1608739512 source:d:\github\derkanw\interfaces\project1\resources.rc
+1613164260 source:d:\github\derkanw\interfaces\project1\resources.rc
 	"menu.h"
 
-1612003411 source:d:\github\derkanw\interfaces\project1\scrolling.c
+1613208784 source:d:\github\derkanw\interfaces\project1\scrolling.c
 	"scrolling.h"
 
-1608739512 source:d:\github\derkanw\interfaces\project1\tmodel.c
+1613209462 source:d:\github\derkanw\interfaces\project1\tmodel.c
 	<stdlib.h>
 	"TModel.h"
 	"supporting.h"
 
-1608739512 source:d:\github\derkanw\interfaces\project1\tview.c
+1613209382 source:d:\github\derkanw\interfaces\project1\tview.c
 	"TView.h"
 
 1604006561 d:\github\derkanw\interfaces\project1\dialog.h
@@ -227,46 +227,46 @@
 1607766875 source:c:\myfiles\_github_repositories\anyainterfaces\project1\tview.c
 	"TView.h"
 
-1608739512 d:\github\derkanw\interfaces\project1\supporting.h
+1613164260 d:\github\derkanw\interfaces\project1\supporting.h
 	"TModel.h"
 	"TView.h"
 
-1608739512 d:\github\derkanw\interfaces\project1\painting.h
+1613164260 d:\github\derkanw\interfaces\project1\painting.h
 	"TModel.h"
 	"TView.h"
 
-1608739511 source:d:\github\derkanw\interfaces\project1\painting.c
+1613169179 source:d:\github\derkanw\interfaces\project1\painting.c
 	"painting.h"
 	"supporting.h"
 
-1608739511 d:\github\derkanw\interfaces\open\main.h
+1613164259 d:\github\derkanw\interfaces\open\main.h
 	<windows.h>
 	<stdio.h>
 
-1611395384 source:d:\github\derkanw\interfaces\project1\supporting.c
+1613211571 source:d:\github\derkanw\interfaces\project1\supporting.c
 	"supporting.h"
 
-1613157166 source:d:\desktop\derkachenko\interfaces\project1\changingsize.c
+1613168649 source:d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\project1\changingsize.c
 	"changingSize.h"
 	"supporting.h"
 
-1608739511 d:\desktop\derkachenko\interfaces\project1\changingsize.h
+1613164260 d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\project1\changingsize.h
 	"TModel.h"
 	"TView.h"
 
-1608739512 d:\desktop\derkachenko\interfaces\project1\tmodel.h
+1613164259 d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\project1\tmodel.h
 
-1608739512 d:\desktop\derkachenko\interfaces\project1\tview.h
+1613167152 d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\project1\tview.h
 	<Windows.h>
 	"menu.h"
 
-1608739511 d:\desktop\derkachenko\interfaces\project1\menu.h
+1613164260 d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\project1\menu.h
 
-1613151928 d:\desktop\derkachenko\interfaces\project1\supporting.h
+1613164260 d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\project1\supporting.h
 	"TModel.h"
 	"TView.h"
 
-1608739511 source:d:\desktop\derkachenko\interfaces\project1\main.c
+1613164260 source:d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\project1\main.c
 	<tchar.h>
 	"TModel.h"
 	"TView.h"
@@ -275,45 +275,45 @@
 	"scrolling.h"
 	"painting.h"
 
-1608739512 d:\desktop\derkachenko\interfaces\project1\processing.h
+1613164260 d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\project1\processing.h
 	"TModel.h"
 	"TView.h"
 
-1608739512 d:\desktop\derkachenko\interfaces\project1\scrolling.h
+1613164260 d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\project1\scrolling.h
 	"TModel.h"
 	"TView.h"
 
-1608739512 d:\desktop\derkachenko\interfaces\project1\painting.h
+1613164260 d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\project1\painting.h
 	"TModel.h"
 	"TView.h"
 
-1613149867 source:d:\desktop\derkachenko\interfaces\project1\painting.c
+1613169179 source:d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\project1\painting.c
 	"painting.h"
 	"supporting.h"
 
-1613148398 source:d:\desktop\derkachenko\interfaces\project1\processing.c
+1613210392 source:d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\project1\processing.c
 	"processing.h"
 	"supporting.h"
 	"../Open/main.h"
 
-1608739511 d:\desktop\derkachenko\interfaces\open\main.h
+1613164259 d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\open\main.h
 	<windows.h>
 	<stdio.h>
 
-1608739512 source:d:\desktop\derkachenko\interfaces\project1\resources.rc
+1613164260 source:d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\project1\resources.rc
 	"menu.h"
 
-1613124394 source:d:\desktop\derkachenko\interfaces\project1\scrolling.c
-	"scrolling.h"
-
-1613157420 source:d:\desktop\derkachenko\interfaces\project1\supporting.c
+1613166319 source:d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\project1\supporting.c
 	"supporting.h"
 
-1608739512 source:d:\desktop\derkachenko\interfaces\project1\tmodel.c
+1613209462 source:d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\project1\tmodel.c
 	<stdlib.h>
 	"TModel.h"
 	"supporting.h"
 
-1612887695 source:d:\desktop\derkachenko\interfaces\project1\tview.c
+1613209382 source:d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\project1\tview.c
 	"TView.h"
+
+1613208784 source:d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\project1\scrolling.c
+	"scrolling.h"
 

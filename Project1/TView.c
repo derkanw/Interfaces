@@ -22,6 +22,8 @@ TView* InitView(HWND classHwnd)
     view->sizeHorzScroll = 1;
     view->vertScrollPos = 0;
     view->horzScrollPos = 0;
+    view->physVertPos = 0;
+    view->physHorzPos = 0;
     view->lastVertPos = 0;
     view->lastHorzPos = 0;
     view->currentString = 0;

@@ -9,7 +9,8 @@ typedef struct
     unsigned int countLines, countChars; //число символов и строк в окне
     unsigned int sizeVertScroll, sizeHorzScroll; //размер одного скролла
     unsigned int lastVertPos, lastHorzPos; //последняя позиция бегунка
-    int vertScrollPos, horzScrollPos; //текущая позиция бегунка
+    int vertScrollPos, horzScrollPos; //текущая позиция бегунка в тексте
+    int physVertPos, physHorzPos; //текущая позиция бегунка в ленте прокручивания
     unsigned int* layoutOffset; //массив построчных смещений текста режима верстки
     unsigned int sizeLayoutOffset; //размер массива смещений режима верстки
     unsigned int currentString; //начальное смещение текущей строки

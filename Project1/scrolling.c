@@ -8,11 +8,11 @@ void VertScroll(TView* view, WPARAM wParam)
     {
     case SB_LINEUP:
         if (view->vertScrollPos != 0)
-            vertScrollInc = -1;
+            vertScrollInc = -1 * view->sizeVertScroll;
         break;
     case SB_LINEDOWN:
         if (view->vertScrollPos != view->lastVertPos)
-            vertScrollInc = 1;
+            vertScrollInc = view->sizeVertScroll;
         break;
     case SB_PAGEUP:
         vertScrollInc = min(-1, - 1 * view->countLines);
@@ -21,7 +21,10 @@ void VertScroll(TView* view, WPARAM wParam)
         vertScrollInc = max(1, view->countLines);
         break;
     case SB_THUMBTRACK:
-        vertScrollInc = HIWORD(wParam) - view->vertScrollPos;
+        view->physVertPos = HIWORD(wParam);
+        if (view->lastVertPos > USHRT_MAX)
+            view->physVertPos = (int)((double)view->physVertPos / (double)USHRT_MAX * (double)view->lastVertPos);
+        vertScrollInc = view->physVertPos - view->vertScrollPos;
         break;
     default:
         vertScrollInc = 0;
@@ -30,9 +33,17 @@ void VertScroll(TView* view, WPARAM wParam)
 
     if (vertScrollInc != 0)
     {
+        vertScrollInc = max(-1 * (int)view->vertScrollPos, min(vertScrollInc, (int)view->lastVertPos - view->vertScrollPos));
         view->vertScrollPos += vertScrollInc;
-        view->vertScrollPos = max(0, min(view->vertScrollPos, (int)view->lastVertPos));
-        SetScrollPos(view->hwnd, SB_VERT, view->vertScrollPos, TRUE);
+
+        ScrollWindow(view->hwnd, 0, -1 * view->heightChar * vertScrollInc, NULL, NULL);
+
+        if (view->lastVertPos > USHRT_MAX)
+            view->physVertPos = (int)((double)view->vertScrollPos / (double)view->lastVertPos * (double)USHRT_MAX);
+        else
+            view->physVertPos = view->vertScrollPos;
+
+        SetScrollPos(view->hwnd, SB_VERT, view->physVertPos, TRUE);
         InvalidateRect(view->hwnd, NULL, TRUE);
         UpdateWindow(view->hwnd);
     }
@@ -46,11 +57,11 @@ void HorzScroll(TView* view, WPARAM wParam)
     {
     case SB_LINEUP:
         if (view->horzScrollPos != 0)
-            horzScrollInc = -1;
+            horzScrollInc = -1 * view->sizeHorzScroll;
         break;
     case SB_LINEDOWN:
         if (view->horzScrollPos != view->lastHorzPos)
-            horzScrollInc = 1;
+            horzScrollInc = view->sizeHorzScroll;
         break;
     case SB_PAGEUP:
         horzScrollInc = min(-1, -1 * view->countChars);
@@ -59,7 +70,10 @@ void HorzScroll(TView* view, WPARAM wParam)
         horzScrollInc = max(1, view->countChars);
         break;
     case SB_THUMBTRACK:
-        horzScrollInc = HIWORD(wParam) - view->horzScrollPos;
+        view->physHorzPos = HIWORD(wParam);
+        if (view->lastHorzPos > USHRT_MAX)
+            view->physHorzPos = (int)((double)view->physHorzPos / (double)USHRT_MAX * (double)view->lastHorzPos);
+        horzScrollInc = view->physHorzPos - view->horzScrollPos;
         break;
     default:
         horzScrollInc = 0;
@@ -68,9 +82,17 @@ void HorzScroll(TView* view, WPARAM wParam)
 
     if (horzScrollInc != 0)
     {
+        horzScrollInc = max(-1 * (int)view->horzScrollPos, min(horzScrollInc, (int)view->lastHorzPos - view->horzScrollPos));
         view->horzScrollPos += horzScrollInc;
-        view->horzScrollPos = max(0, min(view->horzScrollPos, (int)view->lastHorzPos));
-        SetScrollPos(view->hwnd, SB_HORZ, view->horzScrollPos, TRUE);
+
+        ScrollWindow(view->hwnd, -1 * view->widthChar * horzScrollInc, 0, NULL, NULL);
+
+        if (view->lastHorzPos > USHRT_MAX)
+            view->physHorzPos = (int)((double)view->horzScrollPos / (double)view->lastHorzPos * (double)USHRT_MAX);
+        else
+            view->physHorzPos = view->horzScrollPos;
+
+        SetScrollPos(view->hwnd, SB_HORZ, view->physHorzPos, TRUE);
         InvalidateRect(view->hwnd, NULL, TRUE);
         UpdateWindow(view->hwnd);
     }

@@ -57,9 +57,9 @@ void LayoutMode(TModel* model, TView* view)
         }
     }
     view->layoutOffset[view->sizeLayoutOffset - 1] = model->offset[model->sizeOffset - 1];
+    view->sizeVertScroll = (model->sizeOffset - 1) / USHRT_MAX + 1;
+    view->sizeHorzScroll = model->maxLine / USHRT_MAX + 1;
 
-    view->sizeVertScroll = (model->sizeOffset - 1) / (2 * MAXSHORT) + 1;
-    view->sizeHorzScroll = model->maxLine / (2 * MAXSHORT) + 1;
 }
 
 unsigned int GetSameString(unsigned long index, unsigned int* offset, unsigned int sizeOffset)
@@ -76,22 +76,14 @@ void ChangeMode(TModel* model, TView* view)
 
     if (view->mode == IDM_LAYOUT)
     {
-        index = model->offset[view->vertScrollPos * view->sizeVertScroll];
+        index = model->offset[view->vertScrollPos];
         view->vertScrollPos = GetSameString(index, view->layoutOffset, view->sizeLayoutOffset);
+        view->lastVertPos = max(0, (int)view->sizeLayoutOffset - 1 - (int)view->countLines);
     }
     else
     {
-        index = view->layoutOffset[view->vertScrollPos * view->sizeVertScroll];
+        index = view->layoutOffset[view->vertScrollPos];
         view->vertScrollPos = GetSameString(index, model->offset, model->sizeOffset);
+        view->lastVertPos = max(0, (int)model->sizeOffset - 1 - (int)view->countLines);
     }
-    //view->vertScrollPos /= view->sizeVertScroll;
-    CorrectPos(view);
-}
-
-void CorrectPos(TView* view)
-{
-    unsigned int remainder = view->vertScrollPos % view->sizeVertScroll;
-        view->vertScrollPos /= view->sizeVertScroll;
-        if (remainder != 0)
-            ++view->vertScrollPos;
 }

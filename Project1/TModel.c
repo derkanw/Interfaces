@@ -43,5 +43,7 @@ void FillOffset(TModel* model)
 void DeleteModel(TModel* model)
 {
     ClearModel(model);
+    if (model->offset)
+        free(model->offset);
     free(model);
 }

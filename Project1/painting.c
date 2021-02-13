@@ -4,17 +4,15 @@
 void PrintText(HDC hdc, TModel* model, TView* view, unsigned int* offset, unsigned int sizeOffset,
                PAINTSTRUCT ps)
 {
-    int logicalVertPos = view->vertScrollPos * view->sizeVertScroll;
-
-    int beginPaint = max(0, (int)(logicalVertPos + ps.rcPaint.top / view->heightChar) - 1);
-    int endPaint = min(sizeOffset, logicalVertPos + ps.rcPaint.bottom / view->heightChar);
+    int beginPaint = max(0, (int)(view->vertScrollPos + ps.rcPaint.top / view->heightChar) - 1);
+    int endPaint = min(sizeOffset, view->vertScrollPos + ps.rcPaint.bottom / view->heightChar);
 
     unsigned int newX = 0, newY = 0;
 
-    for (unsigned int i = beginPaint; i < endPaint; ++i)
+    for (unsigned int i = beginPaint; i < endPaint; i++)
         {
-            newX = view->widthChar * (1 - view->horzScrollPos * view->sizeHorzScroll);
-            newY = view->heightChar * (i - view->vertScrollPos * view->sizeVertScroll);
+            newX = view->widthChar * (1 - view->horzScrollPos);
+            newY = view->heightChar * (i - view->vertScrollPos);
 
             char* temp = SelectLine(model->str, offset[i], offset[i + 1]);
             TextOut(hdc, newX, newY, temp, strlen(temp));

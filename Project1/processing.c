@@ -94,7 +94,7 @@ void MenuProcessing(TModel* model, TView* view, WPARAM wParam)
         EnableMenuItem(hMenu, IDM_LAYOUT, MF_GRAYED);
         SendMessage(view->hwnd, WM_SIZE, 0, 0);
         ChangeMode(model, view);
-        SetScrollPos(view->hwnd, SB_VERT, view->vertScrollPos, TRUE);
+        SendMessage(view->hwnd, WM_SIZE, 0, 0);
 
         break;
     }
