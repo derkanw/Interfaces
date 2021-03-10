@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1615375606 source:d:\github\derkanw\interfaces\numbers\src\rational.cpp
+	"Supporting.h"
+
+1614964968 d:\github\derkanw\interfaces\numbers\include\rational.h
+	"iostream"
+	"Boolean.h"
+
+1614975866 d:\github\derkanw\interfaces\numbers\include\boolean.h
+
+1615019376 source:d:\github\derkanw\interfaces\numbers\tests\main.cpp
+	"../src/Supporting.h"
+
+1615374694 source:d:\github\derkanw\interfaces\numbers\src\supporting.cpp
+	"Supporting.h"
+
+1614944703 d:\github\derkanw\interfaces\numbers\src\supporting.cpp
+	"Supporting.h"
+
+1615373326 d:\github\derkanw\interfaces\numbers\src\supporting.h
+	<string>
+	<functional>
+	"../include/Rational.h"
+	"../include/Real.h"
+
+1614979484 d:\github\derkanw\interfaces\numbers\include\real.h
+	"iostream"
+	"Rational.h"
+	"Boolean.h"
+
+1615375661 source:d:\github\derkanw\interfaces\numbers\src\real.cpp
+	"Supporting.h"
+
