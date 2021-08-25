@@ -1,4 +1,3 @@
-#pragma once
 #include <ostream>
 #include <fstream>
 #include <iostream>
@@ -78,6 +77,7 @@ namespace
             errors.insert({ RC::SUCCESS, "Work done successfully"});
             errors.insert({ RC::UNKNOWN, "Unknown error"});
             errors.insert({ RC::VECTOR_NOT_FOUND, "Couldn't find vector instance in ISet method"});
+            errors.insert({ VECTOR_ALREADY_EXIST, "The requested vector already exists in the set"});
         }
 
         void InitLevelsMap()

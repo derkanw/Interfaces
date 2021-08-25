@@ -1,0 +1,89 @@
+# depslib dependency file v1.0
+1619282910 source:d:\desktop\вектор\derkachenko\src\loggerimpl.cpp
+	<ostream>
+	<fstream>
+	<iostream>
+	<map>
+	"../include/ILogger.h"
+
+1620828564 d:\desktop\вектор\derkachenko\include\ilogger.h
+	"RC.h"
+
+1618650826 d:\desktop\вектор\derkachenko\include\rc.h
+
+1622302504 source:d:\desktop\вектор\derkachenko\tests\main.cpp
+	<iostream>
+	"../include/IVector.h"
+	"../include/ILogger.h"
+	"../include/RC.h"
+	"vector_tests.h"
+
+1619277202 d:\desktop\вектор\derkachenko\include\ivector.h
+	<cstddef>
+	<functional>
+	"RC.h"
+	"ILogger.h"
+
+1622308320 d:\desktop\вектор\derkachenko\tests\vector_tests.h
+
+1622308312 source:d:\desktop\вектор\derkachenko\tests\vector_tests.cpp
+	<array>
+	<memory>
+	<iostream>
+	<cassert>
+	<cmath>
+	"../include/IVector.h"
+	"../include/ILogger.h"
+	"vector_tests.h"
+
+1622898758 source:d:\desktop\вектор\derkachenko\src\vectorimpl.cpp
+	<cmath>
+	<limits>
+	<cstring>
+	"../include/IVector.h"
+
+1623873366 source:d:\desktop\derkachenko_ivector\derkachenko\src\loggerimpl.cpp
+	<ostream>
+	<fstream>
+	<iostream>
+	<map>
+	"../include/ILogger.h"
+
+1623873366 d:\desktop\derkachenko_ivector\derkachenko\include\ilogger.h
+	"RC.h"
+
+1623873366 d:\desktop\derkachenko_ivector\derkachenko\include\rc.h
+
+1623873366 source:d:\desktop\derkachenko_ivector\derkachenko\src\vectorimpl.cpp
+	<cmath>
+	<limits>
+	<cstring>
+	"../include/IVector.h"
+
+1623873366 d:\desktop\derkachenko_ivector\derkachenko\include\ivector.h
+	<cstddef>
+	<functional>
+	"RC.h"
+	"ILogger.h"
+
+1623873366 source:d:\desktop\derkachenko_ivector\derkachenko\tests\main.cpp
+	<iostream>
+	"../include/IVector.h"
+	"../include/ILogger.h"
+	"../include/RC.h"
+	"vector_tests.h"
+
+1623873366 d:\desktop\derkachenko_ivector\derkachenko\tests\vector_tests.h
+
+1623873366 source:d:\desktop\derkachenko_ivector\derkachenko\tests\vector_tests.cpp
+	<array>
+	<memory>
+	<iostream>
+	<cassert>
+	<cmath>
+	"../include/IVector.h"
+	"../include/ILogger.h"
+	"vector_tests.h"
+
+1623873751 source:d:\desktop\derkachenko_ivector\derkachenko\src\setimpl.cpp
+
