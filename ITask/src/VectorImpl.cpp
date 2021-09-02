@@ -3,6 +3,7 @@
 #include <cstring>
 #define PTR_DATA (double*)((uint8_t*)this + sizeof(VectorImpl))
 #include "../include/IVector.h"
+
 namespace
 {
     class VectorImpl : public IVector
@@ -17,7 +18,6 @@ namespace
         {
             this->dim = dim;
         }
-///IAA: т.е. Вам ковариантность результата этого метода не нужна?
         VectorImpl* clone() const override
         {
             return (VectorImpl*)createVector(dim, PTR_DATA);
@@ -46,7 +46,6 @@ namespace
                     logger->severe(RC::NOT_NUMBER);
                     return RC::NOT_NUMBER;
                 }
-///IAA: намного быстрее было бы memcpy
             memcpy(PTR_DATA, ptr_data, dim * sizeof(double));
             return RC::SUCCESS;
         }
@@ -194,7 +193,7 @@ IVector* IVector::createVector(size_t dim, double const* const& ptr_data)
     }
 
     size_t size = sizeof(VectorImpl) + dim * sizeof(double);
-    void* ptr = new(std::nothrow)uint8_t[size];
+    uint8_t* ptr = new(std::nothrow)uint8_t[size];
     if (ptr == nullptr)
     {
         VectorImpl::logger->warning(RC::ALLOCATION_ERROR);
@@ -210,7 +209,7 @@ IVector* IVector::createVector(size_t dim, double const* const& ptr_data)
 RC IVector::setLogger(ILogger* const logger)
 {
     if (logger == nullptr)
-    return RC::NULLPTR_ERROR;
+        return RC::NULLPTR_ERROR;
     VectorImpl::logger = logger;
     return RC::SUCCESS;
 }

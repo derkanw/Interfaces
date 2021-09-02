@@ -28,7 +28,8 @@ namespace
                 newSet->setSize = this->setSize;
                 newSet->capacity = this->capacity;
                 newSet->data = new double[capacity];
-                memcpy(newSet->data, data, setSize * sizeof(double));
+//если не работает, то убрать dim
+                memcpy(newSet->data, data, setSize * dim * sizeof(double));
             }
             return newSet;
         }
@@ -84,10 +85,7 @@ namespace
 
             val = IVector::createVector(dim, new double[dim]);
             if (val == nullptr)
-            {
-                logger->warning(RC::ALLOCATION_ERROR);
                 return RC::ALLOCATION_ERROR;
-            }
 
             int i = 0;
             while (true)
@@ -154,7 +152,8 @@ namespace
                 logger->warning(RC::NULLPTR_ERROR);
                 return RC::NULLPTR_ERROR;
             }
-            size_t dimVal = val->getDim();
+
+            size_t valDim = val->getDim();
             if (setSize != 0)
             {
                 if (dim != dimVal)
@@ -172,85 +171,245 @@ namespace
                     return error;
             }
             else
-            {
-                dim = dimVal;
-            }
+                dim = valDim;
 
-
-        }
-
-            while (capacity < size * dim + val->getDim()) {
+            while (capacity < (setSize + 1) * dim)
                 capacity *= 2;
-                double *tmp = new double[capacity];
-                for (size_t idx = 0; idx < size * dim; ++idx)
-                    tmp[idx] = data[idx];
-                delete [] data;
-                data = tmp;
-            }
 
-            for (size_t idx = 0; idx < dim; ++idx)
-                data[size * dim + idx] = val->getData()[idx];
+            double* temp = data;
+            data = new double[capacity];
+            memcpy(data, temp, setSize * dim * sizeof(double));
+            delete[] temp;
 
-            ++size;
-
+            double* temp = val->getData();
+            for (size_t i = 0; i < dim; ++i)
+                data[setSize * dim + i] = temp[i];
+            ++setSize;
+            deletep[] temp;
             return RC::SUCCESS;
         }
 
-    virtual RC remove(size_t index) = 0;
-    virtual RC remove(IVector const * const& pat, IVector::NORM n, double tol) = 0;
+        RC remove(size_t index) override
+        {
+            if (index >= setSize)
+            {
+                logger->severe(RC::INDEX_OUT_OF_BOUND);
+                return RC::INDEX_OUT_OF_BOUND;
+            }
+
+            double* newData = new double[capacity];
+            for (size_t iSet = 0, iVector = 0; iSet < setSize; ++iSet)
+                if (iSet != index)
+                    for (size_t i = 0; i < dim; ++i, ++iVector)
+                        newData[iVector] = data[iSet * setSize + i];
+            --setSize;
+            delete data[];
+            data = newData;
+            return RC::SUCCESS;
+        }
+
+        RC remove(IVector const * const& pat, IVector::NORM n, double tol) override
+        {
+            if (pat == nullptr)
+            {
+                logger->warning(RC::NULLPTR_ERROR);
+                return RC::NULLPTR_ERROR;
+            }
+
+            IVector* val;
+            RC error = findFirstAndCopy(pat, n, tol, val);
+            if (error != RC::SUCCESS)
+                return error;
+
+            double* newData = new double[capacity];
+            for (size_t iSet = 0, iVector = 0; iSet < setSize; ++iSet)
+            {
+                IVector* temp;
+                if (getCopy(iSet, temp) == RC::SUCCESS && !IVector::equals(temp, val, n, tol))
+                    for (size_t i = 0; i < dim; ++i, ++iVector)
+                        newData[iVector] = data[iSet * setSize + i];
+            }
+
+            --setSize;
+            delete data[];
+            delete val;
+            delete temp;
+            data = newData;
+            return RC::SUCCESS;
+        }
+
+        ~VectorImpl()
+        {
+            delete[] data;
+        }
     };
 
     ILogger* SetImpl::logger = nullptr;
 }
 
+RC ISet::setLogger(ILogger* const pLogger)
+{
+    if (logger == nullptr)
+        return RC::NULLPTR_ERROR;
+    VectorImpl::logger = logger;
+    return RC::SUCCESS;
+}
+
+ILogger* ISet::getLogger()
+{
+    return logger;
+}
+
+ISet* ISet::createSet()
+{
+    SetImpl* setPtr = new(std::nothrow)SetImpl;
+    if (setPtr == nullptr)
+    {
+        VectorImpl::logger->warning(RC::ALLOCATION_ERROR);
+        return nullptr;
+    }
+    return setPtr;
+}
+
+ISet* ISet::makeIntersection(ISet const * const& op1, ISet const * const& op2, IVector::NORM n, double tol)
+{
+    if (op1 == nullptr || op2 == nullptr)
+    {
+        logger->warning(RC::NULLPTR_ERROR);
+        return nullptr;
+    }
+    IVector *data, *value;
+    ISet* newSet = ISet::createSet();
+    if (newSet == nullptr)
+        return nullptr;
+
+    size_t setSize1 = op1->getSize();
+    for (size_t i = 0; i < setSize1; ++i)
+    {
+        if (op1.getCopy(i, data) != RC::SUCCESS)
+            continue;
+        if (op2.findFirstAndCopy(data, n, tol, value) != RC::SUCCESS)
+            continue;
+        if (newSet.insert(value, n, tol) != RC::SUCCESS)
+            continue;
+        delete data;
+        delete value;
+    }
+    return newSet;
+}
+
+ISet* ISet::makeUnion(ISet const * const& op1, ISet const * const& op2, IVector::NORM n, double tol)
+{
+    if (op1 == nullptr || op2 == nullptr)
+    {
+        logger->warning(RC::NULLPTR_ERROR);
+        return nullptr;
+    }
+    ISet* newSet = op1->clone();
+    if (newSet == nullptr)
+        return nullptr;
+
+    size_t size2 = op2->getSize();
+    IVector* value;
+    for (size_t i = 0; i < size2; ++i)
+    {
+        if (op1.getCopy(i, value) != RC::SUCCESS)
+            continue;
+        if (newSet.insert(value, n, tol) != RC::SUCCESS)
+            continue;
+        delete value;
+    }
+    return newSet;
+}
+
+ISet* ISet::sub(ISet const * const& op1, ISet const * const& op2, IVector::NORM n, double tol)
+{
+    if (op1 == nullptr || op2 == nullptr)
+    {
+        logger->warning(RC::NULLPTR_ERROR);
+        return nullptr;
+    }
+
+    ISet* newSet = op1->clone();
+    ISet* interSet = ISet::makeIntersection(op1, op2, n, tol);
+    if (newSet == nullptr || interSet == nullptr)
+        return nullptr;
+
+    IVector* value;
+    size_t interSize = interSet->getSize();
+    for (size_t i = 0; i < interSize; ++i)
+    {
+        if (interSet.getCopy(i, value) != RC::SUCCESS)
+            continue;
+        if (newSet.remove(value, n, tol) != RC::SUCCESS)
+            continue;
+        delete value;
+    }
+
+    delete unionSet;
+    return newSet;
+}
+
+ISet* ISet::symSub(ISet const * const& op1, ISet const * const& op2, IVector::NORM n, double tol)
+{
+    if (op1 == nullptr || op2 == nullptr)
+    {
+        logger->warning(RC::NULLPTR_ERROR);
+        return nullptr;
+    }
+
+    ISet* unionSet = ISet::makeUnion(op1, op2, n, tol);
+    ISet* interSet = ISet::makeIntersection(op1, op2, n, tol);
+    if (unionSet == nullptr || interSet == nullptr)
+        return nullptr;
+    ISet* newSet = ISet::sub(unionSet, interSet, n, tol);
+
+    delete unionSet;
+    delete interSet;
+    return newSet;
+}
+
+bool ISet::equals(ISet const * const& op1, ISet const * const& op2, IVector::NORM n, double tol)
+{
+    if (op1 == nullptr || op2 == nullptr)
+    {
+        logger->warning(RC::NULLPTR_ERROR);
+        return false;
+    }
+    ISet* temp = ISet::sub(op1, op2, n, tol);
+    if (temp == nullptr || temp->getSize() != 0)
+    {
+        delete temp
+        return false;
+    }
+    delete temp;
+    return true;
+}
+
+bool ISet::subSet(ISet const * const& op1, ISet const * const& op2, IVector::NORM n, double tol)
+{
+    if (op1 == nullptr || op2 == nullptr)
+    {
+        logger->warning(RC::NULLPTR_ERROR);
+        return false;
+    }
+    ISet* temp = ISet::makeIntersection(op1, op2, n, tol);
+    if (temp == nullptr || !ISet::equals(temp, op2, n, tol))
+    {
+        delete temp;
+        return false;
+    }
+    delete temp;
+    return true;
+}
+
+ISet::~ISet() = default;
+
+
 
 namespace {
     class SetImpl : public ISet {
     public:
-        static RC setLogger(ILogger* const pLogger) {
-            if (pLogger == nullptr)
-                return RC::NULLPTR_ERROR;
-
-            logger = pLogger;
-            return RC::SUCCESS;
-        }
-        static ILogger* getLogger() {
-            return logger;
-        }
-
-        static ISet* createSet() { return new SetImpl; }
-
-        RC remove(size_t index) {
-            if (size == 0) {
-                logger->warning(RC::SOURCE_SET_EMPTY, __FILE__, __func__, __LINE__);
-                return RC::SOURCE_SET_EMPTY;
-            }
-            if (index > size - 1) {
-                logger->warning(RC::INDEX_OUT_OF_BOUND, __FILE__, __func__, __LINE__);
-                return RC::INDEX_OUT_OF_BOUND;
-            }
-
-            double* new_data = new double[capacity];
-            for (size_t vec_idx = 0, new_idx = 0; vec_idx < size; ++vec_idx) {
-                if (vec_idx != index)
-                    for (size_t idx = 0; idx < dim; ++idx, ++new_idx)
-                        new_data[new_idx] = data[vec_idx * size + idx];
-            }
-            delete[] data;
-            data = new_data;
-            --size;
-
-            return RC::SUCCESS;
-        }
-        RC remove(IVector const * const& pat, IVector::NORM n, double tol) {
-            if (size == 0) {
-                logger->warning(RC::SOURCE_SET_EMPTY, __FILE__, __func__, __LINE__);
-                return RC::SOURCE_SET_EMPTY;
-            }
-
-            return RC::SUCCESS;
-         }
-
         /*
         * Iterator object can be created with ISet methods ISet::getIterator, ISet::getBegin, ISet::getEnd
         */
@@ -300,131 +459,4 @@ namespace {
         IIterator *getIterator(size_t index) const { return nullptr; }
         IIterator *getBegin() const { return nullptr; }
         IIterator *getEnd() const { return nullptr; }
-
-        ~SetImpl() = default;
-
 };
-
-RC ISet::setLogger(ILogger* const logger) {
-    return SetImpl::setLogger(logger);
-}
-ILogger* ISet::getLogger() {
-    return SetImpl::getLogger();
-}
-ISet* ISet::createSet() {
-    return SetImpl::createSet();
-}
-ISet* ISet::makeIntersection(ISet const * const& op1, ISet const * const& op2, IVector::NORM n, double tol) {
-    if (op1->getDim() != op2->getDim()) {
-        getLogger()->severe(RC::MISMATCHING_DIMENSIONS, __FILE__, __func__, __LINE__);
-        return nullptr;
-    }
-
-    size_t dim = op1->getDim();
-    ISet* new_set = ISet::createSet();
-
-    for (size_t vec_idx = 0; vec_idx < op1->getSize(); ++vec_idx) {
-        double* empty_data = new double[dim];
-
-        IVector* vec1 = IVector::createVector(dim, empty_data);
-        RC err = op1->getCoords(vec_idx, vec1);
-        if (err != RC::SUCCESS) {
-            delete vec1;
-            delete[] empty_data;
-
-            getLogger()->warning(err, __FILE__, __func__, __LINE__);
-            return new_set;
-        }
-
-        IVector* vec2 = IVector::createVector(op1->getDim(), new double[op1->getDim()]);
-        err = op2->findFirstAndCopyCoords(vec1, n, tol, vec2);
-        if (err != RC::SUCCESS) {
-            delete vec1;
-            delete vec2;
-            delete[] empty_data;
-
-            getLogger()->warning(err, __FILE__, __func__, __LINE__);
-            return new_set;
-        }
-
-        new_set->insert(vec1, n, tol);
-
-        delete vec1;
-        delete vec2;
-        delete[] empty_data;
-    }
-
-    return new_set;
-}
-ISet* ISet::makeUnion(ISet const * const& op1, ISet const * const& op2, IVector::NORM n, double tol) {
-    if (op1->getDim() != op2->getDim()) {
-        getLogger()->severe(RC::MISMATCHING_DIMENSIONS, __FILE__, __func__, __LINE__);
-        return nullptr;
-    }
-
-    size_t dim = op1->getDim();
-    ISet* new_set = op1->clone();
-
-    for (size_t vec_idx = 0; vec_idx < op1->getSize(); ++vec_idx) {
-        double* empty_data = new double[dim];
-
-        IVector* vec1 = IVector::createVector(dim, empty_data);
-        RC err = op1->getCoords(vec_idx, vec1);
-        if (err != RC::SUCCESS) {
-            delete vec1;
-            delete[] empty_data;
-
-            getLogger()->warning(err, __FILE__, __func__, __LINE__);
-            return new_set;
-        }
-
-        IVector* vec2 = IVector::createVector(op1->getDim(), new double[op1->getDim()]);
-        err = op2->findFirstAndCopyCoords(vec1, n, tol, vec2);
-        if (err == RC::VECTOR_NOT_FOUND) {
-            new_set->insert(vec1, n, tol);
-        }
-        else if (err != RC::SUCCESS) {
-            delete vec1;
-            delete vec2;
-            delete[] empty_data;
-
-            getLogger()->warning(err, __FILE__, __func__, __LINE__);
-            return new_set;
-        }
-
-        delete vec1;
-        delete vec2;
-        delete[] empty_data;
-    }
-
-    return new_set;
-}
-ISet* ISet::sub(ISet const * const& op1, ISet const * const& op2, IVector::NORM n, double tol) {
-    return nullptr;
-}
-ISet* ISet::symSub(ISet const * const& op1, ISet const * const& op2, IVector::NORM n, double tol) {
-    return nullptr;
-}
-bool ISet::equals(ISet const * const& op1, ISet const * const& op2, IVector::NORM n, double tol) {
-    if (op1->getDim() != op2->getDim()) {
-        getLogger()->warning(RC::MISMATCHING_DIMENSIONS, __FILE__, __func__, __LINE__);
-        return false;
-    }
-    if (op1->getSize() != op2->getSize()) {
-        getLogger()->warning(RC::MISMATCHING_DIMENSIONS, __FILE__, __func__, __LINE__);
-        return false;
-    }
-
-    return true;
-}
-bool ISet::subSet(ISet const * const& op1, ISet const * const& op2, IVector::NORM n, double tol) {
-    return false;
-}
-RC ISet::IIterator::setLogger(ILogger * const pLogger) {
-    return SetImpl::IteratorImpl::setLogger(pLogger);
-}
-ILogger* ISet::IIterator::getLogger() {
-    return SetImpl::IteratorImpl::getLogger();
-}
-ISet::~ISet() = default;
-
