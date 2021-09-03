@@ -37,8 +37,15 @@
 		<Unit filename="include/ISetControlBlock.h" />
 		<Unit filename="include/IVector.h" />
 		<Unit filename="include/RC.h" />
+		<Unit filename="src/IteratorImpl.cpp" />
 		<Unit filename="src/LoggerImpl.cpp" />
+		<Unit filename="src/SetBlockImpl.cpp" />
+		<Unit filename="src/SetBlockImpl.h" />
+		<Unit filename="src/SetImpl,h.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/SetImpl.cpp" />
+		<Unit filename="src/SetImpl.h" />
 		<Unit filename="src/VectorImpl.cpp" />
 		<Unit filename="tests/main.cpp" />
 		<Unit filename="tests/vector_tests.cpp" />
