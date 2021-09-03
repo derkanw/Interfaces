@@ -1,13 +1,16 @@
 #pragma once
 #include <vector>
 #include "../include/ISet.h"
+#include "../include/ISetControlBlock.h"
 
 class SetImpl : public ISet
 {
 private:
     std::vector<size_t> uniqueIndexes;
+    size_t lastIndex;
     double* data;
     size_t capacity, setSize, dim;
+    ISetControlBlock* setBlock;
 public:
     static ILogger* logger;
 
@@ -30,9 +33,10 @@ public:
     public:
         static ILogger* logger;
 
-        IIterator * getNext(size_t indexInc = 1) const override;
-        IIterator * getPrevious(size_t indexInc = 1) const override;
-        IIterator * clone() const override;
+        static IteratorImpl* createIterator(SetBlockImpl* const& block, size_t index, IVector* vector);
+        IIterator* getNext(size_t indexInc = 1) const override;
+        IIterator* getPrevious(size_t indexInc = 1) const override;
+        IIterator* clone() const override;
         RC next(size_t indexInc = 1) override;
         RC previous(size_t indexInc = 1) override;
         bool isValid() const override;
@@ -48,10 +52,11 @@ public:
     private:
         ISetControlBlock* block;
         IVector* currentVector;
-
+        size_t currentIndex;
+        bool valid;
     };
 
-    IIterator *getIterator(size_t index) const override;
-    IIterator *getBegin() const override;
-    IIterator *getEnd() const override;
+    IIterator* getIterator(size_t index) const override;
+    IIterator*getBegin() const override;
+    IIterator* getEnd() const override;
 };

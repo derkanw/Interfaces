@@ -11,6 +11,8 @@ namespace
         data = new double[capacity];
         setSize = 0;
         dim = 0;
+        lastIndex = 0;
+        setBlock = SetBlockImpl::createSet(this);
     }
 
     SetImpl* SetImpl::clone() const override
@@ -22,6 +24,8 @@ namespace
             newSet->setSize = this->setSize;
             newSet->capacity = this->capacity;
             newSet->data = new double[capacity];
+            newSet->uniqueIndexes = this->uniqueIndexes;
+            newSet->lastIndex = this->lastIndex;
 //если е работает, то убрать dim
             memcpy(newSet->data, data, setSize * dim * sizeof(double));
         }
@@ -180,7 +184,9 @@ namespace
         for (size_t i = 0; i < dim; ++i)
             data[setSize * dim + i] = temp[i];
         ++setSize;
-        deletep[] temp;
+        ++lastIndex;
+        uniqueIndexes.push_back(lastIndex);
+        delete[] temp;
         return RC::SUCCESS;
     }
 
@@ -195,9 +201,14 @@ namespace
         double* newData = new double[capacity];
         for (size_t iSet = 0, iVector = 0; iSet < setSize; ++iSet)
             if (iSet != index)
+            {
                 for (size_t i = 0; i < dim; ++i, ++iVector)
                     newData[iVector] = data[iSet * setSize + i];
+                break;
+            }
+    //сюды итератор вместо iSet
         --setSize;
+        uniqueIndexes.erase(uniqueIndexes.begin() + index);
         delete data[];
         data = newData;
         return RC::SUCCESS;
@@ -221,16 +232,44 @@ namespace
         {
             IVector* temp;
             if (getCopy(iSet, temp) == RC::SUCCESS && !IVector::equals(temp, val, n, tol))
+            {
+                uniqueIndexes.erase(uniqueIndexes.begin() + iSet);
                 for (size_t i = 0; i < dim; ++i, ++iVector)
                     newData[iVector] = data[iSet * setSize + i];
+                    break;
+            }
         }
-
         --setSize;
         delete data[];
         delete val;
         delete temp;
         data = newData;
         return RC::SUCCESS;
+    }
+
+    IIterator* SetImpl::getIterator(size_t index) const override
+    {
+        if (index >= setSize)
+        {
+            logger->severe(RC::INDEX_OUT_OF_BOUND);
+            return nullptr;
+        }
+        IVector* value;
+        RC error = getCopy(index, value);
+        if (error != RC::SUCCESS)
+            return nullptr;
+        IteratorImpl::setLogger(logger);
+        return IteratorImpl::creatIterator(block, uniqueIndexes[index], value);
+    }
+
+    IIterator* SetInpl::getBegin() const override
+    {
+        return getIterator(0);
+    }
+
+    IIterator* SetImpl::getEnd() const override
+    {
+        return getIterator(setSize - 1);
     }
 
     ~SetImpl::SetImpl()
