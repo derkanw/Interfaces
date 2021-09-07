@@ -1,5 +1,6 @@
 #include <cmath>
 #include <limits>
+#include <cstdint>
 #include <cstring>
 #define PTR_DATA (double*)((uint8_t*)this + sizeof(VectorImpl))
 #include "../include/IVector.h"
@@ -23,7 +24,7 @@ namespace
             return (VectorImpl*)createVector(dim, PTR_DATA);
         }
 
-        ILogger* getLogger() const override
+        ILogger* getLogger() const
         {
             return logger;
         }
@@ -214,6 +215,11 @@ RC IVector::setLogger(ILogger* const logger)
     return RC::SUCCESS;
 }
 
+ILogger* IVector::getLogger()
+{
+    return VectorImpl::logger;
+}
+
 RC IVector::copyInstance(IVector* const dest, IVector const* const& src)
 {
     if (dest->getDim() != src->getDim())
@@ -221,9 +227,9 @@ RC IVector::copyInstance(IVector* const dest, IVector const* const& src)
         src->getLogger()->severe(RC::MISMATCHING_DIMENSIONS);
         return RC::MISMATCHING_DIMENSIONS;
     }
-    if (fabs((uint8_t*)dest - (uint8_t*)src) > src->sizeAllocated())
+    if (std::abs((uint8_t*)dest - (uint8_t*)src) > src->sizeAllocated())
     {
-        std::memcpy((uint8_t*)dest, src, src->sizeAllocated());
+        std::memcpy((uint8_t*)dest, (uint8_t*)src, src->sizeAllocated());
         return RC::SUCCESS;
     }
     src->getLogger()->warning(RC::MEMORY_INTERSECTION);
@@ -238,7 +244,7 @@ RC IVector::moveInstance(IVector* const dest, IVector*& src)
         return RC::MISMATCHING_DIMENSIONS;
     }
 
-    std::memmove((uint8_t*)dest, src, src->sizeAllocated());
+    std::memmove((uint8_t*)dest, (uint8_t*)src, src->sizeAllocated());
     delete src;
     src = nullptr;
     return RC::SUCCESS;

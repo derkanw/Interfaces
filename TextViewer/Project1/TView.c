@@ -27,6 +27,7 @@ TView* InitView(HWND classHwnd)
     view->lastVertPos = 0;
     view->lastHorzPos = 0;
     view->currentString = 0;
+    view->maxPhysPos = 65535;
 
     view->mode = IDM_SIMPLE;
     view->layoutOffset = NULL;

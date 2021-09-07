@@ -317,74 +317,36 @@
 1613208784 source:d:\downloads\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\interfaces-2d085b28ea5348d61c60841ff975378c3e534f57\project1\scrolling.c
 	"scrolling.h"
 
-1613168649 source:d:\github\derkanw\interfaces\textviewer\project1\changingsize.c
+1230771862 source:i:\interfaces\project1\changingsize.c
 	"changingSize.h"
 	"supporting.h"
 
-1613164260 d:\github\derkanw\interfaces\textviewer\project1\changingsize.h
+1613164262 i:\interfaces\project1\changingsize.h
 	"TModel.h"
 	"TView.h"
 
-1613164259 d:\github\derkanw\interfaces\textviewer\project1\tmodel.h
+1613164260 i:\interfaces\project1\tmodel.h
 
-1613167152 d:\github\derkanw\interfaces\textviewer\project1\tview.h
+1230758236 i:\interfaces\project1\tview.h
 	<Windows.h>
 	"menu.h"
 
-1613164260 d:\github\derkanw\interfaces\textviewer\project1\menu.h
+1613164262 i:\interfaces\project1\menu.h
 
-1613164260 d:\github\derkanw\interfaces\textviewer\project1\supporting.h
+1613164262 i:\interfaces\project1\supporting.h
 	"TModel.h"
 	"TView.h"
 
-1613211571 source:d:\github\derkanw\interfaces\textviewer\project1\main.c
-	<tchar.h>
-	"TModel.h"
-	"TView.h"
-	"processing.h"
-	"changingSize.h"
-	"scrolling.h"
-	"painting.h"
-
-1613164260 d:\github\derkanw\interfaces\textviewer\project1\processing.h
-	"TModel.h"
-	"TView.h"
-
-1613164260 d:\github\derkanw\interfaces\textviewer\project1\scrolling.h
-	"TModel.h"
-	"TView.h"
-
-1613164260 d:\github\derkanw\interfaces\textviewer\project1\painting.h
-	"TModel.h"
-	"TView.h"
-
-1613169179 source:d:\github\derkanw\interfaces\textviewer\project1\painting.c
-	"painting.h"
-	"supporting.h"
-
-1613211717 source:d:\github\derkanw\interfaces\textviewer\project1\processing.c
-	"processing.h"
-	"supporting.h"
-	"../Open/main.h"
-
-1613164259 d:\github\derkanw\interfaces\textviewer\open\main.h
-	<windows.h>
-	<stdio.h>
-
-1613164260 source:d:\github\derkanw\interfaces\textviewer\project1\resources.rc
-	"menu.h"
-
-1613208784 source:d:\github\derkanw\interfaces\textviewer\project1\scrolling.c
+1230758216 source:i:\interfaces\project1\scrolling.c
 	"scrolling.h"
 
-1613211571 source:d:\github\derkanw\interfaces\textviewer\project1\supporting.c
-	"supporting.h"
-
-1613209462 source:d:\github\derkanw\interfaces\textviewer\project1\tmodel.c
-	<stdlib.h>
+1613164262 i:\interfaces\project1\scrolling.h
 	"TModel.h"
+	"TView.h"
+
+1230772166 source:i:\interfaces\project1\supporting.c
 	"supporting.h"
 
-1613209382 source:d:\github\derkanw\interfaces\textviewer\project1\tview.c
+1230758128 source:i:\interfaces\project1\tview.c
 	"TView.h"
 

@@ -14,6 +14,7 @@ typedef struct
     unsigned int* layoutOffset; //массив построчных смещений текста режима верстки
     unsigned int sizeLayoutOffset; //размер массива смещений режима верстки
     unsigned int currentString; //начальное смещение текущей строки
+    unsigned int maxPhysPos; //максимальное положение ползунка в ленте прокручивания
 
     unsigned int mode; //режим вывода в окно (обычный или верстка)
     HWND hwnd; //дескриптор окна

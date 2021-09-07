@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "../include/ISet.h"
-#include "../include/ISetControlBlock.h"
+#include "SetBlockImpl.h"
 
 class SetImpl : public ISet
 {
@@ -10,7 +10,10 @@ private:
     size_t lastIndex;
     double* data;
     size_t capacity, setSize, dim;
-    ISetControlBlock* setBlock;
+    SetBlockImpl* setBlock;
+
+    size_t indexToPos(size_t index) const;
+
 public:
     static ILogger* logger;
 
@@ -28,7 +31,7 @@ public:
     RC remove(IVector const * const& pat, IVector::NORM n, double tol) override;
     ~SetImpl();
 
-    class IteratorImpl : public IIterator
+    class IteratorImpl : public ISet::IIterator
     {
     public:
         static ILogger* logger;
@@ -44,19 +47,24 @@ public:
         RC makeEnd() override;
         RC getVectorCopy(IVector *& val) const override;
         RC getVectorCoords(IVector * const& val) const override;
-        ~IteratorImpl()  = default;
+        ~IteratorImpl();
 
     protected:
-        IteratorImpl() = default;
+        IteratorImpl();
 
     private:
-        ISetControlBlock* block;
+        SetBlockImpl* block;
         IVector* currentVector;
         size_t currentIndex;
         bool valid;
     };
 
+    RC getNextIterator(IVector *const &vec, size_t &index, size_t indexInc = 1) const;
+    RC getPreviousIterator(IVector *const &vec, size_t &index, size_t indexInc = 1) const;
+    RC getBeginIterator(IVector *const &vec, size_t &index) const;
+    RC getEndIterator(IVector *const &vec, size_t &index) const;
+
     IIterator* getIterator(size_t index) const override;
-    IIterator*getBegin() const override;
+    IIterator* getBegin() const override;
     IIterator* getEnd() const override;
 };

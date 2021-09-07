@@ -22,8 +22,8 @@ void VertScroll(TView* view, WPARAM wParam)
         break;
     case SB_THUMBTRACK:
         view->physVertPos = HIWORD(wParam);
-        if (view->lastVertPos > USHRT_MAX)
-            view->physVertPos = (int)((double)view->physVertPos / (double)USHRT_MAX * (double)view->lastVertPos);
+        if (view->lastVertPos > view->maxPhysPos)
+            view->physVertPos = (int)((double)view->physVertPos / (double)view->maxPhysPos * (double)view->lastVertPos);
         vertScrollInc = view->physVertPos - view->vertScrollPos;
         break;
     default:
@@ -38,8 +38,8 @@ void VertScroll(TView* view, WPARAM wParam)
 
         ScrollWindow(view->hwnd, 0, -1 * view->heightChar * vertScrollInc, NULL, NULL);
 
-        if (view->lastVertPos > USHRT_MAX)
-            view->physVertPos = (int)((double)view->vertScrollPos / (double)view->lastVertPos * (double)USHRT_MAX);
+        if (view->lastVertPos > view->maxPhysPos)
+            view->physVertPos = (int)((double)view->vertScrollPos / (double)view->lastVertPos * (double)view->maxPhysPos);
         else
             view->physVertPos = view->vertScrollPos;
 
@@ -71,8 +71,8 @@ void HorzScroll(TView* view, WPARAM wParam)
         break;
     case SB_THUMBTRACK:
         view->physHorzPos = HIWORD(wParam);
-        if (view->lastHorzPos > USHRT_MAX)
-            view->physHorzPos = (int)((double)view->physHorzPos / (double)USHRT_MAX * (double)view->lastHorzPos);
+        if (view->lastHorzPos > view->maxPhysPos)
+            view->physHorzPos = (int)((double)view->physHorzPos / (double)view->maxPhysPos * (double)view->lastHorzPos);
         horzScrollInc = view->physHorzPos - view->horzScrollPos;
         break;
     default:
@@ -87,8 +87,8 @@ void HorzScroll(TView* view, WPARAM wParam)
 
         ScrollWindow(view->hwnd, -1 * view->widthChar * horzScrollInc, 0, NULL, NULL);
 
-        if (view->lastHorzPos > USHRT_MAX)
-            view->physHorzPos = (int)((double)view->horzScrollPos / (double)view->lastHorzPos * (double)USHRT_MAX);
+        if (view->lastHorzPos > view->maxPhysPos)
+            view->physHorzPos = (int)((double)view->horzScrollPos / (double)view->lastHorzPos * (double)view->maxPhysPos);
         else
             view->physHorzPos = view->horzScrollPos;
 

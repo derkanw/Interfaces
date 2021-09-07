@@ -1,21 +1,4 @@
-#include <array>
-#include <memory>
-#include <iostream>
-#include <cassert>
-#include <cmath>
-#include "../include/IVector.h"
-#include "../include/ILogger.h"
 #include "vector_tests.h"
-
-#define DIM 3
-#define TOL 1e-3
-#define LOGGER ILogger* logger = ILogger::createLogger("log.txt");
-#define VECTOR1 double arr1[] = { 1.1, 2.3, 3.5 }; IVector* vector1 = IVector::createVector(DIM, arr1); vector1->setLogger(logger);
-#define VECTOR2 double arr2[] = { 5.3, 2.4, 1.9 }; IVector* vector2 = IVector::createVector(DIM, arr2); vector2->setLogger(logger);
-#define DELETE_VECTOR1 delete vector1;
-#define DELETE_VECTOR2 delete vector2;
-#define DELETE_LOGGER delete logger;
-
 
 void creatingTest()
 {
@@ -24,7 +7,7 @@ void creatingTest()
     VECTOR2
     IVector* vector3 = IVector::createVector(1, nullptr);
 
-    if (vector1 == nullptr || vector1 == nullptr || vector3 != nullptr)
+    if (vector1 == nullptr || vector2 == nullptr || vector3 != nullptr)
     std::cout << "Error in creatingTest()" << std::endl;
 
     delete vector3;

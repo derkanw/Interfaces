@@ -57,8 +57,8 @@ void LayoutMode(TModel* model, TView* view)
         }
     }
     view->layoutOffset[view->sizeLayoutOffset - 1] = model->offset[model->sizeOffset - 1];
-    view->sizeVertScroll = (model->sizeOffset - 1) / USHRT_MAX + 1;
-    view->sizeHorzScroll = model->maxLine / USHRT_MAX + 1;
+    view->sizeVertScroll = (model->sizeOffset - 1) / view->maxPhysPos + 1;
+    view->sizeHorzScroll = model->maxLine / view->maxPhysPos + 1;
 
 }
 

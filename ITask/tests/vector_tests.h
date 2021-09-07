@@ -1,4 +1,5 @@
 #pragma once
+#include "tests.h"
 
 void creatingTest();
 void copyingTest();

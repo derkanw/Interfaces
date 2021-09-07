@@ -22,12 +22,12 @@ void ChangeVertSize(TModel* model, TView* view)
             view->vertScrollPos = min(view->vertScrollPos, view->lastVertPos);
         }
 
-    if (view->lastVertPos > USHRT_MAX)
-        view->physVertPos = (int)((double)view->vertScrollPos / (double)view->lastVertPos * (double)USHRT_MAX);
+    if (view->lastVertPos > view->maxPhysPos)
+        view->physVertPos = (int)((double)view->vertScrollPos / (double)view->lastVertPos * (double)view->maxPhysPos);
     else
         view->physVertPos = view->vertScrollPos;
 
-    SetScrollRange(view->hwnd, SB_VERT, 0, min(view->lastVertPos, USHRT_MAX), FALSE);
+    SetScrollRange(view->hwnd, SB_VERT, 0, min(view->lastVertPos, view->maxPhysPos), FALSE);
     SetScrollPos(view->hwnd, SB_VERT, view->physVertPos, TRUE);
 }
 
@@ -42,7 +42,8 @@ void ChangeHorzSize(TModel* model, TView* view)
     if (view->mode == IDM_LAYOUT)
         {
             view->lastHorzPos = 0;
-            view->currentString = view->layoutOffset[view->vertScrollPos];
+            if (view->sizeLayoutOffset != 1)
+		view->currentString = view->layoutOffset[view->vertScrollPos];
             ClearView(view);
             if (model->str)
                 LayoutMode(model, view);
@@ -51,11 +52,11 @@ void ChangeHorzSize(TModel* model, TView* view)
         view->lastHorzPos = max(0, (int)model->maxLine - (int)view->countChars - 2);
 
     view->horzScrollPos = min(view->horzScrollPos, view->lastHorzPos);
-    if (view->lastHorzPos > USHRT_MAX)
-        view->physHorzPos = (int)((double)view->horzScrollPos / (double)view->lastHorzPos * (double)USHRT_MAX);
+    if (view->lastHorzPos > view->maxPhysPos)
+        view->physHorzPos = (int)((double)view->horzScrollPos / (double)view->lastHorzPos * (double)view->maxPhysPos);
     else
         view->physHorzPos = view->horzScrollPos;
 
-    SetScrollRange(view->hwnd, SB_HORZ, 0, min(view->lastHorzPos, USHRT_MAX), FALSE);
+    SetScrollRange(view->hwnd, SB_HORZ, 0, min(view->lastHorzPos, view->maxPhysPos), FALSE);
     SetScrollPos(view->hwnd, SB_HORZ, view->physHorzPos, TRUE);
 }

@@ -87,3 +87,81 @@
 
 1623873751 source:d:\desktop\derkachenko_ivector\derkachenko\src\setimpl.cpp
 
+1630961442 source:d:\github\derkanw\interfaces\itask\src\loggerimpl.cpp
+	<ostream>
+	<fstream>
+	<iostream>
+	<map>
+	"../include/ILogger.h"
+
+1629988695 d:\github\derkanw\interfaces\itask\include\ilogger.h
+	"RC.h"
+
+1629988695 d:\github\derkanw\interfaces\itask\include\rc.h
+
+1631049563 source:d:\github\derkanw\interfaces\itask\tests\main.cpp
+	"vector_tests.h"
+	"set_tests.h"
+
+1630961715 d:\github\derkanw\interfaces\itask\include\ivector.h
+	<cstddef>
+	<functional>
+	"RC.h"
+	"ILogger.h"
+
+1630965798 d:\github\derkanw\interfaces\itask\tests\vector_tests.h
+	"tests.h"
+
+1630966262 source:d:\github\derkanw\interfaces\itask\tests\vector_tests.cpp
+	"vector_tests.h"
+
+1630961442 source:d:\github\derkanw\interfaces\itask\src\vectorimpl.cpp
+	<cmath>
+	<limits>
+	<cstdint>
+	<cstring>
+	"../include/IVector.h"
+
+1630961442 source:d:\github\derkanw\interfaces\itask\src\iteratorimpl.cpp
+	"SetImpl.h"
+
+1630961442 d:\github\derkanw\interfaces\itask\src\setimpl.h
+	<vector>
+	"../include/ISet.h"
+	"SetBlockImpl.h"
+
+1630665472 d:\github\derkanw\interfaces\itask\include\iset.h
+	<cstddef>
+	"IVector.h"
+
+1630961442 d:\github\derkanw\interfaces\itask\src\setblockimpl.h
+	"../include/ISetControlBlock.h"
+
+1630705323 d:\github\derkanw\interfaces\itask\include\isetcontrolblock.h
+	"IVector.h"
+	<cstddef>
+
+1630962141 source:d:\github\derkanw\interfaces\itask\src\setblockimpl.cpp
+	"SetBlockImpl.h"
+	"SetImpl.h"
+
+1631049553 source:d:\github\derkanw\interfaces\itask\src\setimpl.cpp
+	<cmath>
+	<cstring>
+	"SetImpl.h"
+
+1631041407 d:\github\derkanw\interfaces\itask\tests\tests.h
+	<array>
+	<memory>
+	<iostream>
+	<cmath>
+	"../include/IVector.h"
+	"../include/ILogger.h"
+	"../include/ISet.h"
+
+1631041131 d:\github\derkanw\interfaces\itask\tests\set_tests.h
+	"tests.h"
+
+1631045710 source:d:\github\derkanw\interfaces\itask\tests\set_tests.cpp
+	"set_tests.h"
+
