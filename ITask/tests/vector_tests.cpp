@@ -262,6 +262,7 @@ void subTest()
             std::cout << "Error in subTest()" << std::endl;
             return;
         }
+    delete vector3;
 
     DELETE_LOGGER
     DELETE_VECTOR1
