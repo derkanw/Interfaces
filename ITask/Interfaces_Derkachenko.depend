@@ -99,9 +99,11 @@
 
 1629988695 d:\github\derkanw\interfaces\itask\include\rc.h
 
-1631049563 source:d:\github\derkanw\interfaces\itask\tests\main.cpp
+1631307091 source:d:\github\derkanw\interfaces\itask\tests\main.cpp
 	"vector_tests.h"
 	"set_tests.h"
+	"multiIndex_tests.h"
+	"compact_tests.h"
 
 1630961715 d:\github\derkanw\interfaces\itask\include\ivector.h
 	<cstddef>
@@ -112,7 +114,7 @@
 1630965798 d:\github\derkanw\interfaces\itask\tests\vector_tests.h
 	"tests.h"
 
-1631092918 source:d:\github\derkanw\interfaces\itask\tests\vector_tests.cpp
+1631307237 source:d:\github\derkanw\interfaces\itask\tests\vector_tests.cpp
 	"vector_tests.h"
 
 1631206919 source:d:\github\derkanw\interfaces\itask\src\vectorimpl.cpp
@@ -150,7 +152,7 @@
 	<cstring>
 	"SetImpl.h"
 
-1631041407 d:\github\derkanw\interfaces\itask\tests\tests.h
+1631304874 d:\github\derkanw\interfaces\itask\tests\tests.h
 	<array>
 	<memory>
 	<iostream>
@@ -158,11 +160,13 @@
 	"../include/IVector.h"
 	"../include/ILogger.h"
 	"../include/ISet.h"
+	"../include/IMultiIndex.h"
+	"../include/ICompact.h"
 
 1631041131 d:\github\derkanw\interfaces\itask\tests\set_tests.h
 	"tests.h"
 
-1631045710 source:d:\github\derkanw\interfaces\itask\tests\set_tests.cpp
+1631307109 source:d:\github\derkanw\interfaces\itask\tests\set_tests.cpp
 	"set_tests.h"
 
 1631297875 source:d:\github\derkanw\interfaces\itask\src\multiindeximpl.cpp
@@ -199,4 +203,44 @@
 1631209161 d:\github\derkanw\interfaces\itask\include\icompact.h
 	"IVector.h"
 	"IMultiIndex.h"
+
+1631302356 source:d:\github\derkanw\interfaces\itask\src\compactiteratorimpl.cpp
+	"CompactImpl.h"
+
+1631303277 source:d:\github\derkanw\interfaces\itask\src\compactimpl.cpp
+	<cmath>
+	"CompactImpl.h"
+
+1631306583 source:d:\github\derkanw\interfaces\itask\tests\compact_tests.cpp
+	"tests.h"
+	<iostream>
+
+1631302810 d:\github\derkanw\interfaces\itask\tests\compact_tests.h
+	"tests.h"
+
+1631303428 d:\github\derkanw\interfaces\itask\tests\temp.h
+	"../include/ICompact.h"
+	"../include/ILogger.h"
+	"../include/IMultiIndex.h"
+	"../include/ISet.h"
+	"../include/IVector.h"
+
+1631303800 d:\github\derkanw\interfaces\itask\tests\vector_tests.cpp
+	"tests.h"
+
+1631303791 d:\github\derkanw\interfaces\itask\tests\set_tests.cpp
+	"tests.h"
+
+1631306583 d:\github\derkanw\interfaces\itask\tests\compact_tests.cpp
+	"tests.h"
+	<iostream>
+
+1631306749 d:\github\derkanw\interfaces\itask\tests\multiindex_tests.cpp
+	"tests.h"
+
+1631307211 d:\github\derkanw\interfaces\itask\tests\multiindex_tests.h
+	"tests.h"
+
+1631307126 source:d:\github\derkanw\interfaces\itask\tests\multiindex_tests.cpp
+	"multiIndex_tests.h"
 

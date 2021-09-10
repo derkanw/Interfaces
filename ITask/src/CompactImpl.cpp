@@ -144,7 +144,7 @@ ICompact::IIterator* CompactImpl::getIterator(IMultiIndex const * const&index, I
         return nullptr;
     }
 
-    IIterator* newIterator = IteratorImpl::createIterator(block, vectorCopy, index, bypassOrder);
+    IIterator* newIterator = IteratorImpl::createIterator(block, vectorCopy, index->clone(), bypassOrder->clone());
     delete vectorCopy;
     IIterator::setLogger(logger);
     return newIterator;
@@ -183,7 +183,7 @@ ICompact::IIterator* CompactImpl::getBegin(IMultiIndex const * const &bypassOrde
         return nullptr;
     }
 
-    IIterator* newIterator = IteratorImpl::createIterator(block, vectorCopy, index, bypassOrder);
+    IIterator* newIterator = IteratorImpl::createIterator(block, vectorCopy, index, bypassOrder->clone());
     delete vectorCopy;
     delete index;
     IIterator::setLogger(logger);
@@ -224,7 +224,7 @@ ICompact::IIterator* CompactImpl::getEnd(IMultiIndex const * const &bypassOrder)
         return nullptr;
     }
 
-    IIterator* newIterator = IteratorImpl::createIterator(block, vectorCopy, index, bypassOrder);
+    IIterator* newIterator = IteratorImpl::createIterator(block, vectorCopy, index, bypassOrder->clone());
     delete vectorCopy;
     delete index;
     IIterator::setLogger(logger);
@@ -372,14 +372,11 @@ ICompact* ICompact::createIntersection(ICompact const *op1, ICompact const *op2,
         IVector* tempInter = IVector::createVector(size, tempData);
         if (tempInter == nullptr)
         {
-            delete tempData;
-            delete tempInter;
             DELETE_ALL
             return nullptr;
         }
         if (tempInter->norm(IVector::NORM::FIRST) < tol)
             resGrid->setAxisIndex(i, 1);
-        delete[] tempData;
         delete tempInter;
     }
 
@@ -433,7 +430,7 @@ ICompact* ICompact::createCompactSpan(ICompact const *op1, ICompact const *op2, 
 
     for (size_t i = 0; i < dim; ++i)
     {
-        double temp[4] = {left1Data[i], right1Data[i], left2[i], right2Data[i]};
+        double temp[4] = {left1Data[i], right1Data[i], left2Data[i], right2Data[i]};
         buildUnion(temp, resLeft[i], resRight[i]);
         delete temp;
     }

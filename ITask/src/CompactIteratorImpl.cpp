@@ -48,7 +48,7 @@ ICompact::IIterator* CompactImpl::IteratorImpl::getNext()
 
 ICompact::IIterator* CompactImpl::IteratorImpl::clone() const
 {
-    return createIterator(block, currentVector->clone(), currentIndex->clone, order->clone());
+    return createIterator(block, currentVector->clone(), currentIndex->clone(), order->clone());
 }
 
 RC CompactImpl::IteratorImpl::next()
