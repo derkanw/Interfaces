@@ -2,17 +2,20 @@
 
 void testCreateCompact()
 {
-    ÑOMPACT1
+    LOGGER
+    COMPACT1
 
     if (compact1 == nullptr)
         std::cout << "Error in testCreateCompact()" << std::endl;
 
     DELETE_COMPACT1
+    DELETE_LOGGER
 }
 
 void testCloneCompact()
 {
-    ÑOMPACT1
+    LOGGER
+    COMPACT1
 
     ICompact* temp = compact1->clone();
     if (temp != nullptr)
@@ -20,196 +23,239 @@ void testCloneCompact()
     delete temp;
 
     DELETE_COMPACT1
+    DELETE_LOGGER
 }
 
-void CompactTest::testGetDim() {
-    CREATE_ALL
+void testIsInside()
+{
+    LOGGER
+    COMPACT1
 
-    assert(com1->getDim() == left_bound1->getDim());
+    double temp[] = {3, 1};
+    IVector* newVector = IVector::createVector(sizeof(temp), temp);
+    if (!compact1->isInside(newVector))
+        std::cout << "Error in testIsInside()" << std::endl;
+    delete newVector;
 
-    CLEAR_ALL
+    DELETE_COMPACT1
+    DELETE_LOGGER
 }
-void CompactTest::testGetGrid() {
-    CREATE_ALL
-    IMultiIndex *tmp = com1->getGrid();
 
-    const size_t *tmp_data = tmp->getData();
-    const size_t *index_data = grid1->getData();
-    for (size_t idx = 0; idx < com1->getDim(); ++idx)
-        assert(tmp_data[idx] == index_data[idx]);
+void testGetVectorCoordsCompact()
+{
+    LOGGER
+    COMPACT1
 
-    delete tmp;
-    CLEAR_ALL
+    size_t dim = compact1->getDim();
+    double* temp = new double[dim];
+    IVector* newVector = IVector::createVector(dim, temp);
+    delete[] temp;
+
+    size_t indexData[2] = {2, 2}, result[2] = {2, 2};
+    IMultiIndex* index = IMultiIndex::createMultiIndex(sizeof(indexData), indexData);
+    if (compact1->getVectorCoords(index, newVector) != RC::SUCCESS)
+        std::cout << "Error in testGetVectorCoordsCompact()" << std::endl;
+
+    const double* data = newVector->getData();
+    for (size_t i = 0; i < sizeof(result); ++i)
+        if (data[i] != result[i])
+            std::cout << "Error in testGetVectorCoordsCompact()" << std::endl;
+    delete newVector;
+    delete index;
+
+    DELETE_COMPACT1
+    DELETE_LOGGER
 }
-void CompactTest::testGetLeftBoundary() {
-    CREATE_ALL
-    IVector *left = nullptr;
 
-    RC err = com1->getLeftBoundary(left);
-    assert(err == RC::SUCCESS);
-    assert(IVector::equals(left_bound1, left, DEFAULT_NORM, TOLERANCE));
+void testGetVectorCopyCompact()
+{
+    LOGGER
+    COMPACT1
 
+    size_t dim = compact1->getDim();
+    IVector* newVector;
+
+    size_t indexData[2] = {2, 2}, result[2] = {2, 2};
+    IMultiIndex* index = IMultiIndex::createMultiIndex(sizeof(indexData), indexData);
+    if (compact1->getVectorCopy(index, newVector) != RC::SUCCESS)
+        std::cout << "Error in testGetVectorCopyCompact()" << std::endl;
+
+    const double* data = newVector->getData();
+    for (size_t i = 0; i < sizeof(result); ++i)
+        if (data[i] != result[i])
+            std::cout << "Error in testGetVectorCopyCompact()" << std::endl;
+    delete newVector;
+    delete index;
+
+    DELETE_COMPACT1
+    DELETE_LOGGER
+}
+
+void testGetLeftBoundary()
+{
+    LOGGER
+    COMPACT1
+
+    IVector* left = nullptr;
+    if (compact1->getLeftBoundary(left) != RC::SUCCESS || !IVector::equals(left1, left, DEFAULT_NORM, TOL))
+        std::cout << "Error in testGetLeftBoundary()" << std::endl;
     delete left;
-    CLEAR_ALL
+
+    DELETE_COMPACT1
+    DELETE_LOGGER
 }
-void CompactTest::testGetRightBoundary() {
-    CREATE_ALL
-    IVector *right = nullptr;
 
-    RC err = com1->getRightBoundary(right);
-    assert(err == RC::SUCCESS);
-    assert(IVector::equals(right_bound1, right, DEFAULT_NORM, TOLERANCE));
+void testGetRightBoundary()
+{
+    LOGGER
+    COMPACT1
 
+    IVector* right = nullptr;
+    if (compact1->getRightBoundary(right) != RC::SUCCESS || !IVector::equals(right1, right, DEFAULT_NORM, TOL))
+        std::cout << "Error in testGetRightBoundary()" << std::endl;
     delete right;
-    CLEAR_ALL
-}
-void CompactTest::testGetVectorCoords() {
-    CREATE_ALL
-    double *empty_data = new double[com1->getDim()];
-    IVector *tmp = IVector::createVector(com1->getDim(), empty_data);
-    std::array<size_t, 2> index_data({3, 3});
-    IMultiIndex *test_idx = IMultiIndex::createMultiIndex(index_data.size(), index_data.data());
 
-    std::array<double, 2> expected_vec_data({3, 3});
-    RC err = com1->getVectorCoords(test_idx, tmp);
-    for (size_t idx = 0; idx < expected_vec_data.size(); ++idx)
-        assert(tmp->getData()[idx] == expected_vec_data[idx]);
-
-    delete[] empty_data;
-    delete tmp;
-    delete test_idx;
-    CLEAR_ALL
-}
-void CompactTest::testGetVectorCopy() {
-    CREATE_ALL
-    IVector *tmp;
-    std::array<size_t, 2> index_data({3, 3});
-    IMultiIndex *test_idx = IMultiIndex::createMultiIndex(index_data.size(), index_data.data());
-
-    std::array<double, 2> expected_vec_data({3, 3});
-    RC err = com1->getVectorCopy(test_idx, tmp);
-    for (size_t idx = 0; idx < expected_vec_data.size(); ++idx)
-        assert(tmp->getData()[idx] == expected_vec_data[idx]);
-
-    delete tmp;
-    delete test_idx;
-    CLEAR_ALL
+    DELETE_COMPACT1
+    DELETE_LOGGER
 }
 
-void CompactTest::testIsInside() {
-    CREATE_LOGGER
-    CREATE_COM_ONE
-    std::array<double, 2> tmp_vec_data({2.5, 4.3});
-    IVector *tmp = IVector::createVector(tmp_vec_data.size(), tmp_vec_data.data());
+void testGetDimCompact()
+{
+    LOGGER
+    COMPACT1
 
-    assert(com1->isInside(tmp));
+    if (compact1->getDim() != left1->getDim())
+        std::cout << "Error in testGetDimCompact()" << std::endl;
 
-    delete tmp;
-    CLEAR_LOGGER
-    CLEAR_COM_ONE
+    DELETE_COMPACT1
+    DELETE_LOGGER
 }
 
-void CompactTest::testIntersection() {
-    CREATE_LOGGER
-    CREATE_COM_ONE
-    CREATE_COM_TWO
+void testGetGrid()
+{
+    LOGGER
+    COMPACT1
 
-    ICompact *inter = ICompact::createIntersection(com1, com2, grid1, TOLERANCE);
-    assert(inter != nullptr);
+    IMultiIndex* temp = compact1->getGrid();
 
-    IVector *inter_left;
-    RC err = inter->getLeftBoundary(inter_left);
-    assert(err == RC::SUCCESS);
-    assert(IVector::equals(inter_left, left_bound2, DEFAULT_NORM, TOLERANCE));
+    const size_t *tempData = temp->getData(), *indexData = grid1->getData();
+    size_t dim = compact1->getDim();
+    for (size_t i = 0; i < dim; ++i)
+        if (tempData[i] != indexData[i])
+            std::cout << "Error in testGetGrid()" << std::endl;
+    delete temp;
 
-    IVector *inter_right;
-    err = inter->getRightBoundary(inter_right);
-    assert(err == RC::SUCCESS);
-    assert(IVector::equals(inter_right, right_bound1, DEFAULT_NORM, TOLERANCE));
+    DELETE_COMPACT1
+    DELETE_LOGGER
+}
 
-    IMultiIndex *inter_grid = inter->getGrid();
-    assert(inter_grid != nullptr);
-    for (size_t idx = 0; idx < inter_grid->getDim(); ++idx)
-        assert(inter_grid->getData()[idx] == grid1->getData()[idx]);
+void testIntersectionCompact()
+{
+    LOGGER
+    COMPACT1
+    COMPACT2
 
-    delete inter_grid;
-    delete inter_left;
-    delete inter_right;
+    ICompact* inter = ICompact::createIntersection(compact1, compact2, grid1, TOL);
+    if (inter == nullptr)
+        std::cout << "Error in testIntersectionCompact()" << std::endl;
+
+    IVector *left, *right;
+    if (inter->getLeftBoundary(left) != RC::SUCCESS || inter->getRightBoundary(right) != RC::SUCCESS)
+        std::cout << "Error in testIntersectionCompact()" << std::endl;
+    if (!IVector::equals(left, left2, DEFAULT_NORM, TOL) || !IVector::equals(right, right1, DEFAULT_NORM, TOL))
+        std::cout << "Error in testIntersectionCompact()" << std::endl;
+
+    IMultiIndex* grid = inter->getGrid();
+    if (grid == nullptr)
+        std::cout << "Error in testIntersectionCompact()" << std::endl;
+    size_t dim = grid->getDim();
+    const size_t *gridData = grid->getData(), *grid1Data = grid1->getData();
+    for (size_t i = 0; i < dim; ++i)
+        if (gridData[i] != grid1Data[i])
+            std::cout << "Error in testIntersectionCompact()" << std::endl;
+
+    delete grid;
+    delete left;
+    delete right;
     delete inter;
-    CLEAR_COM_TWO
-    CLEAR_COM_ONE
-    CLEAR_LOGGER
+
+    DELETE_COMPACT2
+    DELETE_COMPACT1
+    DELETE_LOGGER
 }
-void CompactTest::testSpan() {
-    CREATE_LOGGER
-    CREATE_COM_ONE
-    CREATE_COM_TWO
 
-    ICompact *span = ICompact::createCompactSpan(com1, com2, grid1);
-    assert(span != nullptr);
+void testSpan()
+{
+    LOGGER
+    COMPACT1
+    COMPACT2
 
-    IVector *span_left;
-    RC err = span->getLeftBoundary(span_left);
-    assert(err == RC::SUCCESS);
-    assert(IVector::equals(span_left, left_bound1, DEFAULT_NORM, TOLERANCE));
+    ICompact* span = ICompact::createCompactSpan(compact1, compact2, grid1);
+    if (span == nullptr)
+        std::cout << "Error in testSpan()" << std::endl;
 
-    IVector *span_right;
-    err = span->getRightBoundary(span_right);
-    assert(err == RC::SUCCESS);
-    assert(IVector::equals(span_right, right_bound2, DEFAULT_NORM, TOLERANCE));
+    IVector *left, *right;
+    if (span->getLeftBoundary(left) != RC::SUCCESS || span->getRightBoundary(right) != RC::SUCCESS)
+        std::cout << "Error in testSpan()" << std::endl;
+    if (!IVector::equals(left, left1, DEFAULT_NORM, TOL) || !IVector::equals(right, right2, DEFAULT_NORM, TOL))
+        std::cout << "Error in testSpan()" << std::endl;
 
-    IMultiIndex *span_grid = span->getGrid();
-    assert(span_grid != nullptr);
-    for (size_t idx = 0; idx < span_grid->getDim(); ++idx)
-        assert(span_grid->getData()[idx] == grid1->getData()[idx]);
+    IMultiIndex* grid = span->getGrid();
+    if (grid == nullptr)
+        std::cout << "Error in testSpan()" << std::endl;
+    size_t dim = grid->getDim();
+    const size_t *gridData = grid->getData(), *grid1Data = grid1->getData();
+    for (size_t i = 0; i < dim; ++i)
+        if (gridData[i] != grid1Data[i])
+            std::cout << "Error in testSpan()" << std::endl;
 
-    delete span_grid;
-    delete span_left;
-    delete span_right;
+    delete grid;
+    delete left;
+    delete right;
     delete span;
-    CLEAR_COM_TWO
-    CLEAR_COM_ONE
-    CLEAR_LOGGER
+
+    DELETE_COMPACT2
+    DELETE_COMPACT1
+    DELETE_LOGGER
 }
 
-void CompactTest::testIterator() {
-    CREATE_LOGGER
-    CREATE_COM_ONE
+void testIteratorCompact()
+{
+    LOGGER
+    COMPACT1
 
-    IVector *iter_vec = nullptr;
-    std::array<size_t, 2> order_data({0, 1});
-    IMultiIndex *order = IMultiIndex::createMultiIndex(order_data.size(), order_data.data());
-    ICompact::IIterator *iter = com1->getBegin(order);
+    IVector* vector = nullptr;
+    size_t orderData[] = {0, 1};
+    IVector* result[] = {left1, right1};
+    IMultiIndex* order = IMultiIndex::createMultiIndex(sizeof(orderData), orderData);
+    ICompact::IIterator* iterator = compact1->getBegin(order);
 
-    for (; iter->isValid(); iter->next()) {
-        RC err = iter->getVectorCopy(iter_vec);
-        assert(err == RC::SUCCESS);
-        assert(iter_vec != nullptr);
-        delete iter_vec;
-        iter_vec = nullptr;
+    for (size_t i = 0; i < sizeof(result), iterator->isValid(); ++i, iterator->next())
+    {
+        if (iterator->getVectorCopy(vector) != RC::SUCCESS || vector == nullptr || !IVector::equals(vector, result[i], DEFAULT_NORM, TOL))
+            std::cout << "Error in testIteratorCompact()" << std::endl;
+        delete vector;
     }
 
-    delete iter;
+    delete iterator;
     delete order;
-    CLEAR_COM_ONE
-    CLEAR_LOGGER
+
+    DELETE_COMPACT1
+    DELETE_LOGGER
 }
 
-void CompactTest::testAll() {
-    std::cout << "Running all Compact tests" << std::endl;
-
-    testCreate();
-    testClone();
-    testGetDim();
+void compactTests()
+{
+    testCreateCompact();
+    testCloneCompact();
+    testGetDimCompact();
     testGetGrid();
     testGetLeftBoundary();
     testGetRightBoundary();
-    testGetVectorCoords();
-    testGetVectorCopy();
+    testGetVectorCoordsCompact();
+    testGetVectorCopyCompact();
     testIsInside();
-    testIntersection();
+    testIntersectionCompact();
     testSpan();
-    testIterator();
-
-    std::cout << "Successfully ran all Compact tests" << std::endl;
-}*/
+    testIteratorCompact();
+}

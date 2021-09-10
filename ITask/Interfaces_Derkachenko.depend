@@ -152,7 +152,7 @@
 	<cstring>
 	"SetImpl.h"
 
-1631304874 d:\github\derkanw\interfaces\itask\tests\tests.h
+1631314953 d:\github\derkanw\interfaces\itask\tests\tests.h
 	<array>
 	<memory>
 	<iostream>
@@ -207,15 +207,14 @@
 1631302356 source:d:\github\derkanw\interfaces\itask\src\compactiteratorimpl.cpp
 	"CompactImpl.h"
 
-1631303277 source:d:\github\derkanw\interfaces\itask\src\compactimpl.cpp
+1631312558 source:d:\github\derkanw\interfaces\itask\src\compactimpl.cpp
 	<cmath>
 	"CompactImpl.h"
 
-1631306583 source:d:\github\derkanw\interfaces\itask\tests\compact_tests.cpp
-	"tests.h"
-	<iostream>
+1631315646 source:d:\github\derkanw\interfaces\itask\tests\compact_tests.cpp
+	"compact_tests.h"
 
-1631302810 d:\github\derkanw\interfaces\itask\tests\compact_tests.h
+1631315531 d:\github\derkanw\interfaces\itask\tests\compact_tests.h
 	"tests.h"
 
 1631303428 d:\github\derkanw\interfaces\itask\tests\temp.h

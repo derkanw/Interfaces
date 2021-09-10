@@ -1,6 +1,6 @@
 #include <cmath>
 #include "CompactImpl.h"
-#define DELETE_ALL delete left1; delete left2; delete right1; delete right2; delete resGrid; delete resLeft; delete resRight; delete start; delete end;
+#define DELETE_ALL delete left1; delete left2; delete right1; delete right2; delete resRight; delete start; delete end;
 
 ILogger* CompactImpl::logger = nullptr;
 
@@ -173,7 +173,7 @@ ICompact::IIterator* CompactImpl::getBegin(IMultiIndex const * const &bypassOrde
         temp[i] = 1;
 
     IMultiIndex* index = IMultiIndex::createMultiIndex(dim, temp);
-    delete temp;
+    delete[] temp;
     IVector* vectorCopy = nullptr;
     if (index == nullptr || getLeftBoundary(vectorCopy) != RC::SUCCESS)
     {
@@ -368,7 +368,7 @@ ICompact* ICompact::createIntersection(ICompact const *op1, ICompact const *op2,
             DELETE_ALL
             return nullptr;
         }
-        double tempData[size] = {resLeft[i], resRight[i]};
+        double tempData[] = {resLeft[i], resRight[i]};
         IVector* tempInter = IVector::createVector(size, tempData);
         if (tempInter == nullptr)
         {
@@ -432,7 +432,6 @@ ICompact* ICompact::createCompactSpan(ICompact const *op1, ICompact const *op2, 
     {
         double temp[4] = {left1Data[i], right1Data[i], left2Data[i], right2Data[i]};
         buildUnion(temp, resLeft[i], resRight[i]);
-        delete temp;
     }
 
     start = IVector::createVector(dim, resLeft);
