@@ -24,10 +24,6 @@ namespace
             return (VectorImpl*)createVector(dim, PTR_DATA);
         }
 
-        ILogger* getLogger() const
-        {
-            return logger;
-        }
         double const* getData() const override
         {
             return PTR_DATA;

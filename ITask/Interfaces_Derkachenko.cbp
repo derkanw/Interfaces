@@ -33,14 +33,22 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="include/ICompact.h" />
+		<Unit filename="include/ICompactControlBlock.h" />
 		<Unit filename="include/ILogger.h" />
 		<Unit filename="include/IMultiIndex.h" />
 		<Unit filename="include/ISet.h" />
 		<Unit filename="include/ISetControlBlock.h" />
 		<Unit filename="include/IVector.h" />
 		<Unit filename="include/RC.h" />
+		<Unit filename="src/CompactBlockImpl.cpp" />
+		<Unit filename="src/CompactBlockImpl.h" />
+		<Unit filename="src/CompactImpl.cpp" />
+		<Unit filename="src/CompactImpl.h" />
+		<Unit filename="src/CompactIteratorImpl.cpp" />
 		<Unit filename="src/IteratorImpl.cpp" />
 		<Unit filename="src/LoggerImpl.cpp" />
+		<Unit filename="src/MultiIndexImpl.cpp" />
+		<Unit filename="src/MultiIndexImpl.h" />
 		<Unit filename="src/SetBlockImpl.cpp" />
 		<Unit filename="src/SetBlockImpl.h" />
 		<Unit filename="src/SetImpl.cpp" />

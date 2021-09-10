@@ -112,17 +112,17 @@
 1630965798 d:\github\derkanw\interfaces\itask\tests\vector_tests.h
 	"tests.h"
 
-1630966262 source:d:\github\derkanw\interfaces\itask\tests\vector_tests.cpp
+1631092918 source:d:\github\derkanw\interfaces\itask\tests\vector_tests.cpp
 	"vector_tests.h"
 
-1630961442 source:d:\github\derkanw\interfaces\itask\src\vectorimpl.cpp
+1631206919 source:d:\github\derkanw\interfaces\itask\src\vectorimpl.cpp
 	<cmath>
 	<limits>
 	<cstdint>
 	<cstring>
 	"../include/IVector.h"
 
-1630961442 source:d:\github\derkanw\interfaces\itask\src\iteratorimpl.cpp
+1631270997 source:d:\github\derkanw\interfaces\itask\src\iteratorimpl.cpp
 	"SetImpl.h"
 
 1630961442 d:\github\derkanw\interfaces\itask\src\setimpl.h
@@ -164,4 +164,39 @@
 
 1631045710 source:d:\github\derkanw\interfaces\itask\tests\set_tests.cpp
 	"set_tests.h"
+
+1631297875 source:d:\github\derkanw\interfaces\itask\src\multiindeximpl.cpp
+	<cmath>
+	<cstring>
+	<cstdint>
+	<new>
+	"MultiIndexImpl.h"
+
+1631297763 d:\github\derkanw\interfaces\itask\src\multiindeximpl.h
+	"../include/IMultiIndex.h"
+
+1631208877 d:\github\derkanw\interfaces\itask\include\imultiindex.h
+	<cstddef>
+	<cstdlib>
+	"ILogger.h"
+
+1631298070 source:d:\github\derkanw\interfaces\itask\src\compactblockimpl.cpp
+	"CompactBlockImpl.h"
+	"CompactImpl.h"
+
+1631298068 d:\github\derkanw\interfaces\itask\src\compactblockimpl.h
+	"../include/ICompactControlBlock.h"
+
+1630663905 d:\github\derkanw\interfaces\itask\include\icompactcontrolblock.h
+	"IVector.h"
+	"IMultiIndex.h"
+	<cstddef>
+
+1631299254 d:\github\derkanw\interfaces\itask\src\compactimpl.h
+	"../include/ICompact.h"
+	"CompactBlockImpl.h"
+
+1631209161 d:\github\derkanw\interfaces\itask\include\icompact.h
+	"IVector.h"
+	"IMultiIndex.h"
 

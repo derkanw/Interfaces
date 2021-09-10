@@ -71,17 +71,24 @@ RC SetImpl::IteratorImpl::makeEnd()
 
 RC SetImpl::IteratorImpl::getVectorCopy(IVector *& val) const
 {
-    IVector* newVector = currentVector->clone();
-    if (newVector == nullptr)
-    {
+    val = currentVector->clone();
+    if (val == nullptr)
         return RC::ALLOCATION_ERROR;
-    }
-    val = newVector;
     return RC::SUCCESS;
 }
 
 RC SetImpl::IteratorImpl::getVectorCoords(IVector * const& val) const
 {
+    if (val == nullptr)
+    {
+        logger->warning(RC::NULLPTR_ERROR);
+        return RC::NULLPTR_ERROR;
+    }
+    if (val->getDim() != currentVector->getDim())
+    {
+        logger->severe(RC::MISMATCHING_DIMENSIONS);
+        return RC::MISMATCHING_DIMENSIONS;
+    }
     return val->setData(currentVector->getDim(), currentVector->getData());
 }
 
