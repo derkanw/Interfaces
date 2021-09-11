@@ -51,13 +51,13 @@ void testGetVectorCoordsCompact()
     IVector* newVector = IVector::createVector(dim, temp);
     delete[] temp;
 
-    size_t indexData[2] = {2, 2}, result[2] = {1, 1};
-    IMultiIndex* index = IMultiIndex::createMultiIndex(sizeof(indexData), indexData);
+    size_t indexData[] = {2, 2}, result[] = {2, 2};
+    IMultiIndex* index = IMultiIndex::createMultiIndex(SIZE, indexData);
     if (compact1->getVectorCoords(index, newVector) != RC::SUCCESS)
         std::cout << "Error in testGetVectorCoordsCompact()" << std::endl;
 
     const double* data = newVector->getData();
-    for (size_t i = 0; i < sizeof(result); ++i)
+    for (size_t i = 0; i < SIZE; ++i)
         if (data[i] != result[i])
             std::cout << "Error in testGetVectorCoordsCompact()" << std::endl;
     delete newVector;
@@ -75,13 +75,13 @@ void testGetVectorCopyCompact()
     size_t dim = compact1->getDim();
     IVector* newVector;
 
-    size_t indexData[2] = {2, 2}, result[2] = {2, 2};
-    IMultiIndex* index = IMultiIndex::createMultiIndex(sizeof(indexData), indexData);
+    size_t indexData[] = {2, 2}, result[] = {2, 2};
+    IMultiIndex* index = IMultiIndex::createMultiIndex(SIZE, indexData);
     if (compact1->getVectorCopy(index, newVector) != RC::SUCCESS)
         std::cout << "Error in testGetVectorCopyCompact()" << std::endl;
 
     const double* data = newVector->getData();
-    for (size_t i = 0; i < sizeof(result); ++i)
+    for (size_t i = 0; i < SIZE; ++i)
         if (data[i] != result[i])
             std::cout << "Error in testGetVectorCopyCompact()" << std::endl;
     delete newVector;

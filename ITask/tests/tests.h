@@ -36,13 +36,14 @@
 #define DELETE_INDEX1 delete index1;
 #define DELETE_INDEX2 delete index2;
 
-#define COMPACT1 double arr1[] = {0, 0}; IVector* left1 = IVector::createVector(sizeof(arr1), arr1); \
-    double arr2[] = {4, 4}; IVector* right1 = IVector::createVector(sizeof(arr2), arr2); \
-    size_t arr3[] = {5, 5}; IMultiIndex *grid1 = IMultiIndex::createMultiIndex(sizeof(arr3), arr3); \
+#define SIZE 2
+#define COMPACT1 double arr1[] = {0, 0}; IVector* left1 = IVector::createVector(SIZE, arr1); \
+    double arr2[] = {4, 4}; IVector* right1 = IVector::createVector(SIZE, arr2); \
+    size_t arr3[] = {5, 5}; IMultiIndex *grid1 = IMultiIndex::createMultiIndex(SIZE, arr3); \
     ICompact *compact1 = ICompact::createCompact(left1, right1, grid1);
-#define COMPACT2 double arr4[] = {2, 2}; IVector* left2 = IVector::createVector(sizeof(arr4), arr4); \
-    double arr5[] = {7, 7}; IVector* right2 = IVector::createVector(sizeof(arr5), arr5); \
-    size_t arr6[] = {5, 5}; IMultiIndex *grid2 = IMultiIndex::createMultiIndex(sizeof(arr6), arr6); \
+#define COMPACT2 double arr4[] = {2, 2}; IVector* left2 = IVector::createVector(SIZE, arr4); \
+    double arr5[] = {7, 7}; IVector* right2 = IVector::createVector(SIZE, arr5); \
+    size_t arr6[] = {5, 5}; IMultiIndex *grid2 = IMultiIndex::createMultiIndex(SIZE, arr6); \
     ICompact *compact2 = ICompact::createCompact(left2, right2, grid2);
 #define DELETE_COMPACT1 delete left1; delete right1; delete grid1; delete compact1;
 #define DELETE_COMPACT2 delete left2; delete right2; delete grid2; delete compact2;                                                                                                \
