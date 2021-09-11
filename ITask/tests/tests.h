@@ -46,4 +46,4 @@
     size_t arr6[] = {5, 5}; IMultiIndex *grid2 = IMultiIndex::createMultiIndex(SIZE, arr6); \
     ICompact *compact2 = ICompact::createCompact(left2, right2, grid2);
 #define DELETE_COMPACT1 delete left1; delete right1; delete grid1; delete compact1;
-#define DELETE_COMPACT2 delete left2; delete right2; delete grid2; delete compact2;                                                                                                \
+#define DELETE_COMPACT2 delete left2; delete right2; delete grid2; delete compact2;
