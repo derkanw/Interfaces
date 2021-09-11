@@ -1,0 +1,8 @@
+EXPORTS
+    _ZN7ILogger12createLoggerERKPKcb @1
+    _ZN7ILogger12createLoggerEv @2
+    _ZN7ILoggerD0Ev @3
+    _ZN7ILoggerD1Ev @4
+    _ZN7ILoggerD2Ev @5
+    _ZTI7ILogger @6 DATA
+    _ZTV7ILogger @7 DATA

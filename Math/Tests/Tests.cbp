@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Tests" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Tests" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-std=gnu++11" />
+					<Add option="-std=c++11" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="../Vector/bin/Debug/libVector.a" />
+					<Add library="../Set/bin/Debug/libSet.a" />
+					<Add library="../MultiIndex/bin/Debug/libMultiIndex.a" />
+					<Add library="../Logger/bin/Debug/libLogger.a" />
+					<Add library="../MultiIndex/bin/Debug/libMultiIndex.a" />
+					<Add library="user32" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Tests" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-std=gnu++11" />
+			<Add option="-std=c++11" />
+			<Add option="-DBUILD_INTERFACES" />
+		</Compiler>
+		<Linker>
+			<Add library="../Compact/bin/Debug/libCompact.a" />
+			<Add library="../Logger/bin/Debug/libLogger.a" />
+			<Add library="../MultiIndex/bin/Debug/libMultiIndex.a" />
+			<Add library="../Set/bin/Debug/libSet.a" />
+			<Add library="../Vector/bin/Debug/libVector.a" />
+			<Add library="user32" />
+		</Linker>
+		<Unit filename="tests/compact_tests.cpp" />
+		<Unit filename="tests/compact_tests.h" />
+		<Unit filename="tests/main.cpp" />
+		<Unit filename="tests/multiIndex_tests.cpp" />
+		<Unit filename="tests/multiIndex_tests.h" />
+		<Unit filename="tests/set_tests.cpp" />
+		<Unit filename="tests/set_tests.h" />
+		<Unit filename="tests/tests.h" />
+		<Unit filename="tests/vector_tests.cpp" />
+		<Unit filename="tests/vector_tests.h" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,16 @@
+EXPORTS
+    _ZN11IMultiIndex16createMultiIndexEyPKy @1
+    _ZN11IMultiIndex9getLoggerEv @2
+    _ZN11IMultiIndex9setLoggerEP7ILogger @3
+    _ZN11IMultiIndexD0Ev @4
+    _ZN11IMultiIndexD1Ev @5
+    _ZN11IMultiIndexD2Ev @6
+    _ZN7ILogger12createLoggerERKPKcb @7
+    _ZN7ILogger12createLoggerEv @8
+    _ZN7ILoggerD0Ev @9
+    _ZN7ILoggerD1Ev @10
+    _ZN7ILoggerD2Ev @11
+    _ZTI11IMultiIndex @12 DATA
+    _ZTI7ILogger @13 DATA
+    _ZTV11IMultiIndex @14 DATA
+    _ZTV7ILogger @15 DATA

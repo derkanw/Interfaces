@@ -1,0 +1,40 @@
+EXPORTS
+    _ZN11IMultiIndex16createMultiIndexEyPKy @1
+    _ZN11IMultiIndex9getLoggerEv @2
+    _ZN11IMultiIndex9setLoggerEP7ILogger @3
+    _ZN11IMultiIndexD0Ev @4
+    _ZN11IMultiIndexD1Ev @5
+    _ZN11IMultiIndexD2Ev @6
+    _ZN7ILogger12createLoggerERKPKcb @7
+    _ZN7ILogger12createLoggerEv @8
+    _ZN7ILoggerD0Ev @9
+    _ZN7ILoggerD1Ev @10
+    _ZN7ILoggerD2Ev @11
+    _ZN7IVector12copyInstanceEPS_RKPKS_ @12
+    _ZN7IVector12createVectorEyRKPKd @13
+    _ZN7IVector12moveInstanceEPS_RS0_ @14
+    _ZN7IVector3addERKPKS_S3_ @15
+    _ZN7IVector3dotERKPKS_S3_ @16
+    _ZN7IVector3subERKPKS_S3_ @17
+    _ZN7IVector6equalsERKPKS_S3_NS_4NORMEd @18
+    _ZN7IVector9getLoggerEv @19
+    _ZN7IVector9setLoggerEP7ILogger @20
+    _ZN7IVectorD0Ev @21
+    _ZN7IVectorD1Ev @22
+    _ZN7IVectorD2Ev @23
+    _ZN8ICompact13createCompactEPK7IVectorS2_PK11IMultiIndex @24
+    _ZN8ICompact17createCompactSpanEPKS_S1_PK11IMultiIndex @25
+    _ZN8ICompact18createIntersectionEPKS_S1_PK11IMultiIndexd @26
+    _ZN8ICompact9getLoggerEv @27
+    _ZN8ICompact9setLoggerEP7ILogger @28
+    _ZN8ICompactD0Ev @29
+    _ZN8ICompactD1Ev @30
+    _ZN8ICompactD2Ev @31
+    _ZTI11IMultiIndex @32 DATA
+    _ZTI7ILogger @33 DATA
+    _ZTI7IVector @34 DATA
+    _ZTI8ICompact @35 DATA
+    _ZTV11IMultiIndex @36 DATA
+    _ZTV7ILogger @37 DATA
+    _ZTV7IVector @38 DATA
+    _ZTV8ICompact @39 DATA

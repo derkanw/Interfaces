@@ -1,0 +1,68 @@
+# depslib dependency file v1.0
+1631298070 source:d:\github\derkanw\interfaces\math\compact\src\compactblockimpl.cpp
+	"CompactBlockImpl.h"
+	"CompactImpl.h"
+
+1631298068 d:\github\derkanw\interfaces\math\compact\src\compactblockimpl.h
+	"../include/ICompactControlBlock.h"
+
+1630663905 d:\github\derkanw\interfaces\math\compact\include\icompactcontrolblock.h
+	"IVector.h"
+	"IMultiIndex.h"
+	<cstddef>
+
+1631367950 d:\github\derkanw\interfaces\math\compact\include\ivector.h
+	<cstddef>
+	<functional>
+	"RC.h"
+	"ILogger.h"
+
+1629988695 d:\github\derkanw\interfaces\math\compact\include\rc.h
+
+1631367958 d:\github\derkanw\interfaces\math\compact\include\ilogger.h
+	"RC.h"
+
+1631367958 d:\github\derkanw\interfaces\math\compact\include\imultiindex.h
+	<cstddef>
+	<cstdlib>
+	"ILogger.h"
+
+1631299254 d:\github\derkanw\interfaces\math\compact\src\compactimpl.h
+	"../include/ICompact.h"
+	"CompactBlockImpl.h"
+
+1631367958 d:\github\derkanw\interfaces\math\compact\include\icompact.h
+	"IVector.h"
+	"IMultiIndex.h"
+
+1631350210 source:d:\github\derkanw\interfaces\math\compact\src\compactimpl.cpp
+	<cmath>
+	"CompactImpl.h"
+
+1631302356 source:d:\github\derkanw\interfaces\math\compact\src\compactiteratorimpl.cpp
+	"CompactImpl.h"
+
+1630961442 source:d:\github\derkanw\interfaces\math\compact\src\loggerimpl.cpp
+	<ostream>
+	<fstream>
+	<iostream>
+	<map>
+	"../include/ILogger.h"
+
+1631297875 source:d:\github\derkanw\interfaces\math\compact\src\multiindeximpl.cpp
+	<cmath>
+	<cstring>
+	<cstdint>
+	<new>
+	"MultiIndexImpl.h"
+
+1631297763 d:\github\derkanw\interfaces\math\compact\src\multiindeximpl.h
+	"../include/IMultiIndex.h"
+
+1631206919 source:d:\github\derkanw\interfaces\math\compact\src\vectorimpl.cpp
+	<cmath>
+	<limits>
+	<cstdint>
+	<cstring>
+	"../include/IVector.h"
+

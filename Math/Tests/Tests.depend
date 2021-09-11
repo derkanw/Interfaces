@@ -1,0 +1,75 @@
+# depslib dependency file v1.0
+1631345502 source:d:\github\derkanw\interfaces\math\tests\tests\main.cpp
+	"vector_tests.h"
+	"set_tests.h"
+	"multiIndex_tests.h"
+	"compact_tests.h"
+
+1630965798 d:\github\derkanw\interfaces\math\tests\tests\vector_tests.h
+	"tests.h"
+
+1631371853 d:\github\derkanw\interfaces\math\tests\tests\tests.h
+	<array>
+	<memory>
+	<iostream>
+	<cmath>
+	"../include/IVector.h"
+	"../include/ILogger.h"
+	"../include/ISet.h"
+	"../include/IMultiIndex.h"
+	"../include/ICompact.h"
+
+1630663905 d:\github\derkanw\interfaces\math\tests\include\ivector.h
+	<cstddef>
+	<functional>
+	"RC.h"
+	"ILogger.h"
+	"Interfacedllexport.h"
+
+1630663905 d:\github\derkanw\interfaces\math\tests\include\rc.h
+
+1630663905 d:\github\derkanw\interfaces\math\tests\include\ilogger.h
+	"RC.h"
+	"Interfacedllexport.h"
+
+1630663905 d:\github\derkanw\interfaces\math\tests\include\interfacedllexport.h
+
+1630663905 d:\github\derkanw\interfaces\math\tests\include\iset.h
+	<cstddef>
+	"IVector.h"
+	"RC.h"
+	"Interfacedllexport.h"
+
+1630663905 d:\github\derkanw\interfaces\math\tests\include\imultiindex.h
+	<cstddef>
+	<cstdlib>
+	"ILogger.h"
+
+1630663905 d:\github\derkanw\interfaces\math\tests\include\icompact.h
+	"Interfacedllexport.h"
+	"ILogger.h"
+	"IVector.h"
+	"RC.h"
+	"IMultiIndex.h"
+
+1631041131 d:\github\derkanw\interfaces\math\tests\tests\set_tests.h
+	"tests.h"
+
+1631307211 d:\github\derkanw\interfaces\math\tests\tests\multiindex_tests.h
+	"tests.h"
+
+1631346677 d:\github\derkanw\interfaces\math\tests\tests\compact_tests.h
+	"tests.h"
+
+1631349262 source:d:\github\derkanw\interfaces\math\tests\tests\compact_tests.cpp
+	"compact_tests.h"
+
+1631350110 source:d:\github\derkanw\interfaces\math\tests\tests\multiindex_tests.cpp
+	"multiIndex_tests.h"
+
+1631307109 source:d:\github\derkanw\interfaces\math\tests\tests\set_tests.cpp
+	"set_tests.h"
+
+1631307237 source:d:\github\derkanw\interfaces\math\tests\tests\vector_tests.cpp
+	"vector_tests.h"
+
