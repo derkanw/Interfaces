@@ -1,6 +1,6 @@
 #include <cmath>
 #include "CompactImpl.h"
-#define DELETE_ALL delete left1; delete left2; delete right1; delete right2; delete resRight; delete start; delete end;
+#define DELETE_ALL delete left1; delete left2; delete right1; delete right2; delete start; delete end;
 
 ILogger* CompactImpl::logger = nullptr;
 

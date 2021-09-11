@@ -2,6 +2,89 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+	<File name="tests\main.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="194" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\MultiIndexImpl.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="622" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\CompactIteratorImpl.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1501" topLine="45" />
+		</Cursor>
+		<Folding>
+			<Collapse line="77" />
+		</Folding>
+	</File>
+	<File name="src\IteratorImpl.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1874" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\CompactBlockImpl.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="223" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\IMultiIndex.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="233" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\ICompact.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1843" topLine="62" />
+		</Cursor>
+	</File>
+	<File name="include\IVector.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="35" />
+		</Cursor>
+	</File>
+	<File name="tests\compact_tests.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="227" topLine="132" />
+		</Cursor>
+	</File>
+	<File name="src\CompactImpl.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1131" topLine="27" />
+		</Cursor>
+	</File>
+	<File name="src\SetImpl.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1291" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\SetBlockImpl.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1359" topLine="45" />
+		</Cursor>
+	</File>
+	<File name="tests\vector_tests.cpp" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="25" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\ISetControlBlock.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="12" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="tests\multiIndex_tests.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="10" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\ICompactControlBlock.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="129" topLine="3" />
+		</Cursor>
+	</File>
 	<File name="src\MultiIndexImpl.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1018" topLine="24" />
@@ -13,9 +96,19 @@
 			<Collapse line="94" />
 		</Folding>
 	</File>
-	<File name="src\CompactImpl.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+	<File name="src\LoggerImpl.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4183" topLine="61" />
+			<Cursor1 position="3032" topLine="67" />
+		</Cursor>
+	</File>
+	<File name="tests\tests.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1095" topLine="27" />
+		</Cursor>
+	</File>
+	<File name="src\CompactImpl.cpp" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="120" topLine="0" />
 		</Cursor>
 		<Folding>
 			<Collapse line="16" />
@@ -31,19 +124,43 @@
 			<Collapse line="320" />
 		</Folding>
 	</File>
-	<File name="src\MultiIndexImpl.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\ISet.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="622" topLine="0" />
+			<Cursor1 position="2460" topLine="48" />
 		</Cursor>
 	</File>
-	<File name="tests\multiIndex_tests.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\CompactBlockImpl.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="10" topLine="0" />
+			<Cursor1 position="250" topLine="2" />
 		</Cursor>
+		<Folding>
+			<Collapse line="6" />
+			<Collapse line="11" />
+		</Folding>
+	</File>
+	<File name="tests\multiIndex_tests.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1927" topLine="78" />
+		</Cursor>
+		<Folding>
+			<Collapse line="34" />
+			<Collapse line="93" />
+			<Collapse line="106" />
+		</Folding>
 	</File>
 	<File name="tests\compact_tests.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="286" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\SetBlockImpl.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="645" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\VectorImpl.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="625" topLine="9" />
 		</Cursor>
 	</File>
 	<File name="src\SetImpl.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
@@ -58,69 +175,9 @@
 			<Collapse line="460" />
 		</Folding>
 	</File>
-	<File name="include\ISetControlBlock.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\RC.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="12" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\SetBlockImpl.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1359" topLine="45" />
-		</Cursor>
-	</File>
-	<File name="include\IVector.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="35" />
-		</Cursor>
-	</File>
-	<File name="src\CompactBlockImpl.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="223" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="tests\vector_tests.cpp" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="25" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\ICompactControlBlock.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="129" topLine="3" />
-		</Cursor>
-	</File>
-	<File name="tests\compact_tests.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="6958" topLine="129" />
-		</Cursor>
-		<Folding>
-			<Collapse line="3" />
-			<Collapse line="15" />
-			<Collapse line="108" />
-			<Collapse line="122" />
-			<Collapse line="134" />
-		</Folding>
-	</File>
-	<File name="include\ICompact.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1843" topLine="62" />
-		</Cursor>
-	</File>
-	<File name="tests\main.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="194" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\CompactIteratorImpl.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1501" topLine="45" />
-		</Cursor>
-		<Folding>
-			<Collapse line="77" />
-		</Folding>
-	</File>
-	<File name="src\LoggerImpl.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3032" topLine="67" />
+			<Cursor1 position="754" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="tests\set_tests.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -130,69 +187,5 @@
 		<Folding>
 			<Collapse line="3" />
 		</Folding>
-	</File>
-	<File name="src\CompactImpl.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1131" topLine="27" />
-		</Cursor>
-	</File>
-	<File name="src\SetImpl.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1291" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\IteratorImpl.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1874" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\SetBlockImpl.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="645" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\ISet.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2460" topLine="48" />
-		</Cursor>
-	</File>
-	<File name="include\RC.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="754" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\CompactBlockImpl.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="250" topLine="2" />
-		</Cursor>
-		<Folding>
-			<Collapse line="6" />
-			<Collapse line="11" />
-		</Folding>
-	</File>
-	<File name="include\IMultiIndex.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="233" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="tests\multiIndex_tests.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1927" topLine="78" />
-		</Cursor>
-		<Folding>
-			<Collapse line="34" />
-			<Collapse line="93" />
-			<Collapse line="106" />
-		</Folding>
-	</File>
-	<File name="tests\tests.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1095" topLine="27" />
-		</Cursor>
-	</File>
-	<File name="src\VectorImpl.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="625" topLine="9" />
-		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
