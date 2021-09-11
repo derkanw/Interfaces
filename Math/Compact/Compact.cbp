@@ -44,6 +44,8 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-std=gnu++11" />
+			<Add option="-std=c++11" />
 			<Add option="-DBUILD_INTERFACES" />
 		</Compiler>
 		<Unit filename="include/ICompact.h" />
