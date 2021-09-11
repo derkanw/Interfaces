@@ -32,7 +32,7 @@ void testIsInside()
     COMPACT1
 
     double temp[] = {3, 1};
-    IVector* newVector = IVector::createVector(sizeof(temp), temp);
+    IVector* newVector = IVector::createVector(SIZE, temp);
     if (!compact1->isInside(newVector))
         std::cout << "Error in testIsInside()" << std::endl;
     delete newVector;
@@ -227,10 +227,10 @@ void testIteratorCompact()
     IVector* vector = nullptr;
     size_t orderData[] = {0, 1};
     IVector* result[] = {left1, right1};
-    IMultiIndex* order = IMultiIndex::createMultiIndex(sizeof(orderData), orderData);
+    IMultiIndex* order = IMultiIndex::createMultiIndex(SIZE, orderData);
     ICompact::IIterator* iterator = compact1->getBegin(order);
 
-    for (size_t i = 0; i < sizeof(result), iterator->isValid(); ++i, iterator->next())
+    for (size_t i = 0; i < SIZE, iterator->isValid(); ++i, iterator->next())
     {
         if (iterator->getVectorCopy(vector) != RC::SUCCESS || vector == nullptr || !IVector::equals(vector, result[i], DEFAULT_NORM, TOL))
             std::cout << "Error in testIteratorCompact()" << std::endl;
