@@ -109,7 +109,8 @@ void testIncAxisIndex()
     INDEX1
 
     index1->incAxisIndex(0, 9);
-    if (index1->getData()[0] != arr1[0] + 9);
+    if (index1->getData()[0] != arr1[0] + 9)
+        std::cout << "Error in testIncAxisIndex()" << std::endl;
 
     DELETE_LOGGER
     DELETE_INDEX1
