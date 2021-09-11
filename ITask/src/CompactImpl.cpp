@@ -144,8 +144,11 @@ ICompact::IIterator* CompactImpl::getIterator(IMultiIndex const * const&index, I
         return nullptr;
     }
 
-    IIterator* newIterator = IteratorImpl::createIterator(block, vectorCopy, index->clone(), bypassOrder->clone());
+    IMultiIndex *order = bypassOrder->clone(), *indexCopy = index->clone();
+    IIterator* newIterator = IteratorImpl::createIterator(block, vectorCopy, indexCopy, order);
     delete vectorCopy;
+    delete order;
+    delete indexCopy;
     IIterator::setLogger(logger);
     return newIterator;
 }
@@ -183,9 +186,11 @@ ICompact::IIterator* CompactImpl::getBegin(IMultiIndex const * const &bypassOrde
         return nullptr;
     }
 
-    IIterator* newIterator = IteratorImpl::createIterator(block, vectorCopy, index, bypassOrder->clone());
+    IMultiIndex* order = bypassOrder->clone();
+    IIterator* newIterator = IteratorImpl::createIterator(block, vectorCopy, index, order);
     delete vectorCopy;
     delete index;
+    delete order;
     IIterator::setLogger(logger);
     return newIterator;
 }
@@ -224,9 +229,11 @@ ICompact::IIterator* CompactImpl::getEnd(IMultiIndex const * const &bypassOrder)
         return nullptr;
     }
 
-    IIterator* newIterator = IteratorImpl::createIterator(block, vectorCopy, index, bypassOrder->clone());
+    IMultiIndex* order = bypassOrder->clone();
+    IIterator* newIterator = IteratorImpl::createIterator(block, vectorCopy, index, order);
     delete vectorCopy;
     delete index;
+    delete order;
     IIterator::setLogger(logger);
     return newIterator;
 }

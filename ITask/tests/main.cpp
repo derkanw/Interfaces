@@ -8,7 +8,7 @@ int main()
     vectorTests();
     setTests();
     multiIndexTests();
-    //compactTests();
+    compactTests();
     return 0;
 }
 

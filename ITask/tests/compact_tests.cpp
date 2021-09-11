@@ -18,7 +18,7 @@ void testCloneCompact()
     COMPACT1
 
     ICompact* temp = compact1->clone();
-    if (temp != nullptr)
+    if (temp == nullptr)
         std::cout << "Error in testCloneCompact()" << std::endl;
     delete temp;
 
@@ -51,7 +51,7 @@ void testGetVectorCoordsCompact()
     IVector* newVector = IVector::createVector(dim, temp);
     delete[] temp;
 
-    size_t indexData[2] = {2, 2}, result[2] = {2, 2};
+    size_t indexData[2] = {2, 2}, result[2] = {1, 1};
     IMultiIndex* index = IMultiIndex::createMultiIndex(sizeof(indexData), indexData);
     if (compact1->getVectorCoords(index, newVector) != RC::SUCCESS)
         std::cout << "Error in testGetVectorCoordsCompact()" << std::endl;

@@ -99,7 +99,7 @@
 
 1629988695 d:\github\derkanw\interfaces\itask\include\rc.h
 
-1631307091 source:d:\github\derkanw\interfaces\itask\tests\main.cpp
+1631345502 source:d:\github\derkanw\interfaces\itask\tests\main.cpp
 	"vector_tests.h"
 	"set_tests.h"
 	"multiIndex_tests.h"
@@ -207,11 +207,11 @@
 1631302356 source:d:\github\derkanw\interfaces\itask\src\compactiteratorimpl.cpp
 	"CompactImpl.h"
 
-1631312558 source:d:\github\derkanw\interfaces\itask\src\compactimpl.cpp
+1631346545 source:d:\github\derkanw\interfaces\itask\src\compactimpl.cpp
 	<cmath>
 	"CompactImpl.h"
 
-1631315646 source:d:\github\derkanw\interfaces\itask\tests\compact_tests.cpp
+1631346255 source:d:\github\derkanw\interfaces\itask\tests\compact_tests.cpp
 	"compact_tests.h"
 
 1631315531 d:\github\derkanw\interfaces\itask\tests\compact_tests.h
